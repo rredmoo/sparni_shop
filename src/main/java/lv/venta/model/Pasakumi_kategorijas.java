@@ -23,21 +23,21 @@ import lombok.ToString;
 
 public class Pasakumi_kategorijas {
 	
-	   @Id
-	    @Column(name = "IDPK")
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    @Setter(value = AccessLevel.NONE)
-	    private int idpk;
+	@Id
+	@Column(name = "IDPK")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Setter(value = AccessLevel.NONE)
+	private int idpk;
 	    
-	    @Column(name="NOSAUKUMS")
-	    private String nosaukums;
+	@Column(name="NOSAUKUMS")
+	private String nosaukums;
 	    
-	    @Column(name="APRAKSTS")
-	    private String apraksts;
+	@Column(name="APRAKSTS")
+	private String apraksts;
 	    
-	    public Pasakumi_kategorijas(String nosaukums, String apraksts) {
-	    	setNosaukums(nosaukums);
-	    	setApraksts(apraksts);
-	    }
+	public Pasakumi_kategorijas(String nosaukums, String apraksts) {
+	    setNosaukums(nosaukums);
+	    setApraksts(apraksts);
+	}
 
 }

@@ -33,7 +33,7 @@ public class Informacijas_lapa {
 	private Informacijas_lapa_informacija idInformacijasLapaInformacija;
 	    
 	public Informacijas_lapa(Informacijas_lapa_informacija idInformacijasLapaInformacija) {
-	setIdInformacijasLapaInformacija(idInformacijasLapaInformacija);
+		setIdInformacijasLapaInformacija(idInformacijasLapaInformacija);
 	}
 
 }
