@@ -36,7 +36,7 @@ public class Pirkums_Elements {
     //ID_veikals_Prece
 
     @Column(name = "Id_Veikals_Prece")
-    private int veikals_prece; // int velak janomaina uz Veikals_Prece
+    private Veikals_prece veikals_prece; 
 
     //Id_pirkums
 
