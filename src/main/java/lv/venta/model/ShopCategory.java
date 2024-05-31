@@ -23,7 +23,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-//@AllArgsConstructor
 @Table(name = "ProductImageTable")
 @Entity
 
@@ -41,8 +40,6 @@ public class ShopCategory {
 	@Size(min = 3, max = 50)
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
 	private String title;
-
-
 
 
     @Column(name = "Description")

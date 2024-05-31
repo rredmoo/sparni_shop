@@ -26,7 +26,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-//@AllArgsConstructor
 @Table(name = "DiscountTable")
 @Entity
 
