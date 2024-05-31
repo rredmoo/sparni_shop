@@ -2,12 +2,15 @@ package lv.venta.model;
 
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -37,8 +40,8 @@ public class ShopProductImg {
 	private int idImg;
 
 
-//impplementacija bildei
-
+    @Column(name = "Image")
+    private String imgPath;
 
 
     @Column(name = "Description")
@@ -48,8 +51,9 @@ public class ShopProductImg {
 	private String description;
 
 
-    public ShopProductImg(String description){
+    public ShopProductImg(String description, String imgPath){
         setDescription(description);
+        setImgPath(imgPath);
 
     }
 

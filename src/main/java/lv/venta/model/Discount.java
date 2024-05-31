@@ -52,14 +52,16 @@ public class Discount {
     @Column(name = "EndDate")
     private LocalDateTime endDate;
 
-    @NotNull
-    @Column(name = "isDiscount")
-    private boolean isDiscount;
+    
+    @Column(name = "is_Discount")
+    private boolean isdiscount;
 
-    public Discount(int discountAmount , LocalDateTime startDate, LocalDateTime endDate){
+    public Discount(int discountAmount , LocalDateTime startDate, LocalDateTime endDate,boolean isDiscount){
         setDiscount(discountAmount);
         setStartDate(startDate);
         setEndDate(endDate);
+        setIsdiscount(isDiscount);
+        
        
     }
 

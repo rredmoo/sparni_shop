@@ -37,6 +37,10 @@ public class ShopProduct {
 
   //Id-category
 
+  @Column(name="ID_Category")
+  private ShopCategory category;
+
+
 
   //Nosaukums
     @Column(name = "Title")
@@ -67,16 +71,25 @@ public class ShopProduct {
 	@Column(name = "Price")
 	private float price;
 
-  //Id-atlaide
+  
+  @Column(name="ID_ATLAIDE")
+  private Discount idDiscount;
+
 
   //Id-veikals-prece-bilde
+  @Column(name="ID_IMG")
+  private String img;
 
 
-  public ShopProduct(String title, String description, int quantity, float price){
+  public ShopProduct(String title, String description,
+  ShopCategory category, int quantity, float price, Discount discount, String img){
         setTitle(title);
         setDescription(description);
+        setCategory(category);
         setQuantity(quantity);
         setPrice(price);
+        setIdDiscount(discount);
+        setImg(img);
   }
     
 }
