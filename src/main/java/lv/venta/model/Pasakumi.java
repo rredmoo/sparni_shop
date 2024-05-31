@@ -1,5 +1,9 @@
 package lv.venta.model;
 
+import java.time.LocalDateTime;
+
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,23 +31,39 @@ public class Pasakumi {
 	@Setter(value = AccessLevel.NONE)
 	private int idp;
 	
+	@Column (name = "ID_PASAKUMI_KATEGORIJAS")
+	private Pasakumi_kategorijas idPasakumiKategorijas;
+	
+	@Column (name = "SAKUMA_DATUMS")
+	private LocalDateTime sakumaDatums;
+	
+	@Column (name = "BEIGU_DATUMS")
+	private LocalDateTime beiguDatums;
+	
 	@Column (name = "NOSAUKUMS")
 	private String nosaukums;
+	
+	@Column (name = "LAIKS")
+	private LocalDateTime laiks;
+	
+	@Column (name = "VIETA")
+	private String vieta;
 	
 	@Column (name = "APRAKSTS")
 	private String apraksts;
 	
-	@Column (name = "SAKUMA_DATUMS")
-	private int sakuma_datums;
+	@Column (name = "BILDES_URL")
+	private String bildesUrl;
 	
-	@Column (name = "BEIGU_DATUMS")
-	private int beigu_datums;
-	
-	@Column (name = "LOKACIJA")
-	private int lokacija;
-	
-	//public Pasakumi(String title) {
-		
-	//}
+	public Pasakumi(Pasakumi_kategorijas idPasakumiKategorijas, LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks, String vieta, String apraksts, String bildesUrl) {
+    	setIdPasakumiKategorijas(idPasakumiKategorijas);
+		setSakumaDatums(sakumaDatums);
+    	setBeiguDatums(beiguDatums);
+    	setNosaukums(nosaukums);
+    	setLaiks(laiks);
+    	setVieta(vieta);
+    	setApraksts(apraksts);
+    	setBildesUrl(bildesUrl);
+    }
 
 }
