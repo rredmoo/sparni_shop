@@ -22,5 +22,18 @@ import lombok.ToString;
 @Entity
 
 public class Informacijas_lapa {
+	
+	@Id
+	@Column (name = "IDIL")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Setter(value = AccessLevel.NONE)
+	private int idil;
+	
+	@Column (name = "ID_INFORMACIJAS_LAPA_INFORMACIJA")
+	private Informacijas_lapa_informacija idInformacijasLapaInformacija;
+	    
+	public Informacijas_lapa(Informacijas_lapa_informacija idInformacijasLapaInformacija) {
+	setIdInformacijasLapaInformacija(idInformacijasLapaInformacija);
+	}
 
 }
