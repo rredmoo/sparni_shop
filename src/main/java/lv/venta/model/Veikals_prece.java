@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,7 +22,7 @@ import lombok.ToString;
 @ToString
 @Table(name = "VEIKALS_PRECE_TABLE")
 @Entity
-public class Veikals_prece {
+public class Veikals_prece{
 
     @Id
     @Column(name = "IDVP")
@@ -40,7 +42,8 @@ public class Veikals_prece {
     @Column(name="CENA")
     private float cena;
     
-    @Column(name="ID_ATLAIDE")
+    @ManyToOne
+    @JoinColumn(name = "ID_ATLAIDE", referencedColumnName = "IDA")
     private Atlaide idAtlaide;
     
     public Veikals_prece(String nosaukums, String apraksts, int daudzums,
