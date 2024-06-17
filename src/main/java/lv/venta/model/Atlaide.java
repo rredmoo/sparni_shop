@@ -31,31 +31,29 @@ public class Atlaide {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
     private int ida;
-    
+
     @Max(100)
-	@Min(0)
-    @Column(name="ATLAIDES_APMERS")
+    @Min(0)
+    @Column(name = "ATLAIDES_APMERS")
     private int atlaidesApmers;
-    
 
     @DateTimeFormat
-    @Column(name="SAKUMA_DATUMS")
+    @Column(name = "SAKUMA_DATUMS")
     private LocalDateTime sakumaDatums;
-    
+
     @DateTimeFormat
-    @Column(name="BEIGU_DATUMS")
+    @Column(name = "BEIGU_DATUMS")
     private LocalDateTime beiguDatums;
-    
-    @Column(name="VAI_ATLAIDE")
+
+    @Column(name = "VAI_ATLAIDE")
     private boolean vaiAlaide;
-    
-    
+
     public Atlaide(int atlaidesApmers, LocalDateTime sakumaDatums,
-    		LocalDateTime beiguDatums,boolean vaiAlaide) {
-    	setAtlaidesApmers(atlaidesApmers);
-    	setSakumaDatums(sakumaDatums);
-    	setBeiguDatums(beiguDatums);
-    	setVaiAlaide(vaiAlaide);
-    	
+            LocalDateTime beiguDatums, boolean vaiAlaide) {
+        setAtlaidesApmers(atlaidesApmers);
+        setSakumaDatums(sakumaDatums);
+        setBeiguDatums(beiguDatums);
+        setVaiAlaide(vaiAlaide);
+
     }
 }

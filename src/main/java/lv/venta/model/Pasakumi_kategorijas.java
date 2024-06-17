@@ -1,6 +1,5 @@
 package lv.venta.model;
 
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,11 +19,10 @@ import lombok.ToString;
 @ToString
 @Table(name = "PASAKUMI_KATEGORIJAS_TABLE")
 @Entity
-
 public class Pasakumi_kategorijas {
 	
 	@Id
-	@Column(name = "IDPK")
+	@Column(name = "idpk")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
 	private int idpk;

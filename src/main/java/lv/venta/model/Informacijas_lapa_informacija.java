@@ -1,7 +1,5 @@
 package lv.venta.model;
 
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,24 +18,23 @@ import lombok.ToString;
 @ToString
 @Table(name = "INFORMACIJAS_LAPA_INFORMACIJA_TABLE")
 @Entity
-
 public class Informacijas_lapa_informacija {
-	//test
-	@Id
-    @Column(name = "IDILI")
+
+    // test
+    @Id
+    @Column(name = "idili")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
     private int idili;
-    
-    @Column(name="NOSAUKUMS")
+
+    @Column(name = "NOSAUKUMS")
     private String nosaukums;
-    
-    @Column(name="APRAKSTS")
+
+    @Column(name = "APRAKSTS")
     private String apraksts;
-    
+
     public Informacijas_lapa_informacija(String nosaukums, String apraksts) {
-    	setNosaukums(nosaukums);
-    	setApraksts(apraksts);
+        setNosaukums(nosaukums);
+        setApraksts(apraksts);
     }
-	
 }

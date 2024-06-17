@@ -20,8 +20,8 @@ import lombok.ToString;
 public class Kontakti {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_Kontakti;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID_Kontakti;
 
     @Column(name = "Nosaukums")
     private String nosaukums;

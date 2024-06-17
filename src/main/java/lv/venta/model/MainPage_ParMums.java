@@ -21,8 +21,8 @@ import lombok.ToString;
 public class MainPage_ParMums {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int ID_MainPage_ParMums;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long ID_MainPage_ParMums;
 
 	// @ManyToOne
 	// @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "ID")

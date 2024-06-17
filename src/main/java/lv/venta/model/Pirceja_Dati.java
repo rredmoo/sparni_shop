@@ -28,10 +28,10 @@ public class Pirceja_Dati {
 //ID
 
     @Id
-	@Column(name = "Id_Pircejs")
+	@Column(name = "idpd")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	private int Id_Pircejs;
+	private int idpd;
 	
 	//Vards
 

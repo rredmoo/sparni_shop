@@ -20,8 +20,8 @@ import lombok.ToString;
 public class MainPage_BiedribaDarbojas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_MainPage_BiedribaDarbojas;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID_MainPage_BiedribaDarbojas;
 
     @Column(name = "Nosaukums")
     private String nosaukums;
