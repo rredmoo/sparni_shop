@@ -22,7 +22,7 @@ import lombok.ToString;
 @Entity
 
 public class Informacijas_lapa_informacija {
-	
+	//test
 	@Id
     @Column(name = "IDILI")
     @GeneratedValue(strategy = GenerationType.AUTO)
