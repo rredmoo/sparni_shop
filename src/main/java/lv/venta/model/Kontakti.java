@@ -6,24 +6,29 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name = "Kontakti")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@ToString
+@Table(name = "Kontakti")
+@Entity
 public class Kontakti {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_Kontakti;
+    @Column(name = "idk")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(value = AccessLevel.NONE)
+    private int idk;
 
     @Column(name = "Nosaukums")
     private String nosaukums;
 
     @Column(name = "Informacija")
     private String informacija;
-    }
+}

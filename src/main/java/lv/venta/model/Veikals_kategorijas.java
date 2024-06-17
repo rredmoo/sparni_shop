@@ -1,7 +1,5 @@
 package lv.venta.model;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +24,7 @@ import lombok.ToString;
 public class Veikals_kategorijas {
 
     @Id
-    @Column(name = "IDA")
+    @Column(name = "idveikals_katekorija")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
     private int idvk;

@@ -1,9 +1,6 @@
 package lv.venta.model;
 
 import java.time.LocalDateTime;
-
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,13 +22,13 @@ import lombok.ToString;
 public class Pasakumi {
 	
 	@Id
-	@Column (name = "IDP")
+	@Column (name = "idpasakimi")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	private int idp;
+	private int idpasakimi;
 	
-	@Column (name = "ID_PASAKUMI_KATEGORIJAS")
-	private Pasakumi_kategorijas idPasakumiKategorijas;
+	// @Column (name = "ID_PASAKUMI_KATEGORIJAS")
+	// private Pasakumi_kategorijas idPasakumiKategorijas;
 	
 	@Column (name = "SAKUMA_DATUMS")
 	private LocalDateTime sakumaDatums;
@@ -54,8 +51,7 @@ public class Pasakumi {
 	@Column (name = "BILDES_URL")
 	private String bildesUrl;
 	
-	public Pasakumi(Pasakumi_kategorijas idPasakumiKategorijas, LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks, String vieta, String apraksts, String bildesUrl) {
-    	setIdPasakumiKategorijas(idPasakumiKategorijas);
+	public Pasakumi(LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks, String vieta, String apraksts, String bildesUrl) {
 		setSakumaDatums(sakumaDatums);
     	setBeiguDatums(beiguDatums);
     	setNosaukums(nosaukums);

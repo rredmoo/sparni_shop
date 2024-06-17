@@ -27,21 +27,21 @@ public class Pirkums_Elements {
     //ID
 
     @Id
-	@Column(name = "Id_Pirkuma_Elements")
+	@Column(name = "idpe")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)	
-	private int id_pirkumaElements;
+	private int idpe;
 
 
     //ID_veikals_Prece
 
-    @Column(name = "Id_Veikals_Prece")
-    private Veikals_prece veikals_prece; 
+    // @Column(name = "Id_Veikals_Prece")
+    // private Veikals_prece veikals_prece; 
 
     //Id_pirkums
 
-    @Column(name = "Id_Pirkums")
-    private Pirkums pirkums;
+    // @Column(name = "Id_Pirkums")
+    // private Pirkums pirkums;
 
    
     //Daudzums
