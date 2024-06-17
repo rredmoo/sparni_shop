@@ -10,17 +10,19 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "MainPage_ParMums")
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class MainPage_ParMums {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID_MainPage_ParMums;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int ID_MainPage_ParMums;
 
 	// @ManyToOne
 	// @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "ID")

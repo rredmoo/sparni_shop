@@ -9,17 +9,19 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "MainPage_BiedribasDarbojas")
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class MainPage_BiedribaDarbojas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_MainPage_BiedribaDarbojas;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int ID_MainPage_BiedribaDarbojas;
 
     @Column(name = "Nosaukums")
     private String nosaukums;
