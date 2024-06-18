@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -23,16 +24,16 @@ import lombok.ToString;
 @Entity
 
 public class Samaksas_veids {
-    
- //ID
 
-    @Id
-	@Column(name = "idsv")
+	// ID
+
+	@Id
+	@Column(name = "ID_Samaksas_Veids")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)	
-	private int idsv;
-	
-//Nosaukums
+	@Setter(value = AccessLevel.NONE)
+	private int ID_Samaksas_Veids;
+
+	// Nosaukums
 
 	@Column(name = "Nosaukums")
 	@NotNull
@@ -40,12 +41,14 @@ public class Samaksas_veids {
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
 	private String nosaukums;
 
-  //piezimes
+	// piezimes
 
-    @Column(name = "Piezimes")
+	@Column(name = "Piezimes")
 	@NotNull
 	@Size(min = 3, max = 200)
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
 	private String piezimes;
 
+	@OneToOne(mappedBy = "samaksasVeids")
+	private Pirkums pirkums;
 }

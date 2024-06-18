@@ -1,10 +1,13 @@
 package lv.venta.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -38,13 +41,10 @@ public class Pirkums_Elements {
     // @Column(name = "Id_Veikals_Prece")
     // private Veikals_prece veikals_prece; 
 
-    //Id_pirkums
 
-    // @Column(name = "Id_Pirkums")
-    // private Pirkums pirkums;
-
-   
-    //Daudzums
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_Pirkums", referencedColumnName = "ID_Pirkums")
+    private Pirkums pirkums;
 
     @Max(500)
 	@Min(0)

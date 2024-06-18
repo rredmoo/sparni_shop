@@ -2,11 +2,14 @@ package lv.venta.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -23,47 +26,40 @@ import lombok.ToString;
 @ToString
 @Table(name = "Pirkums")
 @Entity
-
 public class Pirkums {
 
-    // ID
-
     @Id
-    @Column(name = "idp")
+    @Column(name = "ID_Pirkums")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idp;
+    private int ID_Pirkums;
 
-    // ID_piegades_veids
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_Piegades_Veids", referencedColumnName = "ID_Piegades_Veids")
+    private Piegades_Veids piegadesVeids;
 
-    // @Column(name = "Id_Piegades_veids")
-    // private Piegades_Veids piegades_veids;
-
-    // pirkuma_datums
     @Column(name = "Pirkuma_Datums")
-    private LocalDateTime pirkuma_datums;
-
-    // piegades_detalas
+    private LocalDateTime pirkumaDatums;
 
     @Column(name = "Piegades_detalas")
     @NotNull
     @Size(min = 3, max = 200)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
-    private String piegades_detalas;
+    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed! (First letter must be capital)")
+    private String piegadesDetalas;
 
-    // //ID_samaksas_veids
-    // @Column(name = "Id_Samaksas_veids")
-    // private Samaksas_veids samaksas_veids;
 
-    // Statuss
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_Samaksas_Veids", referencedColumnName = "ID_Samaksas_Veids")
+    private Samaksas_veids samaksasVeids;
 
-    // @Column(name = "Statuss")
-    // @NotNull
-    // private Statuss statuss;
+    @Column(name = "Statuss")
+    @NotNull
+    private Statuss statuss;
 
-    // Id_Pirceja_dati
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_Pirceja_Dati", referencedColumnName = "ID_Pirceja_Dati")
+    private Pirceja_Dati pircejaDati;
 
-    // @Column(name = "Id_Pirceja_dati")
-    // private Pirceja_Dati pirceja_dati;
-
+    @OneToOne(mappedBy = "pirkums")
+    private Pirkums_Elements pirkumsElements;
 }

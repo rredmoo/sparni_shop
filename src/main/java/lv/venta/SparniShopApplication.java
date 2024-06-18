@@ -39,13 +39,6 @@ public class SparniShopApplication {
 				Atlaide a2 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31), true);
 				atlaideRepo.save(a2);
 
-				
-				
-				
-			
-			
-			
-			
 			}
 		};
 

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -21,32 +22,26 @@ import lombok.ToString;
 @ToString
 @Table(name = "Piegades_veids")
 @Entity
-
 public class Piegades_Veids {
-    
-    //ID
 
     @Id
-	@Column(name = "idpveids")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)	
-	private int idpveids;
-	
-//Nosaukums
+    @Column(name = "ID_Piegades_Veids")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(value = AccessLevel.NONE)
+    private int idPiegadesVeids;
 
-	@Column(name = "Nosaukums")
-	@NotNull
-	@Size(min = 3, max = 50)
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
-	private String nosaukums;
-
-  //apraksts
+    @Column(name = "Nosaukums")
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
+    private String nosaukums;
 
     @Column(name = "Apraksts")
-	@NotNull
-	@Size(min = 3, max = 200)
-	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
-	private String apraksts;
+    @NotNull
+    @Size(min = 3, max = 200)
+    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
+    private String apraksts;
+
+    @OneToOne(mappedBy = "piegadesVeids")
+    private Pirkums pirkums;
 }
-
-
