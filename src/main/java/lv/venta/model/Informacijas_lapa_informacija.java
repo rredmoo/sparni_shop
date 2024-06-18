@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,12 +21,11 @@ import lombok.ToString;
 @Entity
 public class Informacijas_lapa_informacija {
 
-    // test
     @Id
-    @Column(name = "idili")
+    @Column(name = "ID_InformacijasLapa_informacija")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idili;
+    private int ID_InformacijasLapa_informacija;
 
     @Column(name = "NOSAUKUMS")
     private String nosaukums;
@@ -33,8 +33,12 @@ public class Informacijas_lapa_informacija {
     @Column(name = "APRAKSTS")
     private String apraksts;
 
-    public Informacijas_lapa_informacija(String nosaukums, String apraksts) {
-        setNosaukums(nosaukums);
-        setApraksts(apraksts);
+    @OneToOne(mappedBy = "informacijasLapaInformacija")
+    private Informacijas_lapa informacijasLapa;
+
+    public Informacijas_lapa_informacija(String nosaukums, String apraksts, Informacijas_lapa informacijasLapa) {
+        this.nosaukums = nosaukums;
+        this.apraksts = apraksts;
+        this.informacijasLapa = informacijasLapa;
     }
 }
