@@ -38,8 +38,9 @@ public class Pirkums_Elements {
 
     //ID_veikals_Prece
 
-    // @Column(name = "Id_Veikals_Prece")
-    // private Veikals_prece veikals_prece; 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_Veikals_Prece", referencedColumnName = "idvp")
+    private Veikals_prece veikals_prece; 
 
 
     @OneToOne(cascade = CascadeType.ALL)

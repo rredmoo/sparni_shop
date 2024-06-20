@@ -35,13 +35,12 @@ public class Veikals_kategorijas {
     @Column(name="NOSAUKUMS")
     private String nosaukums;
     
-
-   
 	@Size(min = 3, max = 300)
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")
     @Column(name="APRAKSTS")
     private String apraksts;
 
+    
     
     public Veikals_kategorijas(String nosaukums, String apraksts) {
     	setNosaukums(nosaukums);

@@ -26,7 +26,6 @@ import lombok.ToString;
 public class Samaksas_veids {
 
 	// ID
-
 	@Id
 	@Column(name = "ID_Samaksas_Veids")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +33,6 @@ public class Samaksas_veids {
 	private int ID_Samaksas_Veids;
 
 	// Nosaukums
-
 	@Column(name = "Nosaukums")
 	@NotNull
 	@Size(min = 3, max = 50)
@@ -42,7 +40,6 @@ public class Samaksas_veids {
 	private String nosaukums;
 
 	// piezimes
-
 	@Column(name = "Piezimes")
 	@NotNull
 	@Size(min = 3, max = 200)
@@ -51,4 +48,10 @@ public class Samaksas_veids {
 
 	@OneToOne(mappedBy = "samaksasVeids")
 	private Pirkums pirkums;
+
+	public Samaksas_veids(String nosaukums, String piezimes, Pirkums pirkums){
+		setNosaukums(nosaukums);
+		setPiezimes(piezimes);
+		setPirkums(pirkums);
+	}
 }
