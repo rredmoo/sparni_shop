@@ -59,17 +59,27 @@ public class Veikals_prece {
     private Pirkums_Elements pirkums_Elements;
 
     @ManyToOne
+    @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "idvk")
+    private Veikals_kategorijas veikals_kategorijas;
+
+    @OneToOne
+    @JoinColumn(name = "ID_Veikals_Prece_Bilde", referencedColumnName = "ID_Veikals_Prece_Bilde")
+    private Veikals_prece_bildes veikals_prece_bildes;
+
+    @OneToOne
     @JoinColumn(name = "ID_ATLAIDE", referencedColumnName = "IDA")
     private Atlaide idAtlaide;
 
     public Veikals_prece(String nosaukums, String apraksts, int daudzums,
-            float cena, Atlaide idAtlaide) {
+            float cena, Pirkums_Elements pirkums_Elements, Veikals_kategorijas veikals_kategorijas,Veikals_prece_bildes veikals_prece_bildes, Atlaide idAtlaide) {
         setNosaukums(nosaukums);
         setApraksts(apraksts);
         setDaudzums(daudzums);
         setCena(cena);
+        setPirkums_Elements(pirkums_Elements);
+        setVeikals_kategorijas(veikals_kategorijas);
+        setVeikals_prece_bildes(veikals_prece_bildes);
         setIdAtlaide(idAtlaide);
-
     }
 
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -27,10 +28,10 @@ import lombok.ToString;
 public class Veikals_prece_bildes {
     
     @Setter(value = AccessLevel.NONE)
-	@Column(name = "IdImg")
+	@Column(name = "ID_Veikals_Prece_Bilde")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idImg;
+	private int ID_Veikals_Prece_Bilde;
 
     @Column(name = "Image")
     private String imgPath;
@@ -41,6 +42,8 @@ public class Veikals_prece_bildes {
 	@Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed")
 	private String description;
 
+    @OneToOne(mappedBy = "veikals_prece_bildes")
+    private Veikals_prece veikals_prece;
 
     public Veikals_prece_bildes(String description, String imgPath){
         setDescription(description);
