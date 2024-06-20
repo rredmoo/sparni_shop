@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,8 +29,9 @@ public class Pasakumi {
 	@Setter(value = AccessLevel.NONE)
 	private int idpasakimi;
 	
-	// @Column (name = "ID_PASAKUMI_KATEGORIJAS")
-	// private Pasakumi_kategorijas idPasakumiKategorijas;
+	@ManyToOne
+    @JoinColumn(name = "ID_Pasakumi_Kategorijas", referencedColumnName = "idpk")
+	private Pasakumi_kategorijas idPasakumiKategorijas;
 	
 	@Column (name = "SAKUMA_DATUMS")
 	private LocalDateTime sakumaDatums;

@@ -1,24 +1,10 @@
 package lv.venta.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -59,7 +45,7 @@ public class Veikals_prece {
     private Pirkums_Elements pirkums_Elements;
 
     @ManyToOne
-    @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "idvk")
+    @JoinColumn(name = "ID_Veikals_Kategorijas", referencedColumnName = "idvk")
     private Veikals_kategorijas veikals_kategorijas;
 
     @OneToOne
@@ -71,7 +57,8 @@ public class Veikals_prece {
     private Atlaide idAtlaide;
 
     public Veikals_prece(String nosaukums, String apraksts, int daudzums,
-            float cena, Pirkums_Elements pirkums_Elements, Veikals_kategorijas veikals_kategorijas,Veikals_prece_bildes veikals_prece_bildes, Atlaide idAtlaide) {
+            float cena, Pirkums_Elements pirkums_Elements, Veikals_kategorijas veikals_kategorijas,
+            Veikals_prece_bildes veikals_prece_bildes, Atlaide idAtlaide) {
         setNosaukums(nosaukums);
         setApraksts(apraksts);
         setDaudzums(daudzums);
@@ -81,5 +68,4 @@ public class Veikals_prece {
         setVeikals_prece_bildes(veikals_prece_bildes);
         setIdAtlaide(idAtlaide);
     }
-
 }
