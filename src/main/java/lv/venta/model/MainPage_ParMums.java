@@ -32,17 +32,16 @@ public class MainPage_ParMums {
     @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "idvp")
 	private Veikals_prece veikalsPrece; 
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_Pasakumi", referencedColumnName = "ID")
-	// private Pasakumi pasakumi; // Saite uz Pasakumi
+	@ManyToOne
+	@JoinColumn(name = "ID_Pasakumi", referencedColumnName = "ID_Pasakumi")
+	private Pasakumi pasakumi; 
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_MainPage_BiedribaDarbojas", referencedColumnName =
-	// "ID")
-	// private MainPage_BiedribasDarbojas mainPageBiedribasDarbojas; // Saite uz
-	// Pasakumi
+	@ManyToOne
+	@JoinColumn(name = "ID_MainPage_BiedribaDarbojas", referencedColumnName =
+	"idmpbd")
+	private MainPage_BiedribaDarbojas mainPageBiedribasDarbojas;
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_Kontakti", referencedColumnName = "ID")
-	// private Kontakti kontakti; 
+	@ManyToOne
+	@JoinColumn(name = "ID_Kontakti", referencedColumnName = "idk")
+	private Kontakti kontakti; 
 }
