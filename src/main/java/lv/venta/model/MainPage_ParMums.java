@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,26 +23,25 @@ import lombok.ToString;
 public class MainPage_ParMums {
 
 	@Id
-	@Column (name = "idmppm")
+	@Column (name = "ID_MainPage_ParMums")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	private int idmppm;
+	private int ID_MainPage_ParMums;
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "ID")
-	// private VeikalsPrece veikalsPrece; //Saite uz Veikals_Prece
+	@ManyToOne
+    @JoinColumn(name = "ID_Veikals_Prece", referencedColumnName = "idvp")
+	private Veikals_prece veikalsPrece; 
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_Pasakumi", referencedColumnName = "ID")
-	// private Pasakumi pasakumi; // Saite uz Pasakumi
+	@ManyToOne
+	@JoinColumn(name = "ID_Pasakumi", referencedColumnName = "ID_Pasakumi")
+	private Pasakumi pasakumi; 
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_MainPage_BiedribaDarbojas", referencedColumnName =
-	// "ID")
-	// private MainPage_BiedribasDarbojas mainPageBiedribasDarbojas; // Saite uz
-	// Pasakumi
+	@ManyToOne
+	@JoinColumn(name = "ID_MainPage_BiedribaDarbojas", referencedColumnName =
+	"idmpbd")
+	private MainPage_BiedribaDarbojas mainPageBiedribasDarbojas;
 
-	// @ManyToOne
-	// @JoinColumn(name = "ID_Kontakti", referencedColumnName = "ID")
-	// private Kontakti kontakti; 
+	@ManyToOne
+	@JoinColumn(name = "ID_Kontakti", referencedColumnName = "idk")
+	private Kontakti kontakti; 
 }

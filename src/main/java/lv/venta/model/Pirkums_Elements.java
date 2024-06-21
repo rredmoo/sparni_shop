@@ -17,43 +17,34 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @Table(name = "Pirkuma_Elements")
 @Entity
-
 public class Pirkums_Elements {
 
-    //ID
-
     @Id
-	@Column(name = "idpe")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)	
-	private int idpe;
+    @Column(name = "idpe")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(value = AccessLevel.NONE)    
+    private int idpe;
 
-
-    //ID_veikals_Prece
-
-    // @Column(name = "Id_Veikals_Prece")
-    // private Veikals_prece veikals_prece; 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_Veikals_Prece", referencedColumnName = "idvp")
+    private Veikals_prece veikals_prece; 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Pirkums", referencedColumnName = "ID_Pirkums")
     private Pirkums pirkums;
 
     @Max(500)
-	@Min(0)
-	@Column(name = "Daudzums")
-	private int daudzums;
+    @Min(0)
+    @Column(name = "Daudzums")
+    private int daudzums;
 
     public Pirkums_Elements(int daudzums) {
         setDaudzums(daudzums);
     }
-
-    
 }
