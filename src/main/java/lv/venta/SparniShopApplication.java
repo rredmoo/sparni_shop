@@ -8,9 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import lv.venta.model.Atlaide;
-import lv.venta.model.Pasakumi;
-import lv.venta.model.Veikals_kategorijas;
-import lv.venta.model.Veikals_prece;
 import lv.venta.repo.IAtlaideRepo;
 import lv.venta.repo.IPasakumiRepo;
 import lv.venta.repo.IPreceRepo;

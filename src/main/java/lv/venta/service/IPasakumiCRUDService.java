@@ -3,7 +3,6 @@ package lv.venta.service;
 import java.util.ArrayList;
 
 import lv.venta.model.Pasakumi;
-import lv.venta.model.Veikals_prece;
 
 public interface IPasakumiCRUDService {
 
