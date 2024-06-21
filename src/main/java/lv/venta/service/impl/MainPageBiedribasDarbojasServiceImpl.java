@@ -12,13 +12,13 @@ import lv.venta.repo.IMainPageBiedribasDarbojasRepo;
 import lv.venta.service.IMainPageBiedribasDarbojasCRUDService;
 
 @Service
-public class MainPageBiedribasDarbojasCRUDServiceImpl implements IMainPageBiedribasDarbojasCRUDService {
+public class MainPageBiedribasDarbojasServiceImpl implements IMainPageBiedribasDarbojasCRUDService {
 
     @Autowired
 	private IMainPageBiedribasDarbojasRepo repository;
 
     
-    public MainPageBiedribasDarbojasCRUDServiceImpl(IMainPageBiedribasDarbojasRepo repository) {
+    public MainPageBiedribasDarbojasServiceImpl(IMainPageBiedribasDarbojasRepo repository) {
         this.repository = repository;
     }
 
@@ -47,7 +47,6 @@ public class MainPageBiedribasDarbojasCRUDServiceImpl implements IMainPageBiedri
         if (!repository.existsById(id)) {
             throw new Exception("Entity not found for id: " + id);
         }
-        mainPageBiedribaDarbojas.setIdmpbd(id);
         repository.save(mainPageBiedribaDarbojas);
     }
 

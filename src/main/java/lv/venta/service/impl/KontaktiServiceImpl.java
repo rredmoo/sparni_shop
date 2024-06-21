@@ -12,14 +12,14 @@ import lv.venta.repo.IKontaktiRepo;
 import lv.venta.service.IKontaktiCRUDService;
 
 @Service
-public class KontaktiCRUDServiceImpl implements IKontaktiCRUDService {
+public class KontaktiServiceImpl implements IKontaktiCRUDService {
 	
 	@Autowired
     private IKontaktiRepo kontaktiRepo;
 
     
     
-    public KontaktiCRUDServiceImpl(IKontaktiRepo kontaktiRepo) {
+    public KontaktiServiceImpl(IKontaktiRepo kontaktiRepo) {
         this.kontaktiRepo = kontaktiRepo;
     }
 
@@ -47,7 +47,6 @@ public class KontaktiCRUDServiceImpl implements IKontaktiCRUDService {
     @Override
     public void updateById(int id, Kontakti kontakti) throws Exception {
         if (kontaktiRepo.existsById(id)) {
-            kontakti.setIdk(id); 
             kontaktiRepo.save(kontakti);
         } else {
             throw new Exception("Kontakti with ID " + id + " not found.");
