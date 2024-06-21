@@ -1,11 +1,14 @@
 
 package lv.venta.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -32,4 +35,8 @@ public class Kontakti {
 
     @Column(name = "Informacija")
     private String informacija;
+
+
+    @OneToMany(mappedBy = "kontakti")
+    private List<MainPage_ParMums> mainPage_ParMums;
 }
