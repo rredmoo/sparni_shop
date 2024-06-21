@@ -27,10 +27,10 @@ public class Samaksas_veids {
 
 	// ID
 	@Id
-	@Column(name = "ID_Samaksas_Veids")
+	@Column(name = "idsv")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	private int ID_Samaksas_Veids;
+	private int idsv;
 
 	// Nosaukums
 	@Column(name = "Nosaukums")

@@ -48,7 +48,7 @@ public class Pirkums {
     private String piegadesDetalas;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID_Samaksas_Veids", referencedColumnName = "ID_Samaksas_Veids")
+    @JoinColumn(name = "idsv", referencedColumnName = "idsv")
     private Samaksas_veids samaksasVeids;
 
     @Column(name = "Statuss")
