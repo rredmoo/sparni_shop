@@ -34,12 +34,12 @@ public class Veikals_kategorijas {
     
     @NotNull
     @Size(min = 3, max = 50)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")
+    // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!") // Nestrādā atstarpe
     @Column(name = "NOSAUKUMS")
     private String nosaukums;
     
     @Size(min = 3, max = 300)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")
+    // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!") // Nestrādā atstarpe
     @Column(name = "APRAKSTS")
     private String apraksts;
 
