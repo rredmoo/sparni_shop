@@ -40,6 +40,8 @@ public class SparniShopApplication {
 				atlaideRepo.save(a4);
 
 				
+
+				
 				
 
 
