@@ -30,13 +30,13 @@ public class SparniShopApplication {
 			public void run(String... args) throws Exception {
 
 
-				Atlaide a1 = new Atlaide(70, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31), true);
+				Atlaide a1 = new Atlaide(70, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31));
 				atlaideRepo.save(a1);
-				Atlaide a2 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31), true);
+				Atlaide a2 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31));
 				atlaideRepo.save(a2);
-				Atlaide a3 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31), true);
+				Atlaide a3 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31));
 				atlaideRepo.save(a3);
-				Atlaide a4 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31), true);
+				Atlaide a4 = new Atlaide(50, LocalDateTime.of(2024,05,10,15,30), LocalDateTime.of(2024,05,15,15,31));
 				atlaideRepo.save(a4);
 
 				
