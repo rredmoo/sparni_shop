@@ -57,13 +57,13 @@ public class Veikals_prece {
     public Veikals_prece(String nosaukums, String apraksts, int daudzums, float cena, 
                          Pirkums_Elements pirkums_Elements, Veikals_kategorijas veikals_kategorijas,
                          Veikals_prece_bildes veikals_prece_bildes, Atlaide idAtlaide) {
-        this.nosaukums = nosaukums;
-        this.apraksts = apraksts;
-        this.daudzums = daudzums;
-        this.cena = cena;
-        this.pirkums_Elements = pirkums_Elements;
-        this.veikals_kategorijas = veikals_kategorijas;
-        this.veikals_prece_bildes = veikals_prece_bildes;
-        this.idAtlaide = idAtlaide;
+        setNosaukums(nosaukums);
+        setApraksts(apraksts);
+        setDaudzums(daudzums);
+        setCena(cena);
+        setPirkums_Elements(pirkums_Elements);
+        setVeikals_kategorijas(veikals_kategorijas);
+        setVeikals_prece_bildes(veikals_prece_bildes);
+        setIdAtlaide(idAtlaide);
     }
 }
