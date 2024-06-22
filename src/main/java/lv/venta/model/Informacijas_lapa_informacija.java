@@ -42,3 +42,4 @@ public class Informacijas_lapa_informacija {
         this.informacijasLapa = informacijasLapa;
     }
 }
+	

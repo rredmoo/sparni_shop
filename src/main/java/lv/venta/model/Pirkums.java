@@ -47,9 +47,8 @@ public class Pirkums {
     @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed! (First letter must be capital)")
     private String piegadesDetalas;
 
-
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID_Samaksas_Veids", referencedColumnName = "ID_Samaksas_Veids")
+    @JoinColumn(name = "idsv", referencedColumnName = "idsv")
     private Samaksas_veids samaksasVeids;
 
     @Column(name = "Statuss")
@@ -62,4 +61,14 @@ public class Pirkums {
 
     @OneToOne(mappedBy = "pirkums")
     private Pirkums_Elements pirkumsElements;
+
+    public Pirkums(Piegades_Veids piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, Samaksas_veids samaksasVeids, Statuss statuss,
+    Pirceja_Dati pirceja_Dati, Pirkums_Elements pirkums_Elements){
+        setPiegadesVeids(piegades_Veids);
+        setPirkumaDatums(pirkumaDatums);
+        setPiegadesDetalas(piegadesDetalas);
+        setSamaksasVeids(samaksasVeids);
+        setPircejaDati(pirceja_Dati);
+        setPirkumsElements(pirkums_Elements);
+    }
 }

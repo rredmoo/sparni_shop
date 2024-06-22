@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -47,6 +48,9 @@ public class Atlaide {
 
     @Column(name = "VAI_ATLAIDE")
     private boolean vaiAlaide;
+
+    @OneToOne(mappedBy = "idAtlaide")
+    private Veikals_prece veikals_prece;
 
     public Atlaide(int atlaidesApmers, LocalDateTime sakumaDatums,
             LocalDateTime beiguDatums, boolean vaiAlaide) {

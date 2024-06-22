@@ -1,5 +1,5 @@
 package lv.venta.model;
 
 public enum Statuss {
-	Pieejams, Beidzies 
+	Apstrāde, Pakošana, Izsūtīts, Piegādāts, Atcelts
 }
