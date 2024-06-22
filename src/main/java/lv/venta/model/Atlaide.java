@@ -1,23 +1,12 @@
 package lv.venta.model;
 
 import java.time.LocalDateTime;
-
+import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -46,18 +35,12 @@ public class Atlaide {
     @Column(name = "BEIGU_DATUMS")
     private LocalDateTime beiguDatums;
 
-    @Column(name = "VAI_ATLAIDE")
-    private boolean vaiAlaide;
+    @OneToMany(mappedBy = "idAtlaide")
+    private List<Veikals_prece> veikals_prece;  // Changed to List
 
-    @OneToOne(mappedBy = "idAtlaide")
-    private Veikals_prece veikals_prece;
-
-    public Atlaide(int atlaidesApmers, LocalDateTime sakumaDatums,
-            LocalDateTime beiguDatums, boolean vaiAlaide) {
-        setAtlaidesApmers(atlaidesApmers);
-        setSakumaDatums(sakumaDatums);
-        setBeiguDatums(beiguDatums);
-        setVaiAlaide(vaiAlaide);
-
+    public Atlaide(int atlaidesApmers, LocalDateTime sakumaDatums, LocalDateTime beiguDatums) {
+        this.atlaidesApmers = atlaidesApmers;
+        this.sakumaDatums = sakumaDatums;
+        this.beiguDatums = beiguDatums;
     }
 }

@@ -3,7 +3,7 @@ package lv.venta.service;
 import java.util.ArrayList;
 import lv.venta.model.Atlaide;
 
-public interface IAtlaideCRUDService {
+public interface IAtlaideService {
 
     public abstract void create(Atlaide atlaide);
 
