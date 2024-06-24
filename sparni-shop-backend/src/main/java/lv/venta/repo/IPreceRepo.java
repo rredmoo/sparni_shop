@@ -1,9 +1,7 @@
 package lv.venta.repo;
 
 import java.util.ArrayList;
-
 import org.springframework.data.repository.CrudRepository;
-
 import lv.venta.model.Veikals_prece;
 
 public interface IPreceRepo extends CrudRepository<Veikals_prece, Integer> {
@@ -20,7 +18,7 @@ public interface IPreceRepo extends CrudRepository<Veikals_prece, Integer> {
 
     ArrayList<Veikals_prece> findByDaudzumsGreaterThan(int daudzums); // daudzums > value
 
-   // ArrayList<Veikals_prece> findByVeikals_kategorijasIdvk(int idvk); // kategorija
+    // ArrayList<Veikals_prece> findByVeikals_kategorijasIdvk(int idvk);
 
     ArrayList<Veikals_prece> findByIdAtlaideNotNull(); // ar atlaidi
 
