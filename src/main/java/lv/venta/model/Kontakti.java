@@ -39,4 +39,9 @@ public class Kontakti {
 
     @OneToMany(mappedBy = "kontakti")
     private List<MainPage_ParMums> mainPage_ParMums;
+    
+    public Kontakti(String nosaukums, String informacija) {
+        this.nosaukums = nosaukums;
+        this.informacija = informacija;
+    }
 }

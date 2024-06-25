@@ -41,4 +41,10 @@ public class MainPage_BiedribaDarbojas {
 
     @OneToMany(mappedBy = "mainPageBiedribasDarbojas")
     private List<MainPage_ParMums> mainPage_ParMums;
+    
+    public MainPage_BiedribaDarbojas(String nosaukums, String apraksts, int dalibniekuSkaits) {
+        this.nosaukums = nosaukums;
+        this.apraksts = apraksts;
+        this.dalibniekuSkaits = dalibniekuSkaits;
+    }
 }
