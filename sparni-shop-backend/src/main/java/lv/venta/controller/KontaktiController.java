@@ -24,9 +24,9 @@ import lv.venta.service.IKontaktiCRUDService;
 @RequestMapping("/kontakti")
 public class KontaktiController {
 
+    @Autowired
     private final IKontaktiCRUDService kontaktiService;
 
-    @Autowired
     public KontaktiController(IKontaktiCRUDService kontaktiService) {
         this.kontaktiService = kontaktiService;
     }

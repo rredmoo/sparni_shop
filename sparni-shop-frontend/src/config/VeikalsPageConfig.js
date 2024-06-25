@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8080/veikals/all';
 
 class UserService {
-    getAllAtlaide() {
+    getAllPreces() {
         return axios.get(API_URL);
     }
 }
