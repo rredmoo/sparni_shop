@@ -10,14 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-<<<<<<< HEAD
-import lv.venta.model.Veikals_prece;
-=======
-
 import lv.venta.model.Atlaide;
 import lv.venta.model.Veikals_prece;
 import lv.venta.service.IAtlaideService;
->>>>>>> da7fcce09e819406a1f024bf41549a023f0efa20
 import lv.venta.service.IPreceCRUDService;
 
 @CrossOrigin(origins = "http://localhost:3000")
