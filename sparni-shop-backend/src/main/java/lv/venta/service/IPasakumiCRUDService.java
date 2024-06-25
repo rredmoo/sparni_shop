@@ -6,6 +6,7 @@ import lv.venta.model.Pasakumi;
 
 public interface IPasakumiCRUDService {
 
+	
     public abstract void create(Pasakumi pasakums);
 
     public abstract Pasakumi retrieveById(int id) throws Exception;
