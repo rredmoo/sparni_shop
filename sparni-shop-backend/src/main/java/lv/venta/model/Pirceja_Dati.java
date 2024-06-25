@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -38,7 +37,7 @@ public class Pirceja_Dati {
     @Column(name = "Vards")
     @NotNull
     @Size(min = 3, max = 50)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed")
+   // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed")
     private String vards;
 
     // Uzvards
@@ -46,21 +45,21 @@ public class Pirceja_Dati {
     @Column(name = "Uzvards")
     @NotNull
     @Size(min = 3, max = 50)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed")
+   // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed")
     private String uzvards;
 
     // Epasts
 
     @Column(name = "Epasts", unique = true)
     @NotNull
-    @Pattern(regexp = "^[A-Za-z0-9. _%-]+@[A-Za-z0-9. -]+\\. [A-Za-z]{2,4}$")
+   // @Pattern(regexp = "^[A-Za-z0-9. _%-]+@[A-Za-z0-9. -]+\\. [A-Za-z]{2,4}$")
     private String epasts;
 
     // Personas Kods
 
     @Column(name = "Personas_Kods", unique = true)
     @NotNull
-    @Pattern(regexp = "[0-9]{6}-[0-9]{5}", message = "Wrong input form/example: 190903-21641")
+  //  @Pattern(regexp = "[0-9]{6}-[0-9]{5}", message = "Wrong input form/example: 190903-21641")
     private String personas_kods;
 
     // Bankas Nosaukums
@@ -68,14 +67,14 @@ public class Pirceja_Dati {
     @Column(name = "Bankas_Nosaukums", unique = true)
     @NotNull
     @Size(min = 3, max = 50)
-    @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
+  //  @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
     private String bankas_nosaukums;
 
     // Swift Kods
 
     @Column(name = "Swift_Kods")
     @NotNull
-    @Pattern(regexp = "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$")
+  //  @Pattern(regexp = "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$")
     private String swift_kods;
 
     // Bankas Konts
