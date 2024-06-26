@@ -47,7 +47,7 @@ public class KontaktiController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Kontakti>> retrieveAllKontakti() {
         List<Kontakti> allKontakti = null;
         try {
