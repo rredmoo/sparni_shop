@@ -27,10 +27,10 @@ import lombok.ToString;
 public class Veikals_prece_bildes {
     
     @Setter(value = AccessLevel.NONE)
-	@Column(name = "ID_Veikals_Prece_Bilde")
+	@Column(name = "idvpb")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int ID_Veikals_Prece_Bilde;
+	private int idvpb;
 
     @Column(name = "Image")
     private String imgPath;

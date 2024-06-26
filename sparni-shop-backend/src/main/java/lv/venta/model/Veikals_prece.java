@@ -64,7 +64,7 @@ public class Veikals_prece {
     private Veikals_kategorijas veikals_kategorijas;
 
     @OneToOne
-    @JoinColumn(name = "ID_Veikals_Prece_Bilde", referencedColumnName = "ID_Veikals_Prece_Bilde")
+    @JoinColumn(name = "ID_Veikals_Prece_Bilde", referencedColumnName = "idvpb")
     private Veikals_prece_bildes veikals_prece_bildes;
 
     @ManyToOne

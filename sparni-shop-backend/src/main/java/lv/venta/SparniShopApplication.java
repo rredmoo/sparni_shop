@@ -14,6 +14,7 @@ import lv.venta.model.MainPage_BiedribaDarbojas;
 import lv.venta.model.Pasakumi;
 import lv.venta.model.Veikals_kategorijas;
 import lv.venta.model.Veikals_prece;
+import lv.venta.model.Veikals_prece_bildes;
 import lv.venta.repo.IAtlaideRepo;
 import lv.venta.repo.IKontaktiRepo;
 import lv.venta.repo.IMainPageBiedribasDarbojasRepo;
@@ -23,6 +24,7 @@ import lv.venta.repo.IPiegadesVeidiRepo;
 import lv.venta.repo.IPreceRepo;
 import lv.venta.repo.ISamaksasVeidsRepo;
 import lv.venta.repo.IVeikalsKategorijasRepo;
+import lv.venta.repo.IVeikalsPreceBildeRepo;
 import lv.venta.service.IMainPageBiedribasDarbojasCRUDService;
 
 @SpringBootApplication
@@ -37,11 +39,12 @@ public class SparniShopApplication {
 			IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
 			IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
 			IPasakumiKategorijasRepo pasakumiKategorijasRepo,
-			IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo) {
+			IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo, IVeikalsPreceBildeRepo veikalsPreceBildeRepo) {
 		return new CommandLineRunner() {
 
 			@Override
 			public void run(String... args) throws Exception {
+
 
 				Atlaide a1 = new Atlaide(70, LocalDateTime.of(2024, 05, 10, 15, 30),
 						LocalDateTime.of(2024, 05, 15, 15, 31));
@@ -110,6 +113,9 @@ public class SparniShopApplication {
 				);
 				pasakumiRepo.save(pasakumi4);
 
+				Veikals_prece_bildes bilde1 = new Veikals_prece_bildes("cimdi1", "/resources/static/img/cimdi1.png");
+				veikalsPreceBildeRepo.save(bilde1);
+
 				Veikals_prece prece1 = new Veikals_prece(
 						"Laptop", // nosaukums
 						"High performance laptop with SSD", // apraksts
@@ -117,7 +123,7 @@ public class SparniShopApplication {
 						899.99f, // cena
 						null, // pirkums_Elements
 						null, // veikals_kategorijas
-						null, // veikals_prece_bildes
+						bilde1, // veikals_prece_bildes
 						null // idAtlaide
 				);
 				preceRepo.save(prece1);

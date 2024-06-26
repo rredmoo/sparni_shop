@@ -1,10 +1,10 @@
 import React from "react";
-import MainPage from "./main-page";
+import StorePage from "./components/store-page";
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      <StorePage />
     </div>
   );
 }
