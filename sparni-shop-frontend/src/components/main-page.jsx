@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Header from "./common/Header";
-
+import "../static/css/MainPage.css";
+import SlideShow from "./mainPage/Slideshow";
 
 function MainPage() {
-  const [error, setError] = useState(null);
-
   return (
     <>
       <Header />
-      <h1>Par mums</h1>
-      
+      <SlideShow />
+      <h1 className="mainHeading">Par mums</h1>
 
-      {error && <p>Error: {error}</p>}
+      
     </>
   );
 }
