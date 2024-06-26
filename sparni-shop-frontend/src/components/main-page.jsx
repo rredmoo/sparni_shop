@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import PrecesServiceConfig from "../config/VeikalsPageConfig";
 import Header from "./common/Header";
-import Product from "./veikalsPage/product";
 
-function StorePage() {
+
+function MainPage() {
   const [error, setError] = useState(null);
 
   return (
     <>
       <Header />
-      <h1>Pašlaik pieejamās preces</h1>
-      <Product />
+      <h1>Par mums</h1>
+      
 
       {error && <p>Error: {error}</p>}
     </>
   );
 }
 
-export default StorePage;
+export default MainPage;
