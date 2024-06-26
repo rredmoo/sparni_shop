@@ -22,10 +22,10 @@ import lombok.ToString;
 public class Informacijas_lapa_informacija {
 
     @Id
-    @Column(name = "ID_InformacijasLapa_informacija")
+    @Column(name = "idili")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int ID_InformacijasLapa_informacija;
+    private int idili;
 
     @Column(name = "NOSAUKUMS")
     private String nosaukums;

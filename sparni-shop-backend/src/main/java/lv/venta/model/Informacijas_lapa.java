@@ -24,12 +24,12 @@ import lombok.ToString;
 public class Informacijas_lapa {
 
     @Id
-    @Column(name = "ID_InformacijasLapa")
+    @Column(name = "idil")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int ID_InformacijasLapa;
+    private int idil;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "informacijasLapaInformacija_id", referencedColumnName = "ID_InformacijasLapa_informacija")
+    @JoinColumn(name = "idili", referencedColumnName = "idili")
     private Informacijas_lapa_informacija informacijasLapaInformacija;
 }
