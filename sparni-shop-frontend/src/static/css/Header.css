@@ -1,0 +1,38 @@
+header {
+  width: auto;
+  padding: 9rem;
+  padding-top: 1rem;
+  padding-bottom: 10px;
+  margin-top: 0%;
+  text-align: center;
+  color: white;
+  background-color: rgb(73, 10, 14);
+}
+hr {
+  border: 0;
+  height: 3px;
+  background-color: #ffffff;
+  opacity: 50%;
+  width: 100%;
+}
+
+a {
+  color: rgb(233, 233, 233);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 5px;
+  display: inline-block;
+  transition: color 0.5s, border-radius 0.5s, background-color 0.5s;
+}
+
+nav a:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgb(227, 227, 227);
+  border-radius: 15px;
+}
+@media screen and (max-width: 992px) {
+  header {
+    padding-top: 0rem;
+    margin-top: 0%;
+  }
+}
