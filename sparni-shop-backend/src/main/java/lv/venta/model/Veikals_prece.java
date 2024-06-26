@@ -63,9 +63,7 @@ public class Veikals_prece {
     @JoinColumn(name = "ID_Veikals_Kategorijas", referencedColumnName = "idvk")
     private Veikals_kategorijas veikals_kategorijas;
 
-    @OneToOne
-    @JoinColumn(name = "ID_Veikals_Prece_Bilde", referencedColumnName = "idvpb")
-    private Veikals_prece_bildes veikals_prece_bildes;
+    private String veikals_prece_bildes;
 
     @ManyToOne
     @JoinColumn(name = "ID_ATLAIDE", referencedColumnName = "IDA")
@@ -73,7 +71,7 @@ public class Veikals_prece {
 
     public Veikals_prece(String nosaukums, String apraksts, int daudzums, float cena, 
                          Pirkums_Elements pirkums_Elements, Veikals_kategorijas veikals_kategorijas,
-                         Veikals_prece_bildes veikals_prece_bildes, Atlaide idAtlaide) {
+                         String veikals_prece_bildes, Atlaide idAtlaide) {
         setNosaukums(nosaukums);
         setApraksts(apraksts);
         setDaudzums(daudzums);
