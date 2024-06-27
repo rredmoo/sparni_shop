@@ -1,6 +1,6 @@
 /* Jaunums.css */
 
-/* Containeris pasakumiem */
+/* Containeris */
 .pasakumu-list {
     display: flex;
     flex-wrap: wrap;
@@ -16,7 +16,9 @@
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 300px;
+    width: 100%; 
+    max-width: 400px;
+    margin-bottom: 20px;
   }
   
   /*image */
@@ -52,3 +54,35 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   
+  /*pedejais pievienotais pasakums*/
+.latest-pasakums {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+}
+
+
+
+/* pirmspedejie pievienotie pasakumi */
+.latest-small-pasakums {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    margin-bottom: 16px; 
+}
+
+/*mazo pasakumu bildes apstradasana*/
+  .latest-small-pasakums .pasakums-card-img {
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* Atdalosa linija*/
+.separator-line {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: #ddd; 
+}

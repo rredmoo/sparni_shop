@@ -111,6 +111,52 @@ public class SparniShopApplication {
 				);
 				pasakumiRepo.save(pasakumi4);
 
+				Pasakumi pasakumi5 = new Pasakumi(
+						LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
+						LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
+						"Zeķu adīšana", // nosaukums
+						LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
+						"Majas", // vieta
+						"Stradajam un adam!", // apraksts
+						"https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg" // bildesUrl
+				);
+				pasakumiRepo.save(pasakumi5);
+
+				Pasakumi pasakumi6 = new Pasakumi(
+						LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
+						LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
+						"Maratons", // nosaukums
+						LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
+						"Lemberga hūte", // vieta
+						"Skrienam daudz!", // apraksts
+						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s" // bildesUrl
+				);
+				pasakumiRepo.save(pasakumi6);
+
+				Pasakumi pasakumi7 = new Pasakumi(
+						LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
+						LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
+						"Pikniks", // nosaukums
+						LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
+						"Plava", // vieta
+						"Ēdam!", // apraksts
+						"https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg" // bildesUrl
+				);
+				pasakumiRepo.save(pasakumi7);
+
+				Pasakumi pasakumi8 = new Pasakumi(
+						LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
+						LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
+						"Radošās darbnīcas", // nosaukums
+						LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
+						"Plava", // vieta
+						"Radoši darbi ar zeķēm!", // apraksts
+						"https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg" // bildesUrl
+				);
+				pasakumiRepo.save(pasakumi8);
+
+				
+
 
 				Veikals_prece prece1 = new Veikals_prece(
 						"Pilnīgs Gaļaks Cepure", // nosaukums
