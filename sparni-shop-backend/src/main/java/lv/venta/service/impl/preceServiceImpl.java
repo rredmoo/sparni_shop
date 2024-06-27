@@ -64,5 +64,25 @@ public class preceServiceImpl implements IPreceCRUDService{
 		preceRepo.delete(preceForDeletion);
     }
 
+    @Override
+    public ArrayList<Veikals_prece> retrieveAllAsc() throws Exception {
+        try {
+            ArrayList<Veikals_prece> allAscPreces = preceRepo.OrderByCenaAsc();
+            return allAscPreces;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Veikals_prece> retrieveAllDsc() throws Exception {
+        try {
+            ArrayList<Veikals_prece> allDescPreces = preceRepo.OrderByCenaDesc();
+            return allDescPreces;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     
 }

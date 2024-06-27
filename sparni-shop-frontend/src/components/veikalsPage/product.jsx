@@ -7,7 +7,7 @@ function Product({ numProducts }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    PrecesServiceConfig.getAllPreces()
+    PrecesServiceConfig.getPrecesOrderedByAsc()
       .then((response) => {
         if (Array.isArray(response.data)) {
           const limitedPreces = response.data.slice(0, numProducts);

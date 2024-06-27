@@ -16,4 +16,8 @@ public interface IPreceCRUDService {
 	public abstract void updateById(int id, Veikals_prece prece) throws Exception;
 	
 	public abstract void deleteById(int id) throws Exception;
+
+	public abstract ArrayList<Veikals_prece> retrieveAllAsc() throws Exception;
+
+	public abstract ArrayList<Veikals_prece> retrieveAllDsc() throws Exception;
 }
