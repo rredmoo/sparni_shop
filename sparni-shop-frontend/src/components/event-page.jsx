@@ -10,7 +10,7 @@ function EventsPage() {
     <>
       <Header />
       <h1>Jaunumi</h1>
-      <Pasakums /> {/* Correct component name */}
+      <Pasakums /> 
 
       {error && <p>Error: {error}</p>}
     </>
