@@ -77,7 +77,7 @@ public class SparniShopApplication {
 						LocalDateTime.of(2024, 6, 30, 19, 0), // laiks
 						"Riga Concert Hall", // vieta
 						"Join us for an evening of music!", // apraksts
-						"https://example.com/concert.jpg" // bildesUrl
+						"https://oak-islandnc.com/wp-content/uploads/2020/06/Oak-Island-Summer-Concerts.jpg" // bildesUrl
 				);
 				pasakumiRepo.save(pasakumi1);
 				Pasakumi pasakumi2 = new Pasakumi(
@@ -87,7 +87,7 @@ public class SparniShopApplication {
 						LocalDateTime.of(2024, 7, 15, 20, 0), // laiks
 						"Riga Jazz Club", // vieta
 						"Enjoy an evening of smooth jazz melodies!", // apraksts
-						"https://example.com/jazz-night.jpg" // bildesUrl
+						"https://media-cdn.tripadvisor.com/media/photo-s/10/21/7c/c3/pashkevich-jazz-club.jpg" // bildesUrl
 				);
 				pasakumiRepo.save(pasakumi2);
 				Pasakumi pasakumi3 = new Pasakumi(
@@ -97,7 +97,7 @@ public class SparniShopApplication {
 						LocalDateTime.of(2024, 8, 5, 19, 0), // laiks
 						"Riga Art Gallery", // vieta
 						"Explore captivating artworks by local artists.", // apraksts
-						"https://example.com/art-exhibition.jpg" // bildesUrl
+						"https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg" // bildesUrl
 				);
 				pasakumiRepo.save(pasakumi3);
 				Pasakumi pasakumi4 = new Pasakumi(
@@ -107,7 +107,7 @@ public class SparniShopApplication {
 						LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
 						"Riga Central Park", // vieta
 						"Savor delicious dishes from around the world!", // apraksts
-						"https://example.com/food-festival.jpg" // bildesUrl
+						"https://us.123rf.com/450wm/ynos999/ynos9991909/ynos999190900126/142675619-city-riga-latvia-republic-riga-central-park-with-tourists-and-flowers-resting-place-18-aug-2019.jpg" // bildesUrl
 				);
 				pasakumiRepo.save(pasakumi4);
 

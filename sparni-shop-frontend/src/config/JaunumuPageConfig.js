@@ -1,10 +1,10 @@
 // UserService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/kontakti/all';
+const API_URL = 'http://localhost:8080/pasakumi/all';
 
 class UserService {
-    getAllKontakti() {
+    getAllPasakumi() {
         return axios.get(API_URL);
     }
 }
