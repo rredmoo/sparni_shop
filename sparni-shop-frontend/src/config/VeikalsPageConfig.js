@@ -1,7 +1,7 @@
 // UserService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/veikals/all';
+const API_URL = 'http://localhost:8080/veikals/all';
 
 class UserService {
     getAllPreces() {
