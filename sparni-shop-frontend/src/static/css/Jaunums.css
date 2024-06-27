@@ -1,88 +1,92 @@
-/* Jaunums.css */
+/* Container */
+.pasakumi-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 10rem 0;
+}
 
-/* Containeris */
-.pasakumu-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  /* Individualais pasakums */
-  .pasakums-card {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%; 
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  /*image */
-  .pasakums-card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  /* details */
-  .pasakums-card-details {
-    padding: 20px;
-  }
-  
-  /* title */
-  .pasakums-card-details h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #333333;
-  }
-  
-  /* description */
-  .pasakums-card-details p {
-    color: #000000;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
+/* augšējo bilžu container */
+.pasakumi-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-  /*hoveris*/
-  .pasakums-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  /*pedejais pievienotais pasakums*/
+/* mazās bildes */
+.latest-small-pasakums .pasakums-card-img {
+  height: 125px;
+  object-fit: cover;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Kreisās puses lielais pasākums */
+.pasakumi-left {
+  flex: 2;
+  margin-right: 16px;
+}
+/* Lielais pasākums */
 .latest-pasakums {
-    width: 100%;
-    max-width: 800px;
-    height: 500px;
+  height: 600px;
 }
 
-
-
-/* pirmspedejie pievienotie pasakumi */
+/* Labās puses mazies stacked pasākumi */
+.pasakumi-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* Mazie pasākumi */
 .latest-small-pasakums {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    margin-bottom: 16px; 
+  height: 290px;
 }
 
-/*mazo pasakumu bildes apstradasana*/
-  .latest-small-pasakums .pasakums-card-img {
-    width: 100%;
-    height: 125px;
-    object-fit: cover;
-    border-bottom: 1px solid #e0e0e0;
-  }
+/* pārējie pasākumi apakšā */
+.pasakumi-under {
+  display: flex;
+}
 
-  /* Atdalosa linija*/
-.separator-line {
-    width: 100%;
-    border: none;
-    height: 1px;
-    background-color: #ddd; 
+/* Individual event card */
+.pasakums-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  margin: 10px;
+}
+
+/* pasākuma Image */
+.pasakums-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.pasakums-card-img-large {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Apraksts */
+.pasakums-card-details {
+  padding: 20px;
+}
+.pasakums-card-details p {
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Nosaukums */
+.pasakums-card-details h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333333;
+}
+
+.pasakums-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }

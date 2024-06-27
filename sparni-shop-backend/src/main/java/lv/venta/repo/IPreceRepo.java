@@ -12,6 +12,10 @@ public interface IPreceRepo extends CrudRepository<Veikals_prece, Integer> {
 
     ArrayList<Veikals_prece> findByCenaLessThan(float cena); // cena < value
 
+    ArrayList<Veikals_prece> OrderByCenaDesc(); // cena desc
+
+    ArrayList<Veikals_prece> OrderByCenaAsc(); // cena asc
+
     ArrayList<Veikals_prece> findByCenaBetween(float minCena, float maxCena); // value-value
 
     ArrayList<Veikals_prece> findByNosaukumsContaining(String keyword);
