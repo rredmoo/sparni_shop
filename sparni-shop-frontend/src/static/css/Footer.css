@@ -1,0 +1,31 @@
+footer {
+    margin-top: 5rem;
+    padding-top: 4rem;
+    text-align: center;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(70, 17, 25));
+  }
+  
+  footer nav a , hr{
+      display: none;
+  }
+  
+  footer .note {
+    margin-left: 0%;
+    text-align: center;
+    color: rgb(177, 177, 177);
+  }
+  
+  @media (min-width: 992px) {
+  
+      hr{
+          display: block;
+      }
+        
+        footer nav a {
+          padding-right: 30px;
+          color: rgb(229, 229, 229);
+          display: inline;
+        }
+  
+  }

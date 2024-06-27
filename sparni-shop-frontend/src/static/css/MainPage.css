@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
 }
 
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -38,8 +39,6 @@ body {
     background-position: center;
     background-repeat: repeat-y;
   }
-  
-  
 
 .text {
   text-align: justify;
@@ -47,3 +46,15 @@ body {
   margin: 0 auto; 
   padding: 20px; 
 }
+
+.main-page-button {
+    display: flex; 
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgb(97, 42, 31);
+    border-radius: 15px;
+    color: white;
+    width: fit-content;
+    margin: 0 auto; 
+  }
+  

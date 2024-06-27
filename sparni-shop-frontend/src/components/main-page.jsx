@@ -1,12 +1,16 @@
 import React from "react";
 import Header from "./common/Header";
 import "../static/css/MainPage.css";
+import { Link } from "react-router-dom";
 import SlideShow from "./mainPage/Slideshow";
 import Product from "./veikalsPage/product";
+import Pasakums from "./jaunumuPage/pasakums";
+import Footer from "./common/Footer";
+import Contact from "./mainPage/Contact";
 
 function MainPage() {
   return (
-    <>
+    <div className="all">
       <Header />
       <div className="main-page-cover">
         <div className="container">
@@ -36,16 +40,22 @@ function MainPage() {
             Aliquam a dictum purus, id vestibulum justo. Vivamus ut felis
             imperdiet magna volutpat congue id eu massa. Orci varius natoque
           </p>
-          <br/>
+          <hr/>
+          <br />
           <h1 className="mainHeading">TOP3 preces</h1>
           <Product numProducts={3} />
-          <br/>
+          <Link className="main-page-button" to="/store">Apskatīt visas preces</Link>
+          <br />
+          <hr/>
           <h1 className="mainHeading">Jaunumi</h1>
-          <br/>
+          <Pasakums numPasakumi={2} />
+          <br />
           <h1 className="mainHeading">Kontakti</h1>
+          <Contact />
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
