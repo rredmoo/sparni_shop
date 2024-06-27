@@ -1,16 +1,50 @@
-.mainHeading{
-    margin-top: 0rem;
-    margin-bottom: 0rem;
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.mainHeading {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 .main-page-cover {
-    background-image: url("../img/sparniCover.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh; /* Ensure the div takes up the full viewport height */
-    width: 100vw;  /* Ensure the div takes up the full viewport width */
-    margin: 0;     /* Remove any default margins */
-    padding: 0;    /* Remove any default padding */
-    overflow: hidden; /* Prevent scrollbars from appearing */
+  background-image: url("../img/sparniCover.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.text {
+  text-align: justify;
+  max-width: 600px;
+  margin: 0 auto; 
+  padding: 20px; 
 }
