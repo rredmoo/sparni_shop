@@ -2,3 +2,15 @@
     margin-top: 0rem;
     margin-bottom: 0rem;
 }
+
+.main-page-cover {
+    background-image: url("../img/sparniCover.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* Ensure the div takes up the full viewport height */
+    width: 100vw;  /* Ensure the div takes up the full viewport width */
+    margin: 0;     /* Remove any default margins */
+    padding: 0;    /* Remove any default padding */
+    overflow: hidden; /* Prevent scrollbars from appearing */
+}
