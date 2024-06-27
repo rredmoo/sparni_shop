@@ -1,0 +1,53 @@
+import React, { useState, useEffect } from 'react';
+import InformacijasServiceConfig from '../../config/InformacijasPageConfig';
+import "../../static/css/Informacija.css";
+
+function Informacija ({numInfos}){
+  const [infos, setInfos] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    InformacijasServiceConfig.getAllInformacija()
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          const limitedInfo = response.data.slice(0, numInfos);
+          setInfos(limitedInfo);
+        } else {
+          console.error('Expected an array but got:', response.data);
+          setInfos([]);
+        }
+      })
+      .catch((error) => {
+        console.error("Nevarēja iegūt preces!", error);
+        setError(error.message);
+      });
+  }, [numInfos]); 
+
+  return (
+    <>
+      <div className="informacijas-list">
+        {infos.length > 0 ? (
+          infos.map((info) => (
+            <div className="informacijas-card" key={info.id_info}>
+              <img
+                className="informacijas-card-img"
+                src={info.bildesUrl}
+                alt={info.nosaukums}
+              />
+              <div className="informacijas-card-details">
+                <h3>{info.nosaukums}</h3>
+                <p>{info.apraksts}</p>
+                
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>No information available</div>
+        )}
+      </div>
+      {error && <div>Error: {error}</div>}
+    </>
+  );
+}
+
+export default Informacija;

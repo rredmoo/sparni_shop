@@ -8,13 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import lv.venta.model.Atlaide;
-import lv.venta.model.Informacijas_lapa_informacija;
+import lv.venta.model.Informacija;
 import lv.venta.model.Kontakti;
 import lv.venta.model.MainPage_BiedribaDarbojas;
 import lv.venta.model.Pasakumi;
 import lv.venta.model.Veikals_kategorijas;
 import lv.venta.model.Veikals_prece;
 import lv.venta.repo.IAtlaideRepo;
+import lv.venta.repo.IInformacijasRepo;
 import lv.venta.repo.IKontaktiRepo;
 import lv.venta.repo.IMainPageBiedribasDarbojasRepo;
 import lv.venta.repo.IPasakumiKategorijasRepo;
@@ -37,7 +38,7 @@ public class SparniShopApplication {
 			IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
 			IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
 			IPasakumiKategorijasRepo pasakumiKategorijasRepo,
-			IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo) {
+			IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo, IInformacijasRepo infoRepo) {
 		return new CommandLineRunner() {
 
 			@Override
@@ -281,6 +282,18 @@ public class SparniShopApplication {
 
 				MainPage_BiedribaDarbojas biedribadarbojas4 = new MainPage_BiedribaDarbojas(null, null, 0);
 				mainPageBiedribaDarbojasRepo.save(biedribadarbojas4);
+
+
+				Informacija info1 = new Informacija("Apmaksas veidi","Iespejams norekinaties ar Swedbank, citadele, u.c.","https://www.hobbyset.lv/images/pages/01ea917331c5fe0bcca60bb1f1f5ab4f.jpg");
+				infoRepo.save(info1);
+				Informacija info2 = new Informacija("Naudas un preces atgriešana","Varet nest atpakal uz veikalu!","https://static.vecteezy.com/system/resources/previews/008/013/016/original/payment-by-cash-for-express-delivery-flat-illustration-how-people-deliver-package-and-pay-for-the-delivery-by-cash-human-hand-holds-money-and-pay-for-the-package-courier-get-payment-for-it-vector.jpg");
+				infoRepo.save(info2);
+				Informacija info3 = new Informacija("Piegādes veidi","Pakomāts, uz vietas, kurjers!","https://st3.depositphotos.com/3332767/33164/i/450/depositphotos_331649150-stock-photo-delivery-guy-holding-a-box.jpg");
+				infoRepo.save(info3);
+				Informacija info4 = new Informacija("Mērķis","aaaaaaaaaaaaaaaaaaaaaaaaaaaaa","https://lpr.gov.lv/wp-content/uploads/2021/biedriba-ceribu-sparni-pieredzes-apmaina-dienas-aprupes-centra-preilos-015-1024x683-1.jpg");
+				infoRepo.save(info4);
+				Informacija info5 = new Informacija("Biedrības Struktūra","aaaaaaaaaaaaaaaaaaaaaaaaaaaaa","https://muzejs.ventspils.lv/wp-content/uploads/pagast.jpg");
+				infoRepo.save(info5);
 
 			}
 		};

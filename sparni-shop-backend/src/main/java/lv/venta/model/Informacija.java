@@ -5,8 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,27 +20,33 @@ import lombok.ToString;
 @ToString
 @Table(name = "INFORMACIJAS_LAPA_INFORMACIJA_TABLE")
 @Entity
-public class Informacijas_lapa_informacija {
+public class Informacija {
 
     @Id
-    @Column(name = "idili")
+    @Column(name = "id_Info")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idili;
+    private int id_info;
 
+    @NotNull
+    @Size(min = 3, max = 50)
     @Column(name = "NOSAUKUMS")
     private String nosaukums;
 
+    @Size(min = 3, max = 300)
     @Column(name = "APRAKSTS")
     private String apraksts;
+    
+    @Size(min = 3, max = 300)
+    @Column(name = "BILDES_URL")
+    private String bildesUrl;
 
-    @OneToOne(mappedBy = "informacijasLapaInformacija")
-    private Informacijas_lapa informacijasLapa;
-
-    public Informacijas_lapa_informacija(String nosaukums, String apraksts, Informacijas_lapa informacijasLapa) {
+ 
+    public Informacija(String nosaukums, String apraksts, String bildesUrl) {
         this.nosaukums = nosaukums;
         this.apraksts = apraksts;
-        this.informacijasLapa = informacijasLapa;
+        this.bildesUrl = bildesUrl;
+
     }
 }
 	
