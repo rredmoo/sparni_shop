@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import JaunumiServiceConfig from '../../config/JaunumuPageConfig';
+import React, { useState, useEffect } from "react";
+import JaunumiServiceConfig from "../../config/JaunumuPageConfig";
 import "../../static/css/Jaunums.css";
 
-function Pasakums() {
+function Pasakums({ numPasakumi }) {
   const [pasakumi, setPasakumi] = useState([]);
   const [error, setError] = useState(null);
 
@@ -12,8 +12,10 @@ function Pasakums() {
         if (Array.isArray(response.data)) {
           const sortedPasakumi = response.data.sort((a, b) => b.idPasakumi - a.idPasakumi);
           setPasakumi(sortedPasakumi);
+          const limitedPasakumi = response.data.slice(0, numPasakumi);
+          setPasakumi(limitedPasakumi); // Set state with limitedPasakumi
         } else {
-          console.error('Expected an array but got:', response.data);
+          console.error("Expected an array but got:", response.data);
           setPasakumi([]);
         }
       })
@@ -21,7 +23,7 @@ function Pasakums() {
         console.error("Nevarēja iegūt jaunumus!", error);
         setError(error.message);
       });
-  }, []);
+  }, [numPasakumi]);
 
   return (
     <>

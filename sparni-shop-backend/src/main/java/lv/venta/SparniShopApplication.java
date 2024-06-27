@@ -206,6 +206,43 @@ public class SparniShopApplication {
 				);
 				preceRepo.save(prece4);
 
+				Veikals_prece prece5 = new Veikals_prece(
+					"Dzintars S izmērs", // nosaukums
+					"Labi saglabājies, apstrādāts dzintars", // apraksts
+					3, // daudzums
+					7.00f, // cena
+					null, // pirkums_Elements
+					null, // veikals_kategorijas
+					"https://pic.latvijasradio.lv/public/assets/media/f/9/mlarge_5ca30e1d.jpg", // veikals_prece_bildes
+					null // idAtlaide
+			);
+			preceRepo.save(prece5);
+
+			Veikals_prece prece6 = new Veikals_prece(
+					"Koka pulkstenis #7", // nosaukums
+					"Amatnieku veidots koka pulkstenis", // apraksts
+					1, // daudzums
+					24.99f, // cena
+					null, // pirkums_Elements
+					null, // veikals_kategorijas
+					"https://www.parsteigumuagentura.lv/assets/images/Klasisks%20koka%20sienas%20pulkstenis%20ar%20grav%C4%93jumu%20nr.3.png", // veikals_prece_bildes
+					null // idAtlaide
+			);
+			preceRepo.save(prece6);
+
+			Veikals_prece prece7 = new Veikals_prece(
+					"Adīts spilvens", // nosaukums
+					"100% vilnas spilvens", // apraksts
+					20, // daudzums
+					25.99f, // cena
+					null, // pirkums_Elements
+					null, // veikals_kategorijas
+					"https://lv2.pigugroup.eu/colours/132/252/69/13225269/spilvenu-spilvendranas-ar-rokam-adita-dizaina-3e906_reference.jpg", // veikals_prece_bildes
+					null // idAtlaide
+			);
+			preceRepo.save(prece7);
+		
+
 				// Veikals kategorijas
 				Veikals_kategorijas kategorijas1 = new Veikals_kategorijas(
 						"Electronics", // nosaukums

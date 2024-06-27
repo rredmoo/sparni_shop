@@ -5,13 +5,17 @@ function SlideShow() {
   const [slideIndex, setSlideIndex] = useState(1);
 
   useEffect(() => {
-    showSlides(slideIndex);
-  }, [slideIndex]);
+    const interval = setInterval(() => {
+      plusSlides(1); 
+    }, 2000); 
+
+    return () => clearInterval(interval); 
+  }, []); 
 
   const plusSlides = (n) => {
     setSlideIndex((prevIndex) => {
       let newIndex = prevIndex + n;
-      if (newIndex > 3) newIndex = 1; 
+      if (newIndex > 3) newIndex = 1;
       if (newIndex < 1) newIndex = 3;
       return newIndex;
     });
@@ -35,6 +39,11 @@ function SlideShow() {
     if (slides[n - 1]) slides[n - 1].style.display = "block";
     if (dots[n - 1]) dots[n - 1].className += " active";
   };
+
+  useEffect(() => {
+    showSlides(slideIndex);
+  }, [slideIndex]);
+
   return (
     <>
       <div className="slideshow-container">

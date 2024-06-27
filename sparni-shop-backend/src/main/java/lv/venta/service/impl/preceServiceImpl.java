@@ -63,5 +63,6 @@ public class preceServiceImpl implements IPreceCRUDService{
         Veikals_prece preceForDeletion = retrieveById(id);
 		preceRepo.delete(preceForDeletion);
     }
+
     
 }
