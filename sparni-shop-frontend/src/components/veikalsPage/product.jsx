@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PrecesServiceConfig from '../../config/VeikalsPageConfig';
 import "../../static/css/Product.css";
 
-function Product() {
+function Product({ numProducts }) {
   const [preces, setPreces] = useState([]);
   const [error, setError] = useState(null);
 
@@ -10,7 +10,8 @@ function Product() {
     PrecesServiceConfig.getAllPreces()
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setPreces(response.data);
+          const limitedPreces = response.data.slice(0, numProducts);
+          setPreces(limitedPreces);
         } else {
           console.error('Expected an array but got:', response.data);
           setPreces([]);
@@ -20,7 +21,7 @@ function Product() {
         console.error("Nevarēja iegūt preces!", error);
         setError(error.message);
       });
-  }, []);
+  }, [numProducts]); 
 
   return (
     <>

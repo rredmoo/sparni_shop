@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./common/Header";
 import "../static/css/MainPage.css";
 import SlideShow from "./mainPage/Slideshow";
+import Product from "./veikalsPage/product";
 
 function MainPage() {
   return (
@@ -35,7 +36,13 @@ function MainPage() {
             Aliquam a dictum purus, id vestibulum justo. Vivamus ut felis
             imperdiet magna volutpat congue id eu massa. Orci varius natoque
           </p>
-          
+          <br/>
+          <h1 className="mainHeading">TOP3 preces</h1>
+          <Product numProducts={3} />
+          <br/>
+          <h1 className="mainHeading">Jaunumi</h1>
+          <br/>
+          <h1 className="mainHeading">Kontakti</h1>
         </div>
       </div>
     </>
