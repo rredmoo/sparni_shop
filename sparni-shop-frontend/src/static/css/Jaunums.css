@@ -1,0 +1,54 @@
+/* Jaunums.css */
+
+/* Containeris pasakumiem */
+.pasakumu-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Individualais pasakums */
+  .pasakums-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 300px;
+  }
+  
+  /*image */
+  .pasakums-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* details */
+  .pasakums-card-details {
+    padding: 20px;
+  }
+  
+  /* title */
+  .pasakums-card-details h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333333;
+  }
+  
+  /* description */
+  .pasakums-card-details p {
+    color: #000000;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /*hoveris*/
+  .pasakums-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
