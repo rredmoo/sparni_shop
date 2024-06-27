@@ -1,60 +1,60 @@
-html,
-body {
-  height: 100%;
-  overflow-x: hidden;
-}
+  html,
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
 
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
   .container {
-    width: 750px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
   }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
   }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
   }
-}
-
-.mainHeading {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  color: rgb(83, 83, 83);
-}
-
-.main-page-cover {
-    background-image: url("../img/sparniCover.png");
-    background-size:100%;
-    background-position: center;
-    background-repeat: repeat-y;
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
   }
 
-.text {
-  text-align: justify;
-  max-width: 600px;
-  margin: 0 auto; 
-  padding: 20px; 
-}
+  .mainHeading {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    color: rgb(83, 83, 83);
+  }
 
-.main-page-button {
-    display: flex; 
-    justify-content: center;
-    padding: 1rem;
-    background-color: rgb(97, 42, 31);
-    border-radius: 15px;
-    color: white;
-    width: fit-content;
+  .main-page-cover {
+      background-image: url("../img/sparniCover.png");
+      background-size:100%;
+      background-position: center;
+      background-repeat: repeat-y;
+    }
+
+  .text {
+    text-align: justify;
+    max-width: 600px;
     margin: 0 auto; 
+    padding: 20px; 
   }
-  
+
+  .main-page-button {
+      display: flex; 
+      justify-content: center;
+      padding: 1rem;
+      background-color: rgb(97, 42, 31);
+      border-radius: 15px;
+      color: white;
+      width: fit-content;
+      margin: 0 auto; 
+    }
+    

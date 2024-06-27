@@ -48,7 +48,7 @@ function MainPage() {
           <br />
           <hr/>
           <h1 className="mainHeading">Jaunumi</h1>
-          <Pasakums numPasakumi={2} />
+          <Pasakums numPasakumi={3} />
           <br />
           <h1 className="mainHeading">Kontakti</h1>
           <Contact />

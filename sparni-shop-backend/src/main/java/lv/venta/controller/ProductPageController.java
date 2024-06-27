@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lv.venta.model.Veikals_prece;
 import lv.venta.service.IPreceCRUDService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -68,19 +69,39 @@ public class ProductPageController {
 
         }
     }
+
     @DeleteMapping("/prece/{id}")
-public void deletePreceById(@PathVariable int id) {
-    try {
-        preceService.deleteById(id);
-        
-    } catch (Exception e) {
-        
+    public void deletePreceById(@PathVariable int id) {
+        try {
+            preceService.deleteById(id);
+
+        } catch (Exception e) {
+
+        }
     }
-}
+
+    @GetMapping("/price/asc")
+    public ArrayList<Veikals_prece> getProductsAsc() {
+        try {
+            return preceService.retrieveAllAsc();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @GetMapping("/price/desc")
+    public ArrayList<Veikals_prece> getProductsDsc() {
+        try {
+            return preceService.retrieveAllDsc();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleNoSuchElementFoundException(NoSuchElementException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-            .body("Item not found");
+                .body("Item not found");
     }
 
 }

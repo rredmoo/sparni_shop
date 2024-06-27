@@ -2,13 +2,22 @@ import React, { useState, useEffect } from 'react';
 import PrecesServiceConfig from '../../config/VeikalsPageConfig';
 import "../../static/css/Product.css";
 
-function Product({ numProducts }) {
+function Product({ sortOrder, numProducts }) {
   const [preces, setPreces] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    PrecesServiceConfig.getAllPreces()
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        let response;
+        if (sortOrder === 'asc') {
+          response = await PrecesServiceConfig.getPrecesOrderedByAsc();
+        } else if (sortOrder === 'desc') {
+          response = await PrecesServiceConfig.getPrecesOrderedByDesc();
+        } else {
+          response = await PrecesServiceConfig.getAllPreces();
+        }
+
         if (Array.isArray(response.data)) {
           const limitedPreces = response.data.slice(0, numProducts);
           setPreces(limitedPreces);
@@ -16,12 +25,14 @@ function Product({ numProducts }) {
           console.error('Expected an array but got:', response.data);
           setPreces([]);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Nevarēja iegūt preces!", error);
         setError(error.message);
-      });
-  }, [numProducts]); 
+      }
+    };
+
+    fetchData();
+  }, [sortOrder, numProducts]);
 
   return (
     <>

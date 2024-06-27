@@ -30,7 +30,7 @@ public class InformacijasServiceImpl implements IInformacijaService{
 		
 		if(infoRepo.existsById(id))
 		{
-			return infoRepo.findById(id).get();
+			return infoRepo.findById(id);
 		}
 		else
 		{
