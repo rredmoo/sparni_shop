@@ -4,10 +4,13 @@ import KontaktiPageConfig from "../config/KontaktiPageConfig";
 import "../static/css/MainPage.css";
 import Footer from "./common/Footer";
 import Contact from "./mainPage/Contact";
+import { useTranslation } from 'react-i18next';
+
 
 function KontaktiPage() {
   const [kontaktiList, setKontaktiList] = useState([]);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     KontaktiPageConfig.getAllKontakti()
@@ -15,10 +18,11 @@ function KontaktiPage() {
         setKontaktiList(response.data);
       })
       .catch((error) => {
-        console.error("Nav iegūti kontakti:", error);
+        console.error(t("errorContact"), error);
         setError(error.message);
       });
   }, []);
+
 
   return (
     <div className="main-page-cover">
@@ -36,7 +40,7 @@ function KontaktiPage() {
             alt="Kontakti image"
           />
           <div>
-            <h1 style={{ margin: "20px 0" }}>Kontaktu saraksts</h1>
+            <h1 style={{ margin: "20px 0" }}>{t('contactList')}</h1>
             {kontaktiList.length > 0 ? (
               <ul>
                 {kontaktiList.map(({ idk, nosaukums, informacija }) => (
@@ -47,17 +51,17 @@ function KontaktiPage() {
                 ))}
               </ul>
             ) : (
-              <p>Nav kontakti</p>
+              <p>{t('noContacts')}</p>
             )}
             <article style={{ margin: "20px 0" , fontSize: "1.6rem", fontFamily: "Arial, sans-serif", fontWeight: 400 , lineHeight: "1.5" }} className="article-center" >
-              Rekvizīti: <br />
-              SUVENĪRU SALONS "VENTIŅPŪRLAD" <br />
-              Skolas iela 3 <br />
-              Ventspils, LV-3601 <br />
-              PVN Nr. LV40008057629 <br />
-              Banka, kods: XXXXX <br />
-              Konta Nr.: <br />
-              LVXXXXXXXXXXXXXXXXXXX <br />
+              <p>{t('businessName')}</p>
+              <p>{t('activityField')}</p>
+              <p>{t('address')}</p>
+              <p>{t('postalCode')}</p>
+              <p>{t('vatNumber')}</p>
+              <p>{t('bankCode')}</p>
+              <p>{t('iban')}</p>
+               <br />
             </article>
             {error && <p>Error: {error}</p>}
           </div>

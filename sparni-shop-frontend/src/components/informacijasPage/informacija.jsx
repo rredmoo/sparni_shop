@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import InformacijasServiceConfig from '../../config/InformacijasPageConfig';
 import "../../static/css/Informacija.css";
+import { useTranslation } from 'react-i18next';
 
 function Informacija ({numInfos}){
   const [infos, setInfos] = useState([]);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     InformacijasServiceConfig.getAllInformacija()
@@ -18,7 +20,7 @@ function Informacija ({numInfos}){
         }
       })
       .catch((error) => {
-        console.error("Nevarēja iegūt preces!", error);
+        console.error(t("errorProducts"), error);
         setError(error.message);
       });
   }, [numInfos]); 
@@ -42,7 +44,7 @@ function Informacija ({numInfos}){
             </div>
           ))
         ) : (
-          <div>No information available</div>
+          <div>{t('noInformationAvailable')}</div>
         )}
       </div>
       {error && <div>Error: {error}</div>}

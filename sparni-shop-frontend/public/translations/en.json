@@ -1,0 +1,82 @@
+{
+    "aboutUs": "About Us",
+    "topProducts": "TOP 3 Products",
+    "viewAllProducts": "View All Products",
+    "latestNews": "Latest News",
+    "contactUs": "Contact Us",
+    "text_1": "We are the Women's Association Spārni - Wings",
+    "text_2": "Promoting the coordinated activity of women in the city and county of Ventspils and ensuring the circulation of information.\nRaising women's self-confidence by educating and improving them, promoting their involvement in social activities.\nSupporting cultural life activities, participating in the preservation of Latvian traditions and cultural-historical heritage.\nActivating entrepreneurship, carrying out economic activities that does not contradict the legislation of the Latvian state.",
+   
+    "textHeader": "High-quality artisan products, delivery throughout Latvia via DPD and Omniva",
+      "searchBar": "Search for products..",
+
+      "nav": {
+        "home": "Home",
+        "store": "Store",
+        "events": "Events",
+        "info": "Information",
+        "contact": "Contact"
+      },
+
+      "errorProducts": "Failed to load products!",
+      "price": "Price",
+      "NoProductsAvailable": "No Products Available!",
+
+     
+      "NoEventsAvailable": "No Events Available!",
+      "errorEvents": "Failed to load events!",
+
+      "name": "Name",
+      "topic": "Topic",
+      "topic1": "Basic",
+      "topic2": "Professional",
+      "topic3": "Bug Report",
+      "topic4": "Reviews",
+
+      "placeholder1": "Input name or username",
+      "placeholder2": "Input email",
+      "placeholder3": "Input your message here...",
+      "send": "Send",
+      "email": "Email:",
+      "message": "Message",
+      "storeHeader": "Currently available products",
+       "asc": "Asc",
+       "dsc": "Dsc",
+
+       "noInformationAvailable": "No information available",
+       "errorContact": "Fialed to load contacts!",
+       "contactList": "Contact List",
+       "noContacts": "There are no contacts",
+
+       "businessName": "Business Name: VENTIŅPŪRLAD",
+       "activityField": "Field of Activity: Souvenir Shop",
+       "address": "Address: Skolas iela 3",
+       "postalCode": "Postal Code: Ventspils, LV-3601",
+       "vatNumber": "VAT No.: LV40008057629",
+       "bankCode": "Bank Code: XXXXX",
+       "iban": "Account No. (IBAN): LVXXXXXXXXXXXXXXXXXXX",
+
+       "event": "Events",
+
+       "information": "Information",
+
+       "contacts" : "Contacts",
+
+       "priceProduct": "{{value, currency}}",
+       "currency": {
+         "EUR": {
+           "symbol": "€",
+           "format": "{{value}} €"
+         },
+         "USD": {
+           "symbol": "$",
+           "format": "${{value}}"
+         }
+       }
+
+
+
+    
+    
+  }
+  

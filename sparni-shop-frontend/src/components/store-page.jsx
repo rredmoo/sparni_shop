@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Header from "./common/Header";
 import Product from "./veikalsPage/product";
+import { useTranslation } from "react-i18next"; 
 
 function StorePage() {
   const [error, setError] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
+  const { t } = useTranslation(); 
 
   const handleSortOrder = (order) => {
     setSortOrder(order);
@@ -13,10 +15,10 @@ function StorePage() {
   return (
     <>
       <Header />
-      <h1>Šobrīd pieejamās preces</h1>
+      <h1>{t('storeHeader')}</h1>
       <div>
-        <button onClick={() => handleSortOrder('asc')}>Sort ASC</button>
-        <button onClick={() => handleSortOrder('desc')}>Sort DESC</button>
+        <button onClick={() => handleSortOrder('asc')}>{t('asc')}</button>
+        <button onClick={() => handleSortOrder('desc')}>{t('dsc')}</button>
       </div>
       <Product sortOrder={sortOrder} />
 
