@@ -1,21 +1,26 @@
 import "../../static/css/Footer.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next"; 
 
 function Footer() {
+  const { t } = useTranslation(); 
+
   return (
     <>
       <footer>
         <div className="container">
           <nav>
-            <Link to="/main">Sākums</Link>
-            <Link to="/store">Veikals</Link>
-            <Link to="/events">Jaunumi</Link>
-            <Link to="/info">Informācija</Link>
-            <Link to="/contact">Kontakti</Link>
+
+          <Link to="/main">{t('nav.home')}</Link>
+          <Link to="/store">{t('nav.store')}</Link>
+          <Link to="/events">{t('nav.events')}</Link>
+          <Link to="/info">{t('nav.info')}</Link>
+          <Link to="/contact">{t('nav.contact')}</Link>
+
           </nav>
           <hr />
           <p className="note">
-            # kontakti
+            {t('contactUs')}
           </p>
         </div>
       </footer>

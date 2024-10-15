@@ -1,0 +1,74 @@
+{
+    "aboutUs": "Par mums",
+    "topProducts": "TOP 3 Preces",
+    "viewAllProducts": "Apskatīt visas preces",
+    "latestNews": "Jaunumi",
+    "contactUs": "Kontakti",
+    "text_1": "Mēs esam Sieviešu biedrība Spārni ",
+    "text_2": "Ventspils pilsētas un novada sieviešu koordinētas darbības veicināšana un informācijas aprites nodrošināšana. Celt sieviešu pašapziņu, izglītojot un pilnveidojot, veicinot iesaisti sabiedriskās aktivitātēs.\nAtbalstīt kultūras dzīves aktivitātes, piedalīties latviešu tradīciju un kultūrvēsturiskā mantojuma saglabāšanā.\nAktivizēt uzņēmējdarbību, veikt saimniecisko darbību, kas nav pretrunā ar Latvijas valsts likumdošanu.",
+    
+    "textHeader": "Augstas kvalitātes amatnieku izstrādājumi, piegāde visā Latvijā caur DPD un Omniva",
+      "searchBar": "Meklē preci..",
+      "nav": {
+        "home": "Sākums",
+        "store": "Veikals",
+        "events": "Jaunumi",
+        "info": "Informācija",
+        "contact": "Kontakti"
+      },
+
+       "errorProducts": "Nevarēja iegūt preces!",
+       "price": "Cena",
+       "NoProductsAvailable": "Produkti Nav Pieejami!",
+       "NoEventsAvailable": "Jaunumi nav pieejami!",
+       "errorEvents": "Nevarēja iegūt jaunumus!",
+       "name": "Vārds",
+       "topic": "Tēma",
+       "topic1": "Saziņas",
+       "topic2": "Professionālais",
+       "topic3": "Kļūdu pieteikšana",
+       "topic4": "Atsauksmes",
+
+       "placeholder1": "Ievadi vārdu vai lietotājvārdu",
+       "placeholder2": "Ievadi epastu",
+       "placeholder3": "Ievadi savu ziņu šeit...",
+       "send": "Nosūtīt",
+       "email": "Epasts:",
+       "message": "Ziņojums",
+       "storeHeader": "Šobrīd pieejamās preces",
+       "asc": "Āugošā",
+       "dsc": "Dilstošā",
+
+       "noInformationAvailable": "Informācija nav pieejama",
+       "errorContact": "Nav atrasti kontakti",
+       "contactList": "Kontaktu saraksts",
+       "noContacts": "Nav kontaktu",
+
+       "businessName": "Rekvizīti: VENTIŅPŪRLAD",
+       "activityField": "Darbības joma: SUVENĪRU SALONS",
+       "address": "Adrese: Skolas iela 3",
+       "postalCode": "Pasta Indekss: Ventspils, LV-3601",
+       "vatNumber": "PVN Nr.: LV40008057629",
+       "bankCode": "Bankas kods: XXXXX",
+       "iban": "Konta Nr. (IBAN): LVXXXXXXXXXXXXXXXXXXX",
+
+       "event": "Jaunumi",
+
+       "information": "Informācija",
+
+       "contacts" : "Kontakti",
+
+       "priceProduct": "{{value, currency}}",
+       "currency": {
+         "EUR": {
+           "symbol": "€",
+           "format": "{{value}} €"
+         },
+         "USD": {
+           "symbol": "$",
+           "format": "${{value}}"
+         }
+       }
+      
+  }
+  

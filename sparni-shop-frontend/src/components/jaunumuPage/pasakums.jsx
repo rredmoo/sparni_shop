@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import JaunumiServiceConfig from "../../config/JaunumuPageConfig";
 import "../../static/css/Jaunums.css";
+import { useTranslation } from 'react-i18next';
 
 function Pasakums({ numPasakumi }) {
   const [pasakumi, setPasakumi] = useState([]);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     JaunumiServiceConfig.getAllPasakumi()
@@ -20,7 +22,7 @@ function Pasakums({ numPasakumi }) {
         }
       })
       .catch((error) => {
-        console.error("Nevarēja iegūt jaunumus!", error);
+        console.error(t("errorEvents"), error);
         setError(error.message);
       });
   }, [numPasakumi]);
@@ -93,7 +95,7 @@ function Pasakums({ numPasakumi }) {
             </div>
           </>
         ) : (
-          <div>No Pasakumi available</div>
+          <div>{t('NoEventsAvailable')}</div>
         )}
       </div>
       {error && <div>Error: {error}</div>}
