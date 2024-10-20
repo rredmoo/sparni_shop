@@ -38,19 +38,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain configurePermissionToEndpoints(HttpSecurity http) throws Exception {
         http
-            .cors()  // Enable CORS
-            .and()
-            .csrf(csrf -> csrf.disable())  // Disable CSRF
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login").permitAll()
-                .requestMatchers("/admin/**").hasAuthority("ADMIN")
-            )
-            .formLogin(form -> form
-                .loginProcessingUrl("/login")
-                .successHandler(successHandler())
-                .failureHandler(failureHandler())
-                .permitAll()
-            );
+                .cors() // Enable CORS
+                .and()
+                .csrf(csrf -> csrf.disable()) // Disable CSRF
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/contact/**").permitAll()
+                        .requestMatchers("/informacija/**").permitAll()
+                        .requestMatchers("/kontakti**").permitAll()
+                        .requestMatchers("/mainpage/biedribadarbojas/**").permitAll()
+                        .requestMatchers("/pasakumi/**").permitAll()
+                        .requestMatchers("/veikals/**").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN"))
+                .formLogin(form -> form
+                        .loginProcessingUrl("/login")
+                        .successHandler(successHandler())
+                        .failureHandler(failureHandler())
+                        .permitAll());
 
         return http.build();
     }
@@ -86,4 +90,3 @@ public class SecurityConfig {
         };
     }
 }
-

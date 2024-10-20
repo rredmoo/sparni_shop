@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MainPage from "./components/main-page";
 import StorePage from "./components/store-page";
 import EventsPage from "./components/event-page";
@@ -20,7 +20,14 @@ function App() {
         <Route path="/info" element={<InformationPage />} />
         <Route path="/contact" element={<ContactsPage />} />
         <Route path="/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
