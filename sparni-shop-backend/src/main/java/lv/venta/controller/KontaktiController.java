@@ -21,7 +21,7 @@ import lv.venta.service.IKontaktiCRUDService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/kontakti")
+@RequestMapping("kontakti")
 public class KontaktiController {
 
     @Autowired

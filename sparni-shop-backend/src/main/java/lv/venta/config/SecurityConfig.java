@@ -25,23 +25,18 @@ public class SecurityConfig {
 		UserDetails adminDetails = User.builder()
 				.username("admin")
 				.password(encoder.encode("CZFhgOcHSb"))
-				.authorities("USER")
-				.build();
-		
-		
-		UserDetails details2 = User.builder()
-				.username("janis.berzins")
-				.password(encoder.encode("321"))
 				.authorities("ADMIN")
 				.build();
 		
-		UserDetails details3 = User.builder()
-				.username("liga.jauka")
-				.password(encoder.encode("987"))
-				.authorities("USER")
+		
+		UserDetails modDetails = User.builder()
+				.username("moderator")
+				.password(encoder.encode("pZh4WH2dXB"))
+				.authorities("MODERATOR")
 				.build();
 		
-		return new InMemoryUserDetailsManager(adminDetails, details2, details3);
+		
+		return new InMemoryUserDetailsManager(adminDetails, modDetails);
 		
 		
 	}
@@ -49,15 +44,13 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain configurePermissionToEndpoints(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth->auth
-				.requestMatchers("/hello/**").permitAll() //hello un ari uz hello/msg
-				.requestMatchers("/product/test/**").hasAuthority("ADMIN")
-				.requestMatchers("/product/crud/all").permitAll()
-				.requestMatchers("/product/crud/one?id=**").permitAll()
-				.requestMatchers("/product/crud/all/**").permitAll()
-				.requestMatchers("/product/crud/insert").hasAuthority("ADMIN")
-				.requestMatchers("/product/crud/update/**").hasAuthority("ADMIN")
-				.requestMatchers("/product/crud/delete/**").hasAuthority("ADMIN")
-				.requestMatchers("/product/filter/**").hasAnyAuthority("USER", "ADMIN")
+				.requestMatchers("/api/contact").permitAll()
+				.requestMatchers("/informacija/**").permitAll()
+				.requestMatchers("/kontakti**").permitAll()
+				.requestMatchers("/mainpage/biedribadarbojas/**").permitAll()
+				.requestMatchers("/pasakumi/**").permitAll()
+				.requestMatchers("/veikals/**").hasAuthority("ADMIN")
+				.requestMatchers("/admin/**").hasAuthority("ADMIN")
 				);
 		
 		http.formLogin(auth-> auth.permitAll());

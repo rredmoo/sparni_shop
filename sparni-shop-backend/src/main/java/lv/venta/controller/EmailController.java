@@ -10,7 +10,7 @@ import lv.venta.service.EmailSendingService;
 import lv.venta.service.EpastiNoKlientaService;
 
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("api/contact")
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
 
