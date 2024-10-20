@@ -5,4 +5,6 @@ import lv.venta.model.security.AccessUsers;
 
 public interface IAccessUsersRepo extends CrudRepository<AccessUsers, Integer>{
 
+    AccessUsers findByUsername(String username);
+
 }

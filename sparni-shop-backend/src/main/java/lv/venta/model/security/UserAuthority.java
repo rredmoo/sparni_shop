@@ -31,14 +31,13 @@ public class UserAuthority {
 	private int authorityId;
 
 	@Column(name = "Title")
-	@Pattern(regexp = "[A-Z]{4,7}")
 	private String title;
 
 	@OneToMany(mappedBy = "authority")
 	@ToString.Exclude
 	private Collection<AccessUsers> users;
 
-	public UserAuthority(@Pattern(regexp = "[A-Z]{4,7}") String title) {
+	public UserAuthority(String title) {
 		this.title = title;
 	}
 
