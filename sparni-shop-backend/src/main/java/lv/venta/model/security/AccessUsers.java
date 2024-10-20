@@ -1,10 +1,12 @@
-package lv.venta.model;
+package lv.venta.model.security;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -32,9 +34,14 @@ public class AccessUsers {
 	@Column(name = "Password")
 	private String password;
 
-	public AccessUsers(String username, String password) {
+	@ManyToOne
+	@JoinColumn(name = "AuthorityId")
+	private UserAuthority authority;
+
+	public AccessUsers(String username, String password, UserAuthority authority) {
 		this.username = username;
 		this.password = password;
+		this.authority = authority;
 	}
 	
 }
