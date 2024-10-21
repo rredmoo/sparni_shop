@@ -114,3 +114,95 @@
 .logout-button:hover {
     background-color: #ff3333;
 }
+
+.email-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.email-table th, .email-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.email-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.email-table td {
+    font-size: 14px;
+}
+
+.email-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.email-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.clickable-row td {
+    position: relative;
+}
+
+.admin-panel {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a, .logout-button {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.dashboard .stat-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
