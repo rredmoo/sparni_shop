@@ -8,6 +8,7 @@ import Pasakums from "./jaunumuPage/pasakums";
 import Footer from "./common/Footer";
 import Contact from "./mainPage/Contact";
 import { useTranslation } from "react-i18next"; 
+import EmailSubmit from './mainPage/EmailSubmit';
 
 function MainPage() {
   const { t } = useTranslation(); 
@@ -41,6 +42,7 @@ function MainPage() {
           <h1 className="mainHeading">{t('latestNews')}</h1>
           <Pasakums numPasakumi={3} />
           <br />
+          <EmailSubmit />
           <h1 className="mainHeading">{t('contactUs')}</h1>
           <Contact />
         </div>

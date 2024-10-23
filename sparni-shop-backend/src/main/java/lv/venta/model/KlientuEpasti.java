@@ -19,7 +19,7 @@ import lombok.ToString;
 @ToString
 @Table(name = "Epasti")
 @Entity
-public class EpastiKlientam {
+public class KlientuEpasti {
 
     @Id
     @Column(name = "ide")
@@ -29,12 +29,8 @@ public class EpastiKlientam {
 
     @Column(name = "Epasts")
     private String epasts;
-
-    @Column(name = "Vai_Sanemt_Jaunumus")
-    private Boolean vaiSanemtJaunumus;
     
-    public EpastiKlientam(String epasts, Boolean vaiSanemtJaunumus) {
+    public KlientuEpasti(String epasts) {
         setEpasts(epasts);
-        setVaiSanemtJaunumus(vaiSanemtJaunumus);
     }
 }

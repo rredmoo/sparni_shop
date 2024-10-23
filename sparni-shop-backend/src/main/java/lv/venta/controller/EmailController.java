@@ -8,20 +8,26 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import lv.venta.model.EpastiNoKlienta;
+import lv.venta.model.KlientuEpasti;
 import lv.venta.model.Veikals_prece;
 import lv.venta.service.EmailSendingService;
 import lv.venta.service.IEpastiNoKlientaService;
+import lv.venta.service.IKlientuEpastiService;
 
 @RestController
 @RequestMapping("api/contact")
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
 
-    //TODO sadalīt divos dažādos controllers [EpastiNoKlientaController] un [EpastiKlientamController]
+    // TODO sadalīt divos dažādos controllers [EpastiNoKlientaController] un
+    // [EpastiKlientamController]
     private final EmailSendingService emailSenderService;
 
     @Autowired
     private IEpastiNoKlientaService epastiNoKlientaService;
+
+    @Autowired
+    private IKlientuEpastiService klientuEpastiService;
 
     @Autowired
     public EmailController(EmailSendingService emailSenderService, IEpastiNoKlientaService messageService) {
@@ -117,7 +123,8 @@ public class EmailController {
     }
 
     @GetMapping("/date/between/{dateTimeStart}{dateTimeEnd}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBetween(@PathVariable LocalDateTime dateTimeStart, LocalDateTime dateTimeEnd) {
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBetween(@PathVariable LocalDateTime dateTimeStart,
+            LocalDateTime dateTimeEnd) {
         try {
             return epastiNoKlientaService.retrieveByDateBetween(dateTimeStart, dateTimeEnd);
         } catch (Exception e) {
@@ -126,6 +133,17 @@ public class EmailController {
         }
     }
 
+    @PostMapping("/client/email/save")
+    public ResponseEntity<String> submitEmail(@RequestBody KlientuEpasti emailRequest) {
+        try {
+            klientuEpastiService.saveEmail(emailRequest);
+            return ResponseEntity.ok("Email saved successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to save email: " + e.getMessage());
+        }
+    }
 
     public static class ContactRequest {
         private String userName;

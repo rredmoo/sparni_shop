@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminPanel.css';
 import EmailServiceConfig from '../../config/AdminPageConfig';
+
 const AdminPanel = () => {
-    const [epastiNoKlientiem, setEpastiNoKlientiem] = useState([]);
+    const [epastiNoKlientiem, setEpastiNoKlientiem] = useState([]); //epasti
+    const [filteredEpasti, setFilteredEpasti] = useState([]); //filtered emails
+    const [searchQuery, setSearchQuery] = useState(''); //search query
     const [expandedRows, setExpandedRows] = useState([]);
     const navigate = useNavigate();
     const [error, setError] = useState(null);
@@ -37,6 +40,7 @@ const AdminPanel = () => {
                 const response = await EmailServiceConfig.getAllEmails();
                 if (Array.isArray(response.data)) {
                     setEpastiNoKlientiem(response.data);
+                    setFilteredEpasti(response.data); // Initialize filtered emails
                 } else {
                     console.error('Expected an array but got:', response.data);
                     setEpastiNoKlientiem([]);
@@ -48,6 +52,17 @@ const AdminPanel = () => {
         };
         fetchEmails();
     }, []);
+
+    useEffect(() => {
+        // Filter emails based on search query
+        const filtered = epastiNoKlientiem.filter(email =>
+            email.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            email.userEmail.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            email.topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            email.messageContent.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredEpasti(filtered);
+    }, [searchQuery, epastiNoKlientiem]); // Re-run filter on search change
 
     return (
         <div className="admin-panel">
@@ -67,21 +82,15 @@ const AdminPanel = () => {
                     <h1>Sveiks, Admin</h1>
                     <p>Veikala pārvaldīšanas panelis</p>
                 </header>
-                <section className="dashboard">
-                    <div className="stat-box">
-                        <h3>Pieejamie produkti</h3>
-                        <p>N/A</p>
-                    </div>
-                    <div className="stat-box">
-                        <h3>Jauni pasūtījumi</h3>
-                        <p>N/A</p>
-                    </div>
-                    <div className="stat-box">
-                        <h3>Pēdējai automātiskai e-pasts pirms</h3>
-                        <p>N/A</p>
-                    </div>
+                <section>
+                    <h3>Search Emails</h3>
+                    <input
+                        type="text"
+                        placeholder="Search by username, email, topic, or message"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)} // Update search
+                    />
                 </section>
-
                 <section>
                     <h3>Epasti no klientiem</h3>
                     {error && <p>Error: {error}</p>}
@@ -96,8 +105,8 @@ const AdminPanel = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {epastiNoKlientiem.length > 0 ? (
-                                epastiNoKlientiem.map((email) => (
+                            {filteredEpasti.length > 0 ? (
+                                filteredEpasti.map((email) => (
                                     <tr key={email.idenk} onClick={() => toggleRow(email.idenk)} className="clickable-row">
                                         <td>{email.userName}</td>
                                         <td>{email.userEmail}</td>
