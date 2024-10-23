@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import lv.venta.model.EpastiNoKlienta;
 import lv.venta.model.Veikals_prece;
@@ -15,6 +17,7 @@ import lv.venta.service.IEpastiNoKlientaService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
 
+    //TODO sadalīt divos dažādos controllers [EpastiNoKlientaController] un [EpastiKlientamController]
     private final EmailSendingService emailSenderService;
 
     @Autowired
@@ -62,6 +65,67 @@ public class EmailController {
             return null;
         }
     }
+
+    @GetMapping("/username/{username}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByUserName(@PathVariable String username) {
+        try {
+            return epastiNoKlientaService.retrieveByUserName(username);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
+    @GetMapping("/topic/{topic}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByTopic(@PathVariable String topic) {
+        try {
+            return epastiNoKlientaService.retrieveByTopic(topic);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
+    @GetMapping("/email/{email}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmail(@PathVariable String email) {
+        try {
+            return epastiNoKlientaService.retrieveByEmail(email);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
+    @GetMapping("/date/after/{dateTime}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateAfter(@PathVariable LocalDateTime dateTime) {
+        try {
+            return epastiNoKlientaService.retrieveByDateAfter(dateTime);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
+    @GetMapping("/date/before/{dateTime}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBefore(@PathVariable LocalDateTime dateTime) {
+        try {
+            return epastiNoKlientaService.retrieveByDateBefore(dateTime);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
+    @GetMapping("/date/between/{dateTimeStart}{dateTimeEnd}")
+    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBetween(@PathVariable LocalDateTime dateTimeStart, LocalDateTime dateTimeEnd) {
+        try {
+            return epastiNoKlientaService.retrieveByDateBetween(dateTimeStart, dateTimeEnd);
+        } catch (Exception e) {
+            // error msg
+            return null;
+        }
+    }
+
 
     public static class ContactRequest {
         private String userName;
