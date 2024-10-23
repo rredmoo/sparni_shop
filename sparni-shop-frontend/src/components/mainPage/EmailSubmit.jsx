@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './EmailSubmit.css';
 
 const EmailSubmit = () => {
     const [email, setEmail] = useState('');

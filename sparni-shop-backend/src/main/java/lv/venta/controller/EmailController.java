@@ -184,4 +184,37 @@ public class EmailController {
             this.messageContent = messageContent;
         }
     }
+
+    @PostMapping("/send-bulk-email")
+    public ResponseEntity<String> sendBulkEmail(@RequestBody EmailRequest emailRequest) {
+        try {
+            emailSenderService.sendEmailToAllClients(emailRequest.getSubject(), emailRequest.getBody());
+            return ResponseEntity.ok("Emails sent successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to send emails: " + e.getMessage());
+        }
+    }
+
+    public static class EmailRequest {
+        private String subject;
+        private String body;
+
+        // Getters and setters
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+    }
 }

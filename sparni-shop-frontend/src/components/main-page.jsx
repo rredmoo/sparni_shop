@@ -42,6 +42,7 @@ function MainPage() {
           <h1 className="mainHeading">{t('latestNews')}</h1>
           <Pasakums numPasakumi={3} />
           <br />
+          <h1 className="mainHeading">{t('Apply for Automatic Emails')}</h1>
           <EmailSubmit />
           <h1 className="mainHeading">{t('contactUs')}</h1>
           <Contact />

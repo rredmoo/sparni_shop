@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminPanel.css';
 import EmailServiceConfig from '../../config/AdminPageConfig';
+import SendBulkEmail from './SendBulkEmail';
 
 const AdminPanel = () => {
     const [epastiNoKlientiem, setEpastiNoKlientiem] = useState([]); //epasti
@@ -127,6 +128,8 @@ const AdminPanel = () => {
                         </tbody>
                     </table>
                 </section>
+                <br></br>
+                <SendBulkEmail />
             </main>
         </div>
     );
