@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface EpastiNoKlientaRepo extends JpaRepository<EpastiNoKlienta, Long> {
 
     // basic filtrations by id, name, topic, email
-    ArrayList<EpastiNoKlienta> findByIdenk(int idenk);
+    EpastiNoKlienta findByIdenk(Long idenk);
     ArrayList<EpastiNoKlienta> findByUserNameIgnoreCase(String userName);
     ArrayList<EpastiNoKlienta> findByUserEmailIgnoreCase(String userEmail);
     ArrayList<EpastiNoKlienta> findByTopicIgnoreCase(String topic);
