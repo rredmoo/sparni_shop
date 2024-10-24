@@ -32,7 +32,7 @@ function Contact() {
         console.log("Response from server:", response.data);
     } catch (error) {
         setResponseMessage('Error sending message: ' + error.message);
-        console.error("Error details:", error); // Log the error for debugging
+        console.error("Error details:", error);
     }
 };
 
