@@ -5,6 +5,7 @@ import StorePage from "./components/store-page";
 import EventsPage from "./components/event-page";
 import InformationPage from "./components/information-page";
 import ContactsPage from "./components/contact-page";
+import PasakumsDetail from "./components/jaunumuPage/PasakumsDetail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/store" element={<StorePage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:idPasakumi" element={<PasakumsDetail />} />
         <Route path="/info" element={<InformationPage />} />
         <Route path="/contact" element={<ContactsPage />} />
       </Routes>

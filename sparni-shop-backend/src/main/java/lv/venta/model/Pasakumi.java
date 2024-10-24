@@ -3,6 +3,8 @@ package lv.venta.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,10 +20,11 @@ public class Pasakumi {
     @Column(name = "ID_Pasakumi")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idPasakumi;  // Updated to use camelCase
+    private int idPasakumi;  
 
     @ManyToOne
     @JoinColumn(name = "ID_Pasakumi_Kategorijas", referencedColumnName = "idpk")
+    @JsonBackReference
     private Pasakumi_kategorijas idPasakumiKategorijas;
 
     @Column(name = "SAKUMA_DATUMS")
@@ -48,8 +51,9 @@ public class Pasakumi {
     @OneToMany(mappedBy = "pasakumi")
     private List<MainPage_ParMums> mainPage_ParMums;
 
-    public Pasakumi(LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks,
+    public Pasakumi(Pasakumi_kategorijas kategorija, LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks,
                     String vieta, String apraksts, String bildesUrl) {
+        setIdPasakumiKategorijas(kategorija);
         setSakumaDatums(sakumaDatums);
         setBeiguDatums(beiguDatums);
         setNosaukums(nosaukums);

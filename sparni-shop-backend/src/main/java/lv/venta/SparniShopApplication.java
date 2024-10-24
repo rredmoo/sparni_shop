@@ -12,6 +12,7 @@ import lv.venta.model.Informacija;
 import lv.venta.model.Kontakti;
 import lv.venta.model.MainPage_BiedribaDarbojas;
 import lv.venta.model.Pasakumi;
+import lv.venta.model.Pasakumi_kategorijas;
 import lv.venta.model.Veikals_kategorijas;
 import lv.venta.model.Veikals_prece;
 import lv.venta.repo.IAtlaideRepo;
@@ -43,6 +44,8 @@ public class SparniShopApplication {
 
             @Override
             public void run(String... args) throws Exception {
+
+                
 
                 Atlaide a1 = new Atlaide(70, LocalDateTime.of(2024, 05, 10, 15, 30),
                         LocalDateTime.of(2024, 05, 15, 15, 31));
@@ -100,8 +103,18 @@ public class SparniShopApplication {
                 Kontakti kontakt4 = new Kontakti("E-pasts", "ventinpurlad@inbox.lv");
                 kontaktiRepo.save(kontakt4);
 
+                //pasakumu kategorijas
+
+                Pasakumi_kategorijas pk1 = new Pasakumi_kategorijas("Nodarbības","Viss par nodarbībām");
+                pasakumiKategorijasRepo.save(pk1);
+                Pasakumi_kategorijas pk2 = new Pasakumi_kategorijas("Informācija","Informatīvie ieraksti");
+                pasakumiKategorijasRepo.save(pk2);
+                Pasakumi_kategorijas pk3 = new Pasakumi_kategorijas("Pasākumi","Par pasākumiem");
+                pasakumiKategorijasRepo.save(pk3);
+
                 // Pasakumi
                 Pasakumi pasakumi1 = new Pasakumi(
+                        pk1,
                         LocalDateTime.of(2024, 6, 30, 18, 0), // sakumaDatums
                         LocalDateTime.of(2024, 6, 30, 20, 0), // beiguDatums
                         "Summer Concert", // nosaukums
@@ -112,6 +125,7 @@ public class SparniShopApplication {
                 );
                 pasakumiRepo.save(pasakumi1);
                 Pasakumi pasakumi2 = new Pasakumi(
+                        pk1,
                         LocalDateTime.of(2024, 7, 15, 19, 30), // sakumaDatums
                         LocalDateTime.of(2024, 7, 15, 22, 0), // beiguDatums
                         "Summer Jazz Night", // nosaukums
@@ -122,16 +136,18 @@ public class SparniShopApplication {
                 );
                 pasakumiRepo.save(pasakumi2);
                 Pasakumi pasakumi3 = new Pasakumi(
+                        pk2,
                         LocalDateTime.of(2024, 8, 5, 18, 0), // sakumaDatums
                         LocalDateTime.of(2024, 8, 5, 21, 0), // beiguDatums
                         "Art Exhibition", // nosaukums
                         LocalDateTime.of(2024, 8, 5, 19, 0), // laiks
                         "Riga Art Gallery", // vieta
-                        "Explore captivating artworks by local artists.", // apraksts
+                        "Explore captivating artworks by local artists.,Explore captivating artworks by local artists", // apraksts
                         "https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg" // bildesUrl
                 );
                 pasakumiRepo.save(pasakumi3);
                 Pasakumi pasakumi4 = new Pasakumi(
+                        pk2,
                         LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
                         LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
                         "Food Festival", // nosaukums
@@ -143,45 +159,49 @@ public class SparniShopApplication {
                 pasakumiRepo.save(pasakumi4);
 
                 Pasakumi pasakumi5 = new Pasakumi(
+                        pk3,
                         LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
                         LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
                         "Zeķu adīšana", // nosaukums
                         LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
                         "Majas", // vieta
-                        "Stradajam un adam!", // apraksts
+                        "Stradajam un adam!Stradajam un adam!", // apraksts
                         "https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg" // bildesUrl
                 );
                 pasakumiRepo.save(pasakumi5);
 
                 Pasakumi pasakumi6 = new Pasakumi(
+                        pk3,
                         LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
                         LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
                         "Maratons", // nosaukums
                         LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
                         "Lemberga hūte", // vieta
-                        "Skrienam daudz!", // apraksts
+                        "Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!", // apraksts
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s" // bildesUrl
                 );
                 pasakumiRepo.save(pasakumi6);
 
                 Pasakumi pasakumi7 = new Pasakumi(
+                        pk1,
                         LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
                         LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
                         "Pikniks", // nosaukums
                         LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
                         "Plava", // vieta
-                        "Ēdam!", // apraksts
+                        "Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!", // apraksts
                         "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg" // bildesUrl
                 );
                 pasakumiRepo.save(pasakumi7);
 
                 Pasakumi pasakumi8 = new Pasakumi(
+                        pk1,
                         LocalDateTime.of(2024, 9, 10, 17, 0), // sakumaDatums
                         LocalDateTime.of(2024, 9, 10, 21, 0), // beiguDatums
                         "Radošās darbnīcas", // nosaukums
                         LocalDateTime.of(2024, 9, 10, 18, 0), // laiks
                         "Plava", // vieta
-                        "Radoši darbi ar zeķēm!", // apraksts
+                        "Radoši darbi ar zeķēm!Radoši darbi ar zeķēm!", // apraksts
                         "https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg" // bildesUrl
                 );
                 pasakumiRepo.save(pasakumi8);

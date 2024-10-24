@@ -1,0 +1,66 @@
+
+.pasakums-header {
+    width: 100%;
+    background-color: rgb(0, 0, 0); 
+    color: #fff;  
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: relative;
+    top: 0;
+  }
+  
+
+  .pasakums-detail {
+    max-width: 1200px;  
+    margin: 0 auto; 
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+  .pasakums-detail img {
+    width: 100%;  
+    height: 600px; 
+    object-fit: cover; 
+  }
+  
+  
+  .pasakums-detail .details-description-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  
+  .pasakums-detail .details {
+    flex: 0 0 30%;  
+    text-align: left;  
+    margin-right: 20px;
+  }
+  
+
+  .pasakums-detail .description {
+    flex: 1;
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;  
+  }
+  
+  
+  .pasakums-detail .details p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  
+  .pasakums-detail .details p strong {
+    color: #000;
+  }
+  
+
