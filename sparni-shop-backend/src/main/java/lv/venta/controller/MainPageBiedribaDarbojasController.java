@@ -21,7 +21,7 @@ import lv.venta.service.IMainPageBiedribasDarbojasCRUDService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/mainpage/biedribadarbojas")
+@RequestMapping("mainpage/biedribadarbojas")
 public class MainPageBiedribaDarbojasController {
 
     private final IMainPageBiedribasDarbojasCRUDService biedribaDarbojasService;

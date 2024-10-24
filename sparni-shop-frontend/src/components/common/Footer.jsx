@@ -19,9 +19,6 @@ function Footer() {
 
           </nav>
           <hr />
-          <p className="note">
-            {t('contactUs')}
-          </p>
         </div>
       </footer>
     </>

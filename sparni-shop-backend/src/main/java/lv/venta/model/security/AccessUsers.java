@@ -1,0 +1,48 @@
+package lv.venta.model.security;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@Entity
+@Table(name = "AccessUsers")
+public class AccessUsers {
+
+	@Setter(value = AccessLevel.NONE)
+	@Column(name = "UserId")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int userId;
+
+	@Column(name = "Username")
+	private String username;
+
+	@Column(name = "Password")
+	private String password;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "AuthorityId")
+	private UserAuthority authority;
+
+	public AccessUsers(String username, String password, UserAuthority authority) {
+		this.username = username;
+		this.password = password;
+		this.authority = authority;
+	}
+
+}
