@@ -1,6 +1,8 @@
 package lv.venta.service.impl;
 
 
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,8 @@ public class pasakumiServiceImpl implements IPasakumiCRUDService{
 		}
     }
 
+
+
     @Override
     public ArrayList<Pasakumi> retrieveAll() throws Exception {
        
@@ -45,6 +49,7 @@ public class pasakumiServiceImpl implements IPasakumiCRUDService{
 			
 		return (ArrayList<Pasakumi>) pasakumuRepo.findAll();
     }
+
 
     @Override
     public void updateById(int id, Pasakumi pasakums) throws Exception {
@@ -71,6 +76,33 @@ public class pasakumiServiceImpl implements IPasakumiCRUDService{
 		pasakumuRepo.delete(pasakumsForDeletion);
     }
 
-   
+    @Override
+    public ArrayList<Pasakumi> retrieveByCategoryId(int categoryId) throws Exception {
+        try {
+           
+            ArrayList<Pasakumi> events = pasakumuRepo.findByIdPasakumiKategorijas_Idpk(categoryId); 
+            
+            
+            if (events.isEmpty()) {
+                throw new Exception("Nav neviena pasākuma šajā kategorijā!");
+            }
+            
+            
+            return (ArrayList<Pasakumi>) events;
+        } catch (Exception e) {
+
+            throw new Exception("Kļūda iegūstot pasākumus pēc kategorijas ID: " + categoryId, e);
+        }
+    }
+
+    @Override
+    public ArrayList<Pasakumi> retrieveByLaiks(LocalDateTime startOfDay, LocalDateTime endOfDay) throws Exception {
+        try {
+            
+            return pasakumuRepo.findBySakumaDatumsBetween(startOfDay, endOfDay);
+        } catch (Exception e) {
+            throw new Exception("Error retrieving events by date range: " + startOfDay + " - " + endOfDay, e);
+        }
+    }
 
 }

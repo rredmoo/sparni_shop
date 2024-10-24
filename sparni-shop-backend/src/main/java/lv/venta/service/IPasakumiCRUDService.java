@@ -1,6 +1,9 @@
 package lv.venta.service;
 
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 
 import lv.venta.model.Pasakumi;
 
@@ -16,4 +19,9 @@ public interface IPasakumiCRUDService {
 	public abstract void updateById(int id, Pasakumi pasakums) throws Exception;
 	
 	public abstract void deleteById(int id) throws Exception;
+
+	ArrayList<Pasakumi> retrieveByCategoryId(int categoryId) throws Exception;
+
+	ArrayList<Pasakumi> retrieveByLaiks(LocalDateTime startOfDay, LocalDateTime endOfDay) throws Exception;
 }
+

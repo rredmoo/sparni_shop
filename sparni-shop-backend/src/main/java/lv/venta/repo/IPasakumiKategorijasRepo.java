@@ -1,11 +1,17 @@
 package lv.venta.repo;
 
+import java.util.ArrayList;
+
 import org.springframework.data.repository.CrudRepository;
 
 import lv.venta.model.Pasakumi_kategorijas;
-import lv.venta.model.Veikals_prece;
+
+
 
 public interface IPasakumiKategorijasRepo extends CrudRepository<Pasakumi_kategorijas, Integer>{
 
-    Veikals_prece findByIdpk(int idpk);
+
+    ArrayList<Pasakumi_kategorijas> findAll();
+    Pasakumi_kategorijas findByIdpk(int idpk);
 } 
+

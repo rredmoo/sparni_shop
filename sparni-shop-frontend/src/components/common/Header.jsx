@@ -69,16 +69,25 @@ function Header() {
             <option value="en">EN</option>
           </select>
 
-          {/* Currency Selector */}
+              
           <select
             name="currency"
             id="currency"
-            value={selectedCurrency} 
-            onChange={(e) => changeCurrency(e.target.value)}
-          >
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-          </select>
+            value={selectedCurrency}
+            onChange={(e) => {
+            const selectedCurrency = e.target.value;
+
+            if (selectedCurrency !== 'EUR') {
+              alert("Only EUR purchases are available!"); 
+          }
+
+    changeCurrency(selectedCurrency);  
+  }}
+>
+  <option value="EUR">EUR</option>
+  <option value="USD">USD</option>
+</select>
+
           
           <Link className="cart-button" to="/cart" />
         </div>
