@@ -25,6 +25,15 @@ import lv.venta.repo.IPiegadesVeidiRepo;
 import lv.venta.repo.IPreceRepo;
 import lv.venta.repo.ISamaksasVeidsRepo;
 import lv.venta.repo.IVeikalsKategorijasRepo;
+import lv.venta.repo.security.IAccessUsersRepo;
+import lv.venta.repo.security.IUserAuthorityRepo;
+
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import lv.venta.model.security.AccessUsers;
+import lv.venta.model.security.UserAuthority;
+
 
 @SpringBootApplication
 public class SparniShopApplication {
@@ -33,17 +42,33 @@ public class SparniShopApplication {
         SpringApplication.run(SparniShopApplication.class, args);
     }
 
-	@Bean
-	public CommandLineRunner testDatabase(IAtlaideRepo atlaideRepo, IPasakumiRepo pasakumiRepo, IPreceRepo preceRepo,
-			IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
-			IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
-			IPasakumiKategorijasRepo pasakumiKategorijasRepo,
-			IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo, IInformacijasRepo infoRepo) {
-		return new CommandLineRunner() {
+                @Bean
+                public CommandLineRunner testDatabase(IAtlaideRepo atlaideRepo, IPasakumiRepo pasakumiRepo,
+                        IPreceRepo preceRepo,
+                        IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
+                        IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
+                        IPasakumiKategorijasRepo pasakumiKategorijasRepo,
+                        IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo,
+                        IInformacijasRepo infoRepo, IAccessUsersRepo accessUsersRepo,
+                        IUserAuthorityRepo userAuthorityRepo) {
+                return new CommandLineRunner() {
+
 
 
             @Override
             public void run(String... args) throws Exception {
+
+
+                 // USERS
+                 UserAuthority auth1 = new UserAuthority("ADMIN");
+                 userAuthorityRepo.save(auth1);
+                 UserAuthority auth2 = new UserAuthority("MODERATOR");
+                 userAuthorityRepo.save(auth2);
+                 PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+                 AccessUsers user1 = new AccessUsers("admin", encoder.encode("CZFhgOcHSb"), auth1);
+                 accessUsersRepo.save(user1);
+                 AccessUsers user2 = new AccessUsers("moderator", encoder.encode("pZh4WH2dXB"), auth2);
+                 accessUsersRepo.save(user2);
 
                 
 

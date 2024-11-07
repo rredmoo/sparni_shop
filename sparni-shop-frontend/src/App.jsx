@@ -6,6 +6,9 @@ import EventsPage from "./components/event-page";
 import InformationPage from "./components/information-page";
 import ContactsPage from "./components/contact-page";
 import PasakumsDetail from "./components/jaunumuPage/PasakumsDetail";
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminPanel from "./components/admin/AdminPanel";
+import AdminLogin from "./components/admin/admin-login";
 
 function App() {
   return (
@@ -18,6 +21,16 @@ function App() {
         <Route path="/events/:idPasakumi" element={<PasakumsDetail />} />
         <Route path="/info" element={<InformationPage />} />
         <Route path="/contact" element={<ContactsPage />} />
+
+        <Route path="/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );

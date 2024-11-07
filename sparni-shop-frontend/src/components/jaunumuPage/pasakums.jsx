@@ -17,7 +17,7 @@ function Pasakums({ numPasakumi }) {
   const [error, setError] = useState(null);  
   const { t } = useTranslation();
 
-  // Fetch all categories on component mount
+  
   useEffect(() => {
     JaunumiServiceConfig.getCategories()
       .then((response) => {
@@ -29,7 +29,7 @@ function Pasakums({ numPasakumi }) {
       });
   }, [t]);
 
-  // Fetch events based on the selected category
+ 
   useEffect(() => {
     const fetchEvents = () => {
       const apiCall = selectedCategory
@@ -62,7 +62,7 @@ function Pasakums({ numPasakumi }) {
     fetchEvents();
   }, [numPasakumi, selectedCategory, t]);
 
-  // Handle date change and fetch events by date
+  
   const handleDateChange = (date) => {
     setSelectedDate(date);
 
@@ -91,17 +91,16 @@ function Pasakums({ numPasakumi }) {
     }
   };
 
-  // Handle category change
+  
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
-  // Handle search term change
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Filter events based on search term
+
   useEffect(() => {
     const filtered = pasakumi.filter((pasakums) =>
       pasakums.nosaukums.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -176,7 +175,7 @@ function Pasakums({ numPasakumi }) {
                 )}
               </div>
 
-              {/* Display the next two smaller events */}
+              {/* mazie eventi */}
               <div className="pasakumi-right">
                 {filteredPasakumi.slice(1, 3).map((pasakums) => (
                   <Link to={`/events/${pasakums.idPasakumi}`} key={pasakums.idPasakumi}>

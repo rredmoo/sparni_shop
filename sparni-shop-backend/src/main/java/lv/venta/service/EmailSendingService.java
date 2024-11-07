@@ -12,7 +12,7 @@ import lv.venta.model.KlientuEpasti;
 @Service
 public class EmailSendingService {
     private final JavaMailSender mailSender;
-    private final IKlientuEpastiService klientuEpastiService; // Assuming this service exists to retrieve emails
+    private final IKlientuEpastiService klientuEpastiService; 
 
     @Autowired
     public EmailSendingService(JavaMailSender mailSender, IKlientuEpastiService klientuEpastiService) {
@@ -28,9 +28,9 @@ public class EmailSendingService {
         mailSender.send(message);
     }
 
-    // New method to send an email to all clients
+    
     public void sendEmailToAllClients(String subject, String body) throws Exception {
-        // Fetch all emails from the database
+        
         ArrayList<KlientuEpasti> allEmails = klientuEpastiService.getAllEmails();
         
         for (KlientuEpasti client : allEmails) {

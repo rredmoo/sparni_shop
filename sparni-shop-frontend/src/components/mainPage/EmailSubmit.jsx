@@ -45,7 +45,7 @@ const EmailSubmit = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/contact/client/email/save', emailData);
+            const response = await axios.post('http://localhost:8081/api/contact/client/email/save', emailData);
             alert(response.data);
             setEmail('');
             localStorage.setItem('lastEmailSubmissionTime', currentTime);
