@@ -1,7 +1,18 @@
-.storeBannerImage{
+.storeBannerImage {
     width: 100%;
 }
 
-.storeSortingButton{
+.storeSortingButton {
     margin-left: 10vh;
+}
+
+.main-page-cover {
+    background-image: url("../img/sparniCover.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.storeErrorMessage {
+    margin-left: 20%;
 }

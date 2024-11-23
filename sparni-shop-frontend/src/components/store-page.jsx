@@ -17,6 +17,7 @@ function StorePage() {
   return (
     <>
       <Header />
+      <div className="main-page-cover">
       <img src={StoreBanner} alt="Store Page Banner" className="storeBannerImage" />
       <h1>{t('storeHeader')}</h1>
       <div>
@@ -24,8 +25,7 @@ function StorePage() {
         <button onClick={() => handleSortOrder('desc')}>{t('dsc')}</button>
       </div>
       <Product sortOrder={sortOrder} />
-
-      {error && <p>Error: {error}</p>}
+      </div>
     </>
   );
 }
