@@ -12,14 +12,15 @@ import lv.venta.model.KlientuEpasti;
 @Service
 public class EmailSendingService {
     private final JavaMailSender mailSender;
-    private final IKlientuEpastiService klientuEpastiService; // Assuming this service exists to retrieve emails
+    private final IKlientuEpastiService klientuEpastiService;
 
-    @Autowired
+    @Autowired //konstruktors, lai definētu final
     public EmailSendingService(JavaMailSender mailSender, IKlientuEpastiService klientuEpastiService) {
         this.mailSender = mailSender;
         this.klientuEpastiService = klientuEpastiService;
     }
 
+    // Klients --> Spārni
     public void sendEmail(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -28,11 +29,9 @@ public class EmailSendingService {
         mailSender.send(message);
     }
 
-    // New method to send an email to all clients
+    // Spārni --> Klients
     public void sendEmailToAllClients(String subject, String body) throws Exception {
-        // Fetch all emails from the database
         ArrayList<KlientuEpasti> allEmails = klientuEpastiService.getAllEmails();
-        
         for (KlientuEpasti client : allEmails) {
             sendEmail(client.getEpasts(), subject, body);
         }

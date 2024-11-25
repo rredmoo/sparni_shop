@@ -26,7 +26,7 @@ public class SecurityConfig {
         return new MyUserDetailsManager();
     }
 
-    @Bean
+    @Bean //authentication pārbaude
     public DaoAuthenticationProvider createProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
