@@ -1,6 +1,5 @@
 package lv.venta.model;
 
-
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -24,6 +23,7 @@ import lombok.ToString;
 @Entity
 public class Pasakumi_kategorijas {
 	
+
 	@Id
 	@Column(name = "idpk")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,9 +35,10 @@ public class Pasakumi_kategorijas {
 	    
 	@Column(name="APRAKSTS")
 	private String apraksts;
-	    
+
+	
 	@OneToMany(mappedBy = "idPasakumiKategorijas")
-    private List<Pasakumi> veikalsPreces;
+    private List<Pasakumi> pasakumi;
 	
 	public Pasakumi_kategorijas(String nosaukums, String apraksts) {
 	    setNosaukums(nosaukums);

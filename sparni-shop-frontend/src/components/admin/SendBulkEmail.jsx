@@ -14,7 +14,7 @@ const SendBulkEmail = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/contact/send-bulk-email', emailData);
+            const response = await axios.post('http://localhost:8081/api/contact/send-bulk-email', emailData);
             alert('Emails sent successfully');
         } catch (error) {
             console.error('Error sending emails', error);
