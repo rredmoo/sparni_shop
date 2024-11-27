@@ -21,7 +21,7 @@ function Contact() {
     });
 
     try {
-        const response = await axios.post('http://localhost:8081/api/contact/send', {
+        const response = await axios.post('http://localhost:8080/api/contact/send', {
             userName,
             userEmail,
             topic,

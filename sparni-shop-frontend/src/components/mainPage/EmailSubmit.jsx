@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EmailSubmit.css';
+import '../../static/css/EmailSubmit.css';
 
 const EmailSubmit = () => {
     const [email, setEmail] = useState('');
@@ -45,7 +45,7 @@ const EmailSubmit = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8081/api/contact/client/email/save', emailData);
+            const response = await axios.post('http://localhost:8080/api/contact/client/email/save', emailData);
             alert(response.data);
             setEmail('');
             localStorage.setItem('lastEmailSubmissionTime', currentTime);
