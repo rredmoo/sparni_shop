@@ -7,6 +7,7 @@ import rightImageTop from "../static/img/rightImageTop.png";
 import rightImageBottomLeft from "../static/img/rightImageBottomLeft.png";
 import rightImageBottomRight from "../static/img/rightImageBottomRight.png";
 import "../static/css/Store.css";
+import Footer from "./common/Footer";
 
 function StorePage() {
   const [error, setError] = useState(null);
@@ -63,6 +64,7 @@ function StorePage() {
           <Product sortOrder={sortOrder} />
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
