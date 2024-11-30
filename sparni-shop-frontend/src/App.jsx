@@ -4,7 +4,7 @@ import MainPage from "./components/main-page";
 import StorePage from "./components/store-page";
 import EventsPage from "./components/event-page";
 import InformationPage from "./components/information-page";
-import ContactsPage from "./components/contact-page";
+import KontaktiPage from "./components/kontakti-page";
 import PasakumsDetail from "./components/jaunumuPage/PasakumsDetail";
 import ProtectedRoute from './components/admin/ProtectedRoute';
 import AdminPanel from "./components/admin/AdminPanel";
@@ -20,7 +20,7 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:idPasakumi" element={<PasakumsDetail />} />
         <Route path="/info" element={<InformationPage />} />
-        <Route path="/contact" element={<ContactsPage />} />
+        <Route path="/contact" element={<KontaktiPage />} />
 
         <Route path="/login" element={<AdminLogin />} />
         <Route
