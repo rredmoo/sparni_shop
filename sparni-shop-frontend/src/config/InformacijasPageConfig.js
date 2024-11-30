@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/informacija/all';
+const API_URL = 'http://localhost:8080/informacija/all';
 
 class UserService {
     getAllInformacija() {

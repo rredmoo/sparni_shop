@@ -3,6 +3,7 @@ import Header from "./common/Header";
 import JaunumuPageConfig from "../config/JaunumuPageConfig"; 
 import Pasakums from "./jaunumuPage/pasakums";
 import { useTranslation } from 'react-i18next';
+import Footer from "./common/Footer";
 
 
 function EventsPage() {
@@ -24,8 +25,7 @@ function EventsPage() {
       <h1>{t('event')}</h1>
       
       <Pasakums /> 
-
-      {error && <p>Error: {error}</p>}
+      <Footer/>
     </>
   );
 }

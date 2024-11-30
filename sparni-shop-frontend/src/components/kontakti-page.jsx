@@ -3,6 +3,7 @@ import Header from "./common/Header";
 import KontaktiPageConfig from "../config/KontaktiPageConfig";
 import KontaktiPage from "./kontaktiPage/kontakti";
 import { useTranslation } from 'react-i18next';
+import Footer from "./common/Footer";
 
 
 function KontaktiSave() {
@@ -13,10 +14,8 @@ function KontaktiSave() {
     <>
       <Header />
       <h1>{t('contacts')}</h1>
-
-      <KontaktiPage />
-
-      {error && <p>Error: {error}</p>}
+      <p>Nepiciešams pievienot kontaktus</p>
+      <Footer/>
     </>
   );
 }

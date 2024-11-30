@@ -26,7 +26,7 @@ public class SecurityConfig {
         return new MyUserDetailsManager();
     }
 
-    @Bean
+    @Bean //authentication pārbaude
     public DaoAuthenticationProvider createProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -49,6 +49,7 @@ public class SecurityConfig {
                         .requestMatchers("/pasakumi/**").permitAll()
                         .requestMatchers("/veikals/**").permitAll()
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/kontakti/all").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN"))
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

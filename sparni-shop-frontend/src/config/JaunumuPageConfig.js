@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081/pasakumi/all';
+const API_URL = 'http://localhost:8080/pasakumi/all';
 
-const API_URL_Categories = 'http://localhost:8081/pasakumi/categories';
-const API_URL_SORT = 'http://localhost:8081/pasakumi/sort/category'; 
-const API_URL_DATE_FILTER = 'http://localhost:8081/pasakumi/filter-by-date';
+const API_URL_Categories = 'http://localhost:8080/pasakumi/categories';
+const API_URL_SORT = 'http://localhost:8080/pasakumi/sort/category'; 
+const API_URL_DATE_FILTER = 'http://localhost:8080/pasakumi/filter-by-date';
 
 
 class UserService {

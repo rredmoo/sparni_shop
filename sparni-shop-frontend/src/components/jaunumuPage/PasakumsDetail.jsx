@@ -12,7 +12,7 @@ function PasakumsDetail() {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/pasakumi/all/${idPasakumi}`);
+        const response = await fetch(`http://localhost:8080/pasakumi/all/${idPasakumi}`);
         if (!response.ok) throw new Error('Event not found'); 
 
         const data = await response.json();

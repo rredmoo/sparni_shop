@@ -96,7 +96,6 @@ function Product({ sortOrder, numProducts }) {
           <div>{t('NoProductsAvailable')}</div>
         )}
       </div>
-      {error && <div>Error: {error}</div>}
     </>
   );
 }

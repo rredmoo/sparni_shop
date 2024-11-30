@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const API_URL1 = 'http://localhost:8081/veikals/all';
-const API_URL2 = 'http://localhost:8081/veikals/price/asc';
-const API_URL3 = 'http://localhost:8081/veikals/price/desc';
+const API_URL1 = 'http://localhost:8080/veikals/all';
+const API_URL2 = 'http://localhost:8080/veikals/price/asc';
+const API_URL3 = 'http://localhost:8080/veikals/price/desc';
 
 class UserService {
     getAllPreces() {

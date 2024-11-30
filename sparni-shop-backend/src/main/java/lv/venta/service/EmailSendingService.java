@@ -14,12 +14,13 @@ public class EmailSendingService {
     private final JavaMailSender mailSender;
     private final IKlientuEpastiService klientuEpastiService; 
 
-    @Autowired
+    @Autowired //konstruktors, lai definētu final
     public EmailSendingService(JavaMailSender mailSender, IKlientuEpastiService klientuEpastiService) {
         this.mailSender = mailSender;
         this.klientuEpastiService = klientuEpastiService;
     }
 
+    // Klients --> Spārni
     public void sendEmail(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -27,12 +28,9 @@ public class EmailSendingService {
         message.setText(body);
         mailSender.send(message);
     }
-
     
     public void sendEmailToAllClients(String subject, String body) throws Exception {
-        
         ArrayList<KlientuEpasti> allEmails = klientuEpastiService.getAllEmails();
-        
         for (KlientuEpasti client : allEmails) {
             sendEmail(client.getEpasts(), subject, body);
         }

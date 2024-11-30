@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081/api/contact';
+const BASE_URL = 'http://localhost:8080/api/contact';
 
 const getAllEmails = () => {
     return axios.get(`${BASE_URL}/all`);
