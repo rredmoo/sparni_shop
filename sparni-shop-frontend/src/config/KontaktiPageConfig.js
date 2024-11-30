@@ -1,11 +1,8 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/kontakti/all';
-
+import API from '../Api';
 
 class UserService {
     getAllKontakti() {
-        return axios.get(API_URL);
+        return API.get('/kontakti/all');
     }
 }
 

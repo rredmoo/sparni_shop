@@ -7,20 +7,18 @@ import { useTranslation } from "react-i18next";
 function Header() {
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState('lv');
-  const [selectedCurrency, setSelectedCurrency] = useState('EUR'); 
+  const [selectedCurrency] = useState('EUR'); // Only EUR will be used
 
   useEffect(() => {
-    
     const storedLanguage = localStorage.getItem('preferredLanguage');
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
       setSelectedLanguage(storedLanguage);
     }
 
-    
     const storedCurrency = localStorage.getItem('preferredCurrency');
     if (storedCurrency) {
-      setSelectedCurrency(storedCurrency);
+      // We keep the currency as EUR, no need to update state for currency
     }
   }, [i18n]);
 
@@ -28,16 +26,6 @@ function Header() {
     i18n.changeLanguage(lang);
     localStorage.setItem('preferredLanguage', lang);
     setSelectedLanguage(lang);
-  };
-
-  const changeCurrency = (currency) => {
-    localStorage.setItem('preferredCurrency', currency);
-    setSelectedCurrency(currency);
-
-    const event = new Event('currencyChange');
-    window.dispatchEvent(event);
-
-
   };
 
   return (
@@ -57,38 +45,27 @@ function Header() {
           className="search-input"
         />
         <div className="right-side">
-
           {/* Language Switcher */}
           <select
             name="language"
             id="language"
-            value={selectedLanguage} 
+            value={selectedLanguage}
             onChange={(e) => changeLanguage(e.target.value)}
           >
             <option value="lv">LV</option>
             <option value="en">EN</option>
           </select>
 
-              
+          {/* Currency (EUR only) */}
           <select
             name="currency"
             id="currency"
             value={selectedCurrency}
-            onChange={(e) => {
-            const selectedCurrency = e.target.value;
+            disabled // Disable the currency selection as only EUR is allowed
+          >
+            <option value="EUR">EUR</option>
+          </select>
 
-            if (selectedCurrency !== 'EUR') {
-              alert("Only EUR purchases are available!"); 
-          }
-
-    changeCurrency(selectedCurrency);  
-  }}
->
-  <option value="EUR">EUR</option>
-  <option value="USD">USD</option>
-</select>
-
-          
           <Link className="cart-button" to="/cart" />
         </div>
       </div>

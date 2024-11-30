@@ -1,10 +1,8 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/informacija/all';
+import API from '../Api';
 
 class UserService {
     getAllInformacija() {
-        return axios.get(API_URL);
+        return API.get('/informacija/all');
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import './Login.css'; // Import the new CSS file
+import API from '../../Api';
+
+import './Login.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -9,7 +10,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/login', 
+            const response = await API.post('/login', 
                 new URLSearchParams({
                     username: username,
                     password: password,
