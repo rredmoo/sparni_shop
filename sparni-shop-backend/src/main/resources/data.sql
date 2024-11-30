@@ -1,0 +1,1 @@
+INSERT INTO global_params_table (idgp, global_params_table)
