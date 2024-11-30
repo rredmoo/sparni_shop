@@ -18,7 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "VEIKALS_PRECE_TABLE")
+@Table(name = "global_params_table")
 @Entity
 public class GlobalParams {
 
