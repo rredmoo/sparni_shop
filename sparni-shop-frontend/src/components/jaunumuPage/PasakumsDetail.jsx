@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "../../static/css/PasakumuDetails.css";
+import API from '../../Api';
+
 
 function PasakumsDetail() {
   const { idPasakumi } = useParams(); 
@@ -12,11 +14,10 @@ function PasakumsDetail() {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/pasakumi/all/${idPasakumi}`);
+        const response = await API.get(`/pasakumi/all/${idPasakumi}`); // Use the API instance for requests
         if (!response.ok) throw new Error('Event not found'); 
 
-        const data = await response.json();
-        setEvent(data); 
+        setEvent(response.data); // Use `response.data` for axios response
       } catch (err) {
         setError(err.message); 
       } finally {

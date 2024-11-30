@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../../Api';
+
 import '../../static/css/EmailSubmit.css';
 
 const EmailSubmit = () => {
@@ -16,7 +17,7 @@ const EmailSubmit = () => {
             const currentTime = new Date().getTime();
             const timeElapsed = currentTime - lastSubmissionTime;
 
-            // 300000 milliseconds == 5min
+            // 300000 milliseconds == 5 min
             if (timeElapsed < 300000) {
                 setIsSubmitted(true);
             }
@@ -32,7 +33,7 @@ const EmailSubmit = () => {
             return;
         }
 
-        // Check if email can be submitted 
+        // Check if email can be submitted
         const lastSubmissionTime = localStorage.getItem('lastEmailSubmissionTime');
         const currentTime = new Date().getTime();
         if (lastSubmissionTime && currentTime - lastSubmissionTime < 300000) {
@@ -45,13 +46,14 @@ const EmailSubmit = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/contact/client/email/save', emailData);
+            const response = await API.post('/api/contact/client/email/save', emailData);
             alert(response.data);
             setEmail('');
             localStorage.setItem('lastEmailSubmissionTime', currentTime);
+            setIsSubmitted(true);
         } catch (error) {
             console.error('Error saving email', error);
-            alert('Failed to save email: ' + error.message);
+            alert('Failed to save email: ' + (error.response?.data?.message || error.message));
         }
     };
 

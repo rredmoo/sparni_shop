@@ -3,6 +3,8 @@ package lv.venta.service.impl;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import lv.venta.service.IEpastiNoKlientaService;
 @Service
 public class epastiNoKlientaServiceImpl implements IEpastiNoKlientaService {
 
+    private static final Logger logger = LoggerFactory.getLogger(epastiNoKlientaServiceImpl.class);
+
     @Autowired
     private EpastiNoKlientaRepo messageRepo;
 
@@ -21,75 +25,116 @@ public class epastiNoKlientaServiceImpl implements IEpastiNoKlientaService {
         try {
             messageRepo.save(message);
         } catch (Exception e) {
-            throw new UnsupportedOperationException("Error occurred while saving the message: " + e.getMessage());
+            logger.error("Kļūda saglabājot epastu: {}", e.getMessage());
+            throw new UnsupportedOperationException("Notikusi kļūda, mēģinot saglabāt epastu: " + e.getMessage(), e);
         }
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveAll() throws Exception {
-        if (messageRepo.count() == 0) {
-            throw new Exception("Nav neviena epasta!");
+        try {
+            if (messageRepo.count() == 0) {
+                throw new Exception("Nav neviena epasta!");
+            }
+            return (ArrayList<EpastiNoKlienta>) messageRepo.findAll();
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot visus epastus: {}", e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt visus epastus: " + e.getMessage());
         }
-        return (ArrayList<EpastiNoKlienta>) messageRepo.findAll();
     }
 
     @Override
     public EpastiNoKlienta retrieveById(Long id) throws Exception {
-        return messageRepo.findById(id)
-                .orElseThrow(() -> new Exception("Epasts nav atrasts ar id: " + id));
+        try {
+            return messageRepo.findById(id)
+                    .orElseThrow(() -> new Exception("Epasts nav atrasts ar id: " + id));
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastu ar id {}: {}", id, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastu ar ID " + id + ": " + e.getMessage());
+        }
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByUserName(String username) throws Exception {
-        ArrayList<EpastiNoKlienta> message = messageRepo.findByUserNameIgnoreCase(username);
-        if (message == null) {
-            throw new Exception("Nav atrasts epasts ar lietotājvārdu: " + username);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByUserNameIgnoreCase(username);
+            if (messages == null || messages.isEmpty()) {
+                throw new Exception("Nav atrasts epasts ar lietotājvārdu: " + username);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus ar lietotājvārdu {}: {}", username, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus ar lietotājvārdu " + username + ": " + e.getMessage());
         }
-        return message;
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByEmail(String email) throws Exception {
-        ArrayList<EpastiNoKlienta> message = messageRepo.findByUserEmailIgnoreCase(email);
-        if (message == null) {
-            throw new Exception("Nav atrasts epasts ar epasta adresi: " + email);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByUserEmailIgnoreCase(email);
+            if (messages == null || messages.isEmpty()) {
+                throw new Exception("Nav atrasts epasts ar epasta adresi: " + email);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus ar epasta adresi {}: {}", email, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus ar epasta adresi " + email + ": " + e.getMessage());
         }
-        return message;
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByTopic(String topic) throws Exception {
-        ArrayList<EpastiNoKlienta> message = messageRepo.findByTopicIgnoreCase(topic);
-        if (message == null) {
-            throw new Exception("Nav atrasts epasts ar tēmu: " + topic);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByTopicIgnoreCase(topic);
+            if (messages == null || messages.isEmpty()) {
+                throw new Exception("Nav atrasts epasts ar tēmu: " + topic);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus ar tēmu {}: {}", topic, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus ar tēmu " + topic + ": " + e.getMessage());
         }
-        return message;
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByDateAfter(LocalDateTime date) throws Exception {
-        ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtAfter(date);
-        if (messages.isEmpty()) {
-            throw new Exception("Nav atrasti epasti pēc datuma: " + date);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtAfter(date);
+            if (messages.isEmpty()) {
+                throw new Exception("Nav atrasti epasti pēc datuma: " + date);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus pēc datuma {}: {}", date, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus pēc datuma " + date + ": " + e.getMessage());
         }
-        return messages;
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByDateBefore(LocalDateTime date) throws Exception {
-        ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtBefore(date);
-        if (messages.isEmpty()) {
-            throw new Exception("Nav atrasti epasti pirms datuma: " + date);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtBefore(date);
+            if (messages.isEmpty()) {
+                throw new Exception("Nav atrasti epasti pirms datuma: " + date);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus pirms datuma {}: {}", date, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus pirms datuma " + date + ": " + e.getMessage());
         }
-        return messages;
     }
 
     @Override
     public ArrayList<EpastiNoKlienta> retrieveByDateBetween(LocalDateTime dateStart, LocalDateTime dateEnd) throws Exception {
-        ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtBetween(dateStart, dateEnd);
-        if (messages.isEmpty()) {
-            throw new Exception("Nav atrasti epasti starp datumiem: " + dateStart + " un " + dateEnd);
+        try {
+            ArrayList<EpastiNoKlienta> messages = messageRepo.findByReceivedAtBetween(dateStart, dateEnd);
+            if (messages.isEmpty()) {
+                throw new Exception("Nav atrasti epasti starp datumiem: " + dateStart + " un " + dateEnd);
+            }
+            return messages;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot epastus starp datumiem {} un {}: {}", dateStart, dateEnd, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt epastus starp datumiem " + dateStart + " un " + dateEnd + ": " + e.getMessage());
         }
-        return messages;
     }
 }

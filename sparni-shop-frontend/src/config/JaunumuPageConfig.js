@@ -1,27 +1,19 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/pasakumi/all';
-
-const API_URL_Categories = 'http://localhost:8080/pasakumi/categories';
-const API_URL_SORT = 'http://localhost:8080/pasakumi/sort/category'; 
-const API_URL_DATE_FILTER = 'http://localhost:8080/pasakumi/filter-by-date';
-
-
+import API from '../Api';
 class UserService {
     getAllPasakumi() {
-        return axios.get(API_URL);
+        return API.get('/pasakumi/all');
     }
 
     getCategories() {
-        return axios.get(API_URL_Categories);
+        return API.get('/pasakumi/categories');
     }
 
     getPasakumiByCategory(categoryId) {
-        return axios.get(`${API_URL_SORT}/${categoryId}`); 
+        return API.get(`/pasakumi/sort/category/${categoryId}`);
     }
 
     getEventsByDate(date) {
-        return axios.get(`${API_URL_DATE_FILTER}?date=${date}`);  
+        return API.get(`/pasakumi/filter-by-date?date=${date}`);
     }
 }
 
