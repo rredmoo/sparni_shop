@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .requestMatchers("/veikals/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/kontakti/all").permitAll()
+                        .requestMatchers("/payment/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN"))
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

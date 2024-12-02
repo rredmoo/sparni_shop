@@ -1,6 +1,7 @@
 package lv.venta.helpers.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,19 +10,19 @@ import lombok.Setter;
 public class Location {
 	@JsonProperty("ZIP")
 	private String zip;
-	
+
 	@JsonProperty("NAME")
 	private String name;
-	
+
 	@JsonProperty("TYPE")
 	private String type;
-	
+
 	@JsonProperty("A0_NAME")
 	private String country;
-	
+
 	@JsonProperty("A1_NAME")
 	private String region;
-	
+
 	@JsonProperty("A2_NAME")
 	private String municipality;
 	@JsonProperty("A3_NAME")

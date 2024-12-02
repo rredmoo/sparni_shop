@@ -2,10 +2,12 @@ package lv.venta.helpers.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-
+import lombok.ToString;
 @Getter
 @Setter
+@ToString
 public class PaymentStatusDTO {
-    private String PaymentIntentID;
-    private String PaymentStatus;
+	private String paymentIntentId;
+	private String paymentStatus;
+	
 }

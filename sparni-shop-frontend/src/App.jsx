@@ -9,6 +9,7 @@ import PasakumsDetail from "./components/jaunumuPage/PasakumsDetail";
 import ProtectedRoute from './components/admin/ProtectedRoute';
 import AdminPanel from "./components/admin/AdminPanel";
 import AdminLogin from "./components/admin/admin-login";
+import ShoppingCart from "./components/payments/ShoppingCart";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/events/:idPasakumi" element={<PasakumsDetail />} />
         <Route path="/info" element={<InformationPage />} />
         <Route path="/contact" element={<KontaktiPage />} />
+        <Route path="/cart" element={<ShoppingCart />} />
 
         <Route path="/login" element={<AdminLogin />} />
         <Route
