@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../../Api';
 import './SendBulkEmail.css';
 
 const SendBulkEmail = () => {
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+
         const emailData = {
             subject,
             body,
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/contact/send-bulk-email', emailData);
-            alert('Emails sent successfully');
+            const response = await API.post('/api/contact/send-bulk-email', emailData);
+            if (response.status === 200) {
+                alert('Emails sent successfully');
+                setSubject('');
+                setBody('');
+            }
         } catch (error) {
             console.error('Error sending emails', error);
-            alert('Failed to send emails: ' + error.message);
+            alert('Failed to send emails: ' + (error.response?.data?.message || error.message));
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -38,7 +47,9 @@ const SendBulkEmail = () => {
                     placeholder="Email body"
                     required
                 />
-                <button type="submit">Send Emails</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Sending...' : 'Send Emails'}
+                </button>
             </form>
         </div>
     );

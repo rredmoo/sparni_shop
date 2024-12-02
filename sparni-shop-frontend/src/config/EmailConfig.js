@@ -1,10 +1,7 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/api/contact/client/email/save';
-
+import API from '../Api';
 class UserService {
     postEmailSave(emailData) {
-        return axios.post(API_URL, emailData);
+        return API.post('/api/contact/client/email/save', emailData);
     }
 }
 

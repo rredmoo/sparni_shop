@@ -1,26 +1,25 @@
-import axios from 'axios';
-
-const BASE_URL = 'http://localhost:8080/api/contact';
+import API from '../Api';
 
 const getAllEmails = () => {
-    return axios.get(`${BASE_URL}/all`);
+    return API.get('/all'); 
 };
 
 const searchEmailsByUserName = (username) => {
-    return axios.get(`${BASE_URL}/username/${username}`);
+    return API.get(`/username/${username}`);
 };
 
 const searchEmailsByTopic = (topic) => {
-    return axios.get(`${BASE_URL}/topic/${topic}`);
+    return API.get(`/topic/${topic}`);
 };
 
 const searchEmailsByEmail = (email) => {
-    return axios.get(`${BASE_URL}/email/${email}`);
+    return API.get(`/email/${email}`);
 };
 
 const EmailServiceConfig = {
     getAllEmails,
     searchEmailsByUserName,
+    searchEmailsByTopic,
     searchEmailsByEmail,
 };
 

@@ -1,22 +1,17 @@
-import axios from 'axios';
-
-const API_URL1 = 'http://localhost:8080/veikals/all';
-const API_URL2 = 'http://localhost:8080/veikals/price/asc';
-const API_URL3 = 'http://localhost:8080/veikals/price/desc';
+import API from '../Api'; 
 
 class UserService {
     getAllPreces() {
-        return axios.get(API_URL1);
+        return API.get('/veikals/all');
     }
 
     getPrecesOrderedByAsc() {
-        return axios.get(API_URL2);
+        return API.get('/veikals/price/asc');
     }
     
     getPrecesOrderedByDesc() {
-        return axios.get(API_URL3);
+        return API.get('/veikals/price/desc');
     }
 }
-
 
 export default new UserService();
