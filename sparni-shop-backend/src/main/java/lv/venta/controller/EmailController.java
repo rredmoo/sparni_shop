@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import lv.venta.model.EpastiNoKlienta;
-import lv.venta.model.KlientuEpasti;
-import lv.venta.model.Veikals_prece;
+
+import lv.venta.model.AutomaticEmails;
+import lv.venta.model.ClientsEmail;
+import lv.venta.model.ContactRequest;
+import lv.venta.model.EmailFromClient;
+import lv.venta.model.Product;
 import lv.venta.service.EmailSendingService;
-import lv.venta.service.IEpastiNoKlientaService;
-import lv.venta.service.IKlientuEpastiService;
+import lv.venta.service.IClientsEmailService;
+import lv.venta.service.IEmailFromClientService;
 
 @RestController
 @RequestMapping("api/contact")
@@ -24,35 +27,36 @@ public class EmailController {
     private final EmailSendingService emailSenderService;
 
     @Autowired
-    private IEpastiNoKlientaService epastiNoKlientaService;
+    private IEmailFromClientService epastiNoKlientaService;
 
     @Autowired
-    private IKlientuEpastiService klientuEpastiService;
+    private IClientsEmailService klientuEpastiService;
 
     @Autowired
-    public EmailController(EmailSendingService emailSenderService, IEpastiNoKlientaService messageService) {
+    public EmailController(EmailSendingService emailSenderService, IEmailFromClientService messageService) {
         this.emailSenderService = emailSenderService;
         this.epastiNoKlientaService = messageService;
     }
 
+    // Epasts, kas tiek saņemts no klienta pēc kontaktu sadaļas aizpildīšanas
     @PostMapping("/send")
-    public ResponseEntity<String> sendContactMessage(@RequestBody ContactRequest contactRequest) {
+    public ResponseEntity<String> sendContactMessage(@RequestBody ContactRequest ContactRequest) {
         try {
-            System.out.println("Received contact request: " + contactRequest);
+            System.out.println("Received contact request: " + ContactRequest);
 
-            EpastiNoKlienta message = new EpastiNoKlienta(
-                    contactRequest.getUserName(),
-                    contactRequest.getUserEmail(),
-                    contactRequest.getTopic(),
-                    contactRequest.getMessageContent());
+            EmailFromClient message = new EmailFromClient(
+                    ContactRequest.getUserName(),
+                    ContactRequest.getUserEmail(),
+                    ContactRequest.getTopic(),
+                    ContactRequest.getMessageContent());
 
             epastiNoKlientaService.saveMessage(message);
             System.out.println("Message saved to database: " + message);
 
             // Send email
-            String subject = "New message from " + contactRequest.getUserName();
-            String body = "Message: " + contactRequest.getMessageContent() + "\n\nFrom: "
-                    + contactRequest.getUserEmail();
+            String subject = "New message from " + ContactRequest.getUserName();
+            String body = "Message: " + ContactRequest.getMessageContent() + "\n\nFrom: "
+                    + ContactRequest.getUserEmail();
             emailSenderService.sendEmail("sparnishoptest@gmail.com", subject, body);
 
             return ResponseEntity.ok("Message sent successfully");
@@ -63,8 +67,9 @@ public class EmailController {
         }
     }
 
+    // CRUD priekš epastiem, kas saņemti no klienta
     @GetMapping("/all")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaAll() {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaAll() {
         try {
             return epastiNoKlientaService.retrieveAll();
         } catch (Exception e) {
@@ -73,7 +78,7 @@ public class EmailController {
     }
 
     @GetMapping("/username/{username}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByUserName(@PathVariable String username) {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByUserName(@PathVariable String username) {
         try {
             return epastiNoKlientaService.retrieveByUserName(username);
         } catch (Exception e) {
@@ -83,7 +88,7 @@ public class EmailController {
     }
 
     @GetMapping("/topic/{topic}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByTopic(@PathVariable String topic) {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByTopic(@PathVariable String topic) {
         try {
             return epastiNoKlientaService.retrieveByTopic(topic);
         } catch (Exception e) {
@@ -93,7 +98,7 @@ public class EmailController {
     }
 
     @GetMapping("/email/{email}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmail(@PathVariable String email) {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByEmail(@PathVariable String email) {
         try {
             return epastiNoKlientaService.retrieveByEmail(email);
         } catch (Exception e) {
@@ -103,7 +108,7 @@ public class EmailController {
     }
 
     @GetMapping("/date/after/{dateTime}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateAfter(@PathVariable LocalDateTime dateTime) {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByEmailDateAfter(@PathVariable LocalDateTime dateTime) {
         try {
             return epastiNoKlientaService.retrieveByDateAfter(dateTime);
         } catch (Exception e) {
@@ -113,7 +118,7 @@ public class EmailController {
     }
 
     @GetMapping("/date/before/{dateTime}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBefore(@PathVariable LocalDateTime dateTime) {
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByEmailDateBefore(@PathVariable LocalDateTime dateTime) {
         try {
             return epastiNoKlientaService.retrieveByDateBefore(dateTime);
         } catch (Exception e) {
@@ -123,7 +128,7 @@ public class EmailController {
     }
 
     @GetMapping("/date/between/{dateTimeStart}{dateTimeEnd}")
-    public ArrayList<EpastiNoKlienta> getEpastiNoKlientaByEmailDateBetween(@PathVariable LocalDateTime dateTimeStart,
+    public ArrayList<EmailFromClient> getEpastiNoKlientaByEmailDateBetween(@PathVariable LocalDateTime dateTimeStart,
             LocalDateTime dateTimeEnd) {
         try {
             return epastiNoKlientaService.retrieveByDateBetween(dateTimeStart, dateTimeEnd);
@@ -133,8 +138,9 @@ public class EmailController {
         }
     }
 
+    // SAglabā klienta epastu, ja ir veikta reģistrēšanās automātiskajiem epastiem
     @PostMapping("/client/email/save")
-    public ResponseEntity<String> submitEmail(@RequestBody KlientuEpasti emailRequest) {
+    public ResponseEntity<String> submitEmail(@RequestBody ClientsEmail emailRequest) {
         try {
             klientuEpastiService.saveEmail(emailRequest);
             return ResponseEntity.ok("Email saved successfully");
@@ -145,76 +151,15 @@ public class EmailController {
         }
     }
 
-    public static class ContactRequest {
-        private String userName;
-        private String userEmail;
-        private String topic;
-        private String messageContent;
-
-        // Getters and Setters
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
-
-        public String getUserEmail() {
-            return userEmail;
-        }
-
-        public void setUserEmail(String userEmail) {
-            this.userEmail = userEmail;
-        }
-
-        public String getTopic() {
-            return topic;
-        }
-
-        public void setTopic(String topic) {
-            this.topic = topic;
-        }
-
-        public String getMessageContent() {
-            return messageContent;
-        }
-
-        public void setMessageContent(String messageContent) {
-            this.messageContent = messageContent;
-        }
-    }
-
+    // Nosūta epastu visiem klientiem, kuru epasti saglabāti automātisko epastu sūtīšanai
     @PostMapping("/send-bulk-email")
-    public ResponseEntity<String> sendBulkEmail(@RequestBody EmailRequest emailRequest) {
+    public ResponseEntity<String> sendBulkEmail(@RequestBody AutomaticEmails automatiskieEpasti) {
         try {
-            emailSenderService.sendEmailToAllClients(emailRequest.getSubject(), emailRequest.getBody());
+            emailSenderService.sendEmailToAllClients(automatiskieEpasti.getSubject(), automatiskieEpasti.getBody());
             return ResponseEntity.ok("Emails sent successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to send emails: " + e.getMessage());
-        }
-    }
-
-    public static class EmailRequest {
-        private String subject;
-        private String body;
-
-        // Getters and setters
-        public String getSubject() {
-            return subject;
-        }
-
-        public void setSubject(String subject) {
-            this.subject = subject;
-        }
-
-        public String getBody() {
-            return body;
-        }
-
-        public void setBody(String body) {
-            this.body = body;
         }
     }
 }

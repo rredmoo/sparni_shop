@@ -1,15 +1,13 @@
-
 package lv.venta.model;
-
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,31 +18,35 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "MainPage_BiedribasDarbojas")
+@Table(name = "INFORMACIJAS_LAPA_INFORMACIJA_TABLE")
 @Entity
-public class MainPage_BiedribaDarbojas {
+public class Information {
 
     @Id
-    @Column(name = "idmpbd")
+    @Column(name = "id_Info")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idmpbd;
+    private int id_info;
 
-    @Column(name = "Nosaukums")
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Column(name = "NOSAUKUMS")
     private String nosaukums;
 
-    @Column(name = "Apraksts")
+    @Size(min = 3, max = 300)
+    @Column(name = "APRAKSTS")
     private String apraksts;
-
-    @Column(name = "DalibniekuSkaits")
-    private int dalibniekuSkaits;
-
-    @OneToMany(mappedBy = "mainPageBiedribasDarbojas")
-    private List<MainPage_AboutUs> mainPage_ParMums;
     
-    public MainPage_BiedribaDarbojas(String nosaukums, String apraksts, int dalibniekuSkaits) {
+    @Size(min = 3, max = 300)
+    @Column(name = "BILDES_URL")
+    private String bildesUrl;
+
+ 
+    public Information(String nosaukums, String apraksts, String bildesUrl) {
         this.nosaukums = nosaukums;
         this.apraksts = apraksts;
-        this.dalibniekuSkaits = dalibniekuSkaits;
+        this.bildesUrl = bildesUrl;
+
     }
 }
+	

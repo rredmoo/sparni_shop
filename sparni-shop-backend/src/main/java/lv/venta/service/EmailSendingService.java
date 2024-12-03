@@ -7,15 +7,15 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import lv.venta.model.KlientuEpasti;
+import lv.venta.model.ClientsEmail;
 
 @Service
 public class EmailSendingService {
     private final JavaMailSender mailSender;
-    private final IKlientuEpastiService klientuEpastiService; 
+    private final IClientsEmailService klientuEpastiService; 
 
     @Autowired //konstruktors, lai definētu final
-    public EmailSendingService(JavaMailSender mailSender, IKlientuEpastiService klientuEpastiService) {
+    public EmailSendingService(JavaMailSender mailSender, IClientsEmailService klientuEpastiService) {
         this.mailSender = mailSender;
         this.klientuEpastiService = klientuEpastiService;
     }
@@ -30,8 +30,8 @@ public class EmailSendingService {
     }
     
     public void sendEmailToAllClients(String subject, String body) throws Exception {
-        ArrayList<KlientuEpasti> allEmails = klientuEpastiService.getAllEmails();
-        for (KlientuEpasti client : allEmails) {
+        ArrayList<ClientsEmail> allEmails = klientuEpastiService.getAllEmails();
+        for (ClientsEmail client : allEmails) {
             sendEmail(client.getEpasts(), subject, body);
         }
     }

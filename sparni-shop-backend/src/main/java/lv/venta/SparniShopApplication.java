@@ -7,24 +7,24 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import lv.venta.model.Atlaide;
-import lv.venta.model.Informacija;
-import lv.venta.model.Kontakti;
+import lv.venta.model.Discount;
+import lv.venta.model.Information;
+import lv.venta.model.Contacts;
 import lv.venta.model.MainPage_BiedribaDarbojas;
-import lv.venta.model.Pasakumi;
-import lv.venta.model.Pasakumi_kategorijas;
-import lv.venta.model.Veikals_kategorijas;
-import lv.venta.model.Veikals_prece;
-import lv.venta.repo.IAtlaideRepo;
-import lv.venta.repo.IInformacijasRepo;
-import lv.venta.repo.IKontaktiRepo;
-import lv.venta.repo.IMainPageBiedribasDarbojasRepo;
-import lv.venta.repo.IPasakumiKategorijasRepo;
-import lv.venta.repo.IPasakumiRepo;
-import lv.venta.repo.IPiegadesVeidiRepo;
-import lv.venta.repo.IPreceRepo;
-import lv.venta.repo.ISamaksasVeidsRepo;
-import lv.venta.repo.IVeikalsKategorijasRepo;
+import lv.venta.model.Event;
+import lv.venta.model.EventsCategory;
+import lv.venta.model.StoreCategory;
+import lv.venta.model.Product;
+import lv.venta.repo.IDiscountRepo;
+import lv.venta.repo.IInformationRepo;
+import lv.venta.repo.IContactRepo;
+import lv.venta.repo.IIMainPageBiedribasDarbojasRepo;
+import lv.venta.repo.IEventCategoryRepo;
+import lv.venta.repo.IEventRepo;
+import lv.venta.repo.IDeliveryOptionsRepo;
+import lv.venta.repo.IProductRepo;
+import lv.venta.repo.IPaymentOptionRepo;
+import lv.venta.repo.IStoreCategoryRepo;
 import lv.venta.repo.security.IAccessUsersRepo;
 import lv.venta.repo.security.IUserAuthorityRepo;
 
@@ -42,13 +42,13 @@ public class SparniShopApplication {
         }
 
         @Bean
-        public CommandLineRunner testDatabase(IAtlaideRepo atlaideRepo, IPasakumiRepo pasakumiRepo,
-                        IPreceRepo preceRepo,
-                        IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
-                        IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
-                        IPasakumiKategorijasRepo pasakumiKategorijasRepo,
-                        IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo,
-                        IInformacijasRepo infoRepo, IAccessUsersRepo accessUsersRepo,
+        public CommandLineRunner testDatabase(IDiscountRepo atlaideRepo, IEventRepo pasakumiRepo,
+                        IProductRepo preceRepo,
+                        IStoreCategoryRepo veikalsKategorijasRepo, IContactRepo kontaktiRepo,
+                        IIMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
+                        IEventCategoryRepo pasakumiKategorijasRepo,
+                        IDeliveryOptionsRepo piegadesVeidiRepo, IPaymentOptionRepo samakasasVeidRepo,
+                        IInformationRepo infoRepo, IAccessUsersRepo accessUsersRepo,
                         IUserAuthorityRepo userAuthorityRepo) {
                 return new CommandLineRunner() {
 
@@ -66,43 +66,43 @@ public class SparniShopApplication {
                                 AccessUsers user2 = new AccessUsers("moderator", encoder.encode("pZh4WH2dXB"), auth2);
                                 accessUsersRepo.save(user2);
 
-                                Atlaide a1 = new Atlaide(70, LocalDateTime.of(2024, 05, 10, 15, 30),
+                                Discount a1 = new Discount(70, LocalDateTime.of(2024, 05, 10, 15, 30),
                                                 LocalDateTime.of(2024, 05, 15, 15, 31));
                                 atlaideRepo.save(a1);
-                                Atlaide a2 = new Atlaide(50, LocalDateTime.of(2024, 05, 10, 15, 30),
+                                Discount a2 = new Discount(50, LocalDateTime.of(2024, 05, 10, 15, 30),
                                                 LocalDateTime.of(2024, 05, 15, 15, 31));
                                 atlaideRepo.save(a2);
-                                Atlaide a3 = new Atlaide(50, LocalDateTime.of(2024, 05, 10, 15, 30),
+                                Discount a3 = new Discount(50, LocalDateTime.of(2024, 05, 10, 15, 30),
                                                 LocalDateTime.of(2024, 05, 15, 15, 31));
                                 atlaideRepo.save(a3);
-                                Atlaide a4 = new Atlaide(50, LocalDateTime.of(2024, 05, 10, 15, 30),
+                                Discount a4 = new Discount(50, LocalDateTime.of(2024, 05, 10, 15, 30),
                                                 LocalDateTime.of(2024, 05, 15, 15, 31));
                                 atlaideRepo.save(a4);
 
-                                Kontakti kontakti1 = new Kontakti("Facebook", "https://www.facebook.com/Ventinpurlad/");
+                                Contacts kontakti1 = new Contacts("Facebook", "https://www.facebook.com/Ventinpurlad/");
                                 kontaktiRepo.save(kontakti1);
 
-                                Kontakti kontakti2 = new Kontakti("tālruņa nr.", "+371 20000001");
+                                Contacts kontakti2 = new Contacts("tālruņa nr.", "+371 20000001");
                                 kontaktiRepo.save(kontakti2);
 
-                                Kontakti kontakti3 = new Kontakti("E-pasts", "ventinpurlad@inbox.lv");
+                                Contacts kontakti3 = new Contacts("E-pasts", "ventinpurlad@inbox.lv");
                                 kontaktiRepo.save(kontakti3);
 
-                                Kontakti kontakti4 = new Kontakti("Adrese", "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
+                                Contacts kontakti4 = new Contacts("Adrese", "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
                                 kontaktiRepo.save(kontakti4);
 
                                 // pasakumu kategorijas
-                                Pasakumi_kategorijas pk1 = new Pasakumi_kategorijas("Nodarbības",
+                                EventsCategory pk1 = new EventsCategory("Nodarbības",
                                                 "Viss par nodarbībām");
                                 pasakumiKategorijasRepo.save(pk1);
-                                Pasakumi_kategorijas pk2 = new Pasakumi_kategorijas("Informācija",
+                                EventsCategory pk2 = new EventsCategory("Informācija",
                                                 "Informatīvie ieraksti");
                                 pasakumiKategorijasRepo.save(pk2);
-                                Pasakumi_kategorijas pk3 = new Pasakumi_kategorijas("Pasākumi", "Par pasākumiem");
+                                EventsCategory pk3 = new EventsCategory("Pasākumi", "Par pasākumiem");
                                 pasakumiKategorijasRepo.save(pk3);
 
                                 // Pasakumi
-                                Pasakumi pasakumi1 = new Pasakumi(
+                                Event pasakumi1 = new Event(
                                                 pk1,
                                                 LocalDateTime.of(2024, 6, 30, 18, 0),
                                                 LocalDateTime.of(2024, 6, 30, 20, 0),
@@ -113,7 +113,7 @@ public class SparniShopApplication {
                                                 "https://oak-islandnc.com/wp-content/uploads/2020/06/Oak-Island-Summer-Concerts.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi1);
-                                Pasakumi pasakumi2 = new Pasakumi(
+                                Event pasakumi2 = new Event(
                                                 pk1,
                                                 LocalDateTime.of(2024, 7, 15, 19, 30),
                                                 LocalDateTime.of(2024, 7, 15, 22, 0),
@@ -124,7 +124,7 @@ public class SparniShopApplication {
                                                 "https://media-cdn.tripadvisor.com/media/photo-s/10/21/7c/c3/pashkevich-jazz-club.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi2);
-                                Pasakumi pasakumi3 = new Pasakumi(
+                                Event pasakumi3 = new Event(
                                                 pk2,
                                                 LocalDateTime.of(2024, 8, 5, 18, 0),
                                                 LocalDateTime.of(2024, 8, 5, 21, 0),
@@ -135,7 +135,7 @@ public class SparniShopApplication {
                                                 "https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi3);
-                                Pasakumi pasakumi4 = new Pasakumi(
+                                Event pasakumi4 = new Event(
                                                 pk2,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
@@ -147,7 +147,7 @@ public class SparniShopApplication {
                                 );
                                 pasakumiRepo.save(pasakumi4);
 
-                                Pasakumi pasakumi5 = new Pasakumi(
+                                Event pasakumi5 = new Event(
                                                 pk3,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
@@ -159,7 +159,7 @@ public class SparniShopApplication {
                                 );
                                 pasakumiRepo.save(pasakumi5);
 
-                                Pasakumi pasakumi6 = new Pasakumi(
+                                Event pasakumi6 = new Event(
                                                 pk3,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
@@ -171,7 +171,7 @@ public class SparniShopApplication {
                                 );
                                 pasakumiRepo.save(pasakumi6);
 
-                                Pasakumi pasakumi7 = new Pasakumi(
+                                Event pasakumi7 = new Event(
                                                 pk1,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
@@ -183,7 +183,7 @@ public class SparniShopApplication {
                                 );
                                 pasakumiRepo.save(pasakumi7);
 
-                                Pasakumi pasakumi8 = new Pasakumi(
+                                Event pasakumi8 = new Event(
                                                 pk1,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
@@ -195,7 +195,7 @@ public class SparniShopApplication {
                                 );
                                 pasakumiRepo.save(pasakumi8);
 
-                                Veikals_prece prece1 = new Veikals_prece(
+                                Product prece1 = new Product(
                                                 "Pilnīgs Gaļaks Cepure",
                                                 "100% cotton",
                                                 74,
@@ -207,7 +207,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece1);
 
-                                Veikals_prece prece2 = new Veikals_prece(
+                                Product prece2 = new Product(
                                                 "Darba cimdi ECO",
                                                 "Labi darba cimdi",
                                                 50,
@@ -219,7 +219,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece2);
 
-                                Veikals_prece prece3 = new Veikals_prece(
+                                Product prece3 = new Product(
                                                 "Ŗudens Šalle",
                                                 "Laba rudens šalle",
                                                 20,
@@ -231,7 +231,7 @@ public class SparniShopApplication {
                                 );
 
                                 preceRepo.save(prece3);
-                                Veikals_prece prece4 = new Veikals_prece(
+                                Product prece4 = new Product(
                                                 "Aproce Latvija",
                                                 "Laba aproce",
                                                 100,
@@ -243,7 +243,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece4);
 
-                                Veikals_prece prece5 = new Veikals_prece(
+                                Product prece5 = new Product(
                                                 "Dzintars S izmērs",
                                                 "Labi saglabājies, apstrādāts dzintars",
                                                 3,
@@ -255,7 +255,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece5);
 
-                                Veikals_prece prece6 = new Veikals_prece(
+                                Product prece6 = new Product(
                                                 "Koka pulkstenis #7",
                                                 "Amatnieku veidots koka pulkstenis",
                                                 1,
@@ -267,7 +267,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece6);
 
-                                Veikals_prece prece7 = new Veikals_prece(
+                                Product prece7 = new Product(
                                                 "Adīts spilvens",
                                                 "100% vilnas spilvens",
                                                 20,
@@ -280,26 +280,26 @@ public class SparniShopApplication {
                                 preceRepo.save(prece7);
 
                                 // Veikals kategorijas
-                                Veikals_kategorijas kategorijas1 = new Veikals_kategorijas(
+                                StoreCategory kategorijas1 = new StoreCategory(
                                                 "Elektropreces",
                                                 "Visa veida Elektropreces"
                                 );
 
                                 veikalsKategorijasRepo.save(kategorijas1);
 
-                                Veikals_kategorijas kategorijas2 = new Veikals_kategorijas(
+                                StoreCategory kategorijas2 = new StoreCategory(
                                                 "Apģērbs",
                                                 "Visa veida apģērbs"
                                 );
                                 veikalsKategorijasRepo.save(kategorijas2);
 
-                                Veikals_kategorijas kategorijas3 = new Veikals_kategorijas(
+                                StoreCategory kategorijas3 = new StoreCategory(
                                                 "Grāmatas",
                                                 "Visa veida grāmatas"
                                 );
                                 veikalsKategorijasRepo.save(kategorijas3);
 
-                                Veikals_kategorijas kategorijas4 = new Veikals_kategorijas(
+                                StoreCategory kategorijas4 = new StoreCategory(
                                                 "Mājai",
                                                 "Viss mājai"
                                 );
@@ -322,21 +322,21 @@ public class SparniShopApplication {
                                                 0);
                                 mainPageBiedribaDarbojasRepo.save(biedribadarbojas4);
 
-                                Informacija info1 = new Informacija("Apmaksas veidi",
+                                Information info1 = new Information("Apmaksas veidi",
                                                 "Iespejams norekinaties ar Swedbank, citadele, u.c.",
                                                 "https://www.hobbyset.lv/images/pages/01ea917331c5fe0bcca60bb1f1f5ab4f.jpg");
                                 infoRepo.save(info1);
-                                Informacija info2 = new Informacija("Naudas un preces atgriešana",
+                                Information info2 = new Information("Naudas un preces atgriešana",
                                                 "Varet nest atpakal uz veikalu!",
                                                 "https://static.vecteezy.com/system/resources/previews/008/013/016/original/payment-by-cash-for-express-delivery-flat-illustration-how-people-deliver-package-and-pay-for-the-delivery-by-cash-human-hand-holds-money-and-pay-for-the-package-courier-get-payment-for-it-vector.jpg");
                                 infoRepo.save(info2);
-                                Informacija info3 = new Informacija("Piegādes veidi", "Pakomāts, uz vietas, kurjers!",
+                                Information info3 = new Information("Piegādes veidi", "Pakomāts, uz vietas, kurjers!",
                                                 "https://st3.depositphotos.com/3332767/33164/i/450/depositphotos_331649150-stock-photo-delivery-guy-holding-a-box.jpg");
                                 infoRepo.save(info3);
-                                Informacija info4 = new Informacija("Mērķis", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                                Information info4 = new Information("Mērķis", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                                                 "https://lpr.gov.lv/wp-content/uploads/2021/biedriba-ceribu-sparni-pieredzes-apmaina-dienas-aprupes-centra-preilos-015-1024x683-1.jpg");
                                 infoRepo.save(info4);
-                                Informacija info5 = new Informacija("Biedrības Struktūra",
+                                Information info5 = new Information("Biedrības Struktūra",
                                                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                                                 "https://muzejs.ventspils.lv/wp-content/uploads/pagast.jpg");
                                 infoRepo.save(info5);

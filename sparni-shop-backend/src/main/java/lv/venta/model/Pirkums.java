@@ -35,7 +35,7 @@ public class Pirkums {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Piegades_Veids", referencedColumnName = "ID_Piegades_Veids")
-    private Piegades_Veids piegadesVeids;
+    private DeliveryOptions piegadesVeids;
 
     @Column(name = "Pirkuma_Datums")
     private LocalDateTime pirkumaDatums;
@@ -48,7 +48,7 @@ public class Pirkums {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idsv", referencedColumnName = "idsv")
-    private Samaksas_veids samaksasVeids;
+    private PaymentOption samaksasVeids;
 
     @Column(name = "Statuss")
     @NotNull
@@ -56,13 +56,13 @@ public class Pirkums {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Pirceja_Dati", referencedColumnName = "ID_Pirceja_Dati")
-    private Pirceja_Dati pircejaDati;
+    private CustomerData pircejaDati;
 
     @OneToOne(mappedBy = "pirkums")
-    private Pirkums_Elements pirkumsElements;
+    private PurchaseElement pirkumsElements;
 
-    public Pirkums(Piegades_Veids piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, Samaksas_veids samaksasVeids, Statuss statuss,
-    Pirceja_Dati pirceja_Dati, Pirkums_Elements pirkums_Elements){
+    public Pirkums(DeliveryOptions piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, PaymentOption samaksasVeids, Statuss statuss,
+    CustomerData pirceja_Dati, PurchaseElement pirkums_Elements){
         setPiegadesVeids(piegades_Veids);
         setPirkumaDatums(pirkumaDatums);
         setPiegadesDetalas(piegadesDetalas);

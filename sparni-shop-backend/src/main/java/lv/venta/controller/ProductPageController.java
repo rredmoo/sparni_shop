@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lv.venta.model.Veikals_prece;
-import lv.venta.service.IPreceCRUDService;
+import lv.venta.model.Product;
+import lv.venta.service.IProductCRUDService;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -26,13 +26,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductPageController {
 
     @Autowired
-    private IPreceCRUDService preceCRUDService;
+    private IProductCRUDService preceCRUDService;
 
     @Autowired
-    private IPreceCRUDService preceService;
+    private IProductCRUDService preceService;
 
     @GetMapping("/all")
-    public ArrayList<Veikals_prece> getPreceCRUDAll() {
+    public ArrayList<Product> getPreceCRUDAll() {
         try {
             return preceCRUDService.retrieveAll();
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class ProductPageController {
     }
 
     @GetMapping("/prece/{id}")
-    public void updatePrece(@PathVariable int id, @RequestBody Veikals_prece prece) {
+    public void updatePrece(@PathVariable int id, @RequestBody Product prece) {
         try {
             preceService.updateById(id, prece);
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class ProductPageController {
     }
 
     @GetMapping("/prece/all")
-    public ArrayList<Veikals_prece> getAllPrece() {
+    public ArrayList<Product> getAllPrece() {
         try {
             return preceService.retrieveAll();
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class ProductPageController {
     }
 
     @PostMapping("/prece/create")
-    public void createPrece(@RequestBody Veikals_prece prece) {
+    public void createPrece(@RequestBody Product prece) {
         try {
             preceService.create(prece);
 
@@ -81,7 +81,7 @@ public class ProductPageController {
     }
 
     @GetMapping("/price/asc")
-    public ArrayList<Veikals_prece> getProductsAsc() {
+    public ArrayList<Product> getProductsAsc() {
         try {
             return preceService.retrieveAllAsc();
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class ProductPageController {
     }
 
     @GetMapping("/price/desc")
-    public ArrayList<Veikals_prece> getProductsDsc() {
+    public ArrayList<Product> getProductsDsc() {
         try {
             return preceService.retrieveAllDsc();
         } catch (Exception e) {

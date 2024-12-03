@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.model.MainPage_BiedribaDarbojas;
-import lv.venta.repo.IMainPageBiedribasDarbojasRepo;
+import lv.venta.repo.IIMainPageBiedribasDarbojasRepo;
 import lv.venta.service.IMainPageBiedribasDarbojasCRUDService;
 
 @Service
@@ -18,9 +18,9 @@ public class MainPageBiedribasDarbojasServiceImpl implements IMainPageBiedribasD
     private static final Logger logger = LoggerFactory.getLogger(MainPageBiedribasDarbojasServiceImpl.class);
 
     @Autowired
-    private IMainPageBiedribasDarbojasRepo repository;
+    private IIMainPageBiedribasDarbojasRepo repository;
 
-    public MainPageBiedribasDarbojasServiceImpl(IMainPageBiedribasDarbojasRepo repository) {
+    public MainPageBiedribasDarbojasServiceImpl(IIMainPageBiedribasDarbojasRepo repository) {
         this.repository = repository;
     }
 

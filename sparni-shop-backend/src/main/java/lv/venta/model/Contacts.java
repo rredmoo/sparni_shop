@@ -20,31 +20,28 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "MainPage_BiedribasDarbojas")
+@Table(name = "Kontakti")
 @Entity
-public class MainPage_BiedribaDarbojas {
+public class Contacts {
 
     @Id
-    @Column(name = "idmpbd")
+    @Column(name = "idk")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.NONE)
-    private int idmpbd;
+    private int idk;
 
     @Column(name = "Nosaukums")
     private String nosaukums;
 
-    @Column(name = "Apraksts")
-    private String apraksts;
+    @Column(name = "Informacija")
+    private String informacija;
 
-    @Column(name = "DalibniekuSkaits")
-    private int dalibniekuSkaits;
 
-    @OneToMany(mappedBy = "mainPageBiedribasDarbojas")
+    @OneToMany(mappedBy = "kontakti")
     private List<MainPage_AboutUs> mainPage_ParMums;
     
-    public MainPage_BiedribaDarbojas(String nosaukums, String apraksts, int dalibniekuSkaits) {
+    public Contacts(String nosaukums, String informacija) {
         this.nosaukums = nosaukums;
-        this.apraksts = apraksts;
-        this.dalibniekuSkaits = dalibniekuSkaits;
+        this.informacija = informacija;
     }
 }

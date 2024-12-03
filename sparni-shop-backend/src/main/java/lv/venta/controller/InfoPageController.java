@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lv.venta.model.Informacija;
+import lv.venta.model.Information;
 
-import lv.venta.service.IInformacijaService;
+import lv.venta.service.IInformationService;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -22,10 +22,10 @@ import lv.venta.service.IInformacijaService;
 public class InfoPageController {
 
     @Autowired
-    private IInformacijaService crudService;
+    private IInformationService crudService;
 
 	@GetMapping("/all")
-    public ArrayList<Informacija> getInfoAll() {
+    public ArrayList<Information> getInfoAll() {
         try {
             return crudService.retrieveAll();
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class InfoPageController {
 
 
     @GetMapping("/all/{id}") 
-	public Informacija getInformacijaById(@PathVariable int id) {
+	public Information getInformacijaById(@PathVariable int id) {
 		try {
 			return crudService.retrieveById(id);
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class InfoPageController {
 
  
 	@PostMapping("/add")
-	public void postInformacijaAdd(@Valid Informacija informacija) {
+	public void postInformacijaAdd(@Valid Information informacija) {
 		try{
 			crudService.create(informacija);
 		}catch (Exception e){
@@ -65,7 +65,7 @@ public class InfoPageController {
 	}
 
 	@PostMapping("/update/{id}")
-	public void postInformacijaUpdateById(@PathVariable int id, @Valid Informacija informacija) {
+	public void postInformacijaUpdateById(@PathVariable int id, @Valid Information informacija) {
 		
 			try {
 				crudService.updateById(id,informacija);
