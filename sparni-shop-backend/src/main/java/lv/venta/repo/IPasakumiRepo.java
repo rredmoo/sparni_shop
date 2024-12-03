@@ -9,11 +9,16 @@ import org.springframework.data.repository.CrudRepository;
 import lv.venta.model.Pasakumi;
 
 public interface IPasakumiRepo extends CrudRepository<Pasakumi, Integer> {
-    
+
     Pasakumi findByIdPasakumi(int idPasakumi);
+
     ArrayList<Pasakumi> findByIdPasakumiKategorijas_Idpk(int idpk);
-    ArrayList<Pasakumi> findByNosaukumsContainingIgnoreCaseOrAprakstsContainingIgnoreCase(String nosaukums, String apraksts);
+
+  
+     ArrayList<Pasakumi> findByNosaukumsLvContainingIgnoreCaseOrNosaukumsEnContainingIgnoreCase(String nosaukumsLv, String nosaukumsEn);
+   
     ArrayList<Pasakumi> findBySakumaDatumsBetween(LocalDateTime startOfDay, LocalDateTime endOfDay);
 
     
 }
+

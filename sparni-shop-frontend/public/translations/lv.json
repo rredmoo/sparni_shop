@@ -68,7 +68,16 @@
            "symbol": "$",
            "format": "${{value}}"
          }
-       }
+       },
+
+       "category": {
+        "all": "Viss"
+      },
+
+      "datePicker" : "Meklēt pēc datuma...",
+
+      "searchBarPasakumi" : "Meklēt pasākumu..."
+    
       
   }
   

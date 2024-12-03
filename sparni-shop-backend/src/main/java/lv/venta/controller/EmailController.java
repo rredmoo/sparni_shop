@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import lv.venta.model.EpastiNoKlienta;
 import lv.venta.model.KlientuEpasti;
-import lv.venta.model.Veikals_prece;
 import lv.venta.service.EmailSendingService;
 import lv.venta.service.IEpastiNoKlientaService;
 import lv.venta.service.IKlientuEpastiService;

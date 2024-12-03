@@ -21,10 +21,32 @@ public class pasakumiServiceImpl implements IPasakumiCRUDService {
     private IPasakumiRepo pasakumuRepo;
 
     @Override
+    public ArrayList<Pasakumi> getLocalizedPasakumi(ArrayList<Pasakumi> pasakumi, String language) {
+        ArrayList<Pasakumi> localizedList = new ArrayList<>();
+        for (Pasakumi pasakums : pasakumi) {
+           
+            Pasakumi localizedPasakums = new Pasakumi(
+                pasakums.getIdPasakumiKategorijas(),
+                pasakums.getSakumaDatums(),
+                pasakums.getBeiguDatums(),
+                language.equals("lv") ? pasakums.getNosaukumsLv() : pasakums.getNosaukumsEn(),
+                language.equals("lv") ? pasakums.getNosaukumsLv() : pasakums.getNosaukumsEn(),
+                pasakums.getLaiks(),
+                pasakums.getVieta(),
+                language.equals("lv") ? pasakums.getAprakstsLv() : pasakums.getAprakstsEn(),
+                language.equals("lv") ? pasakums.getAprakstsLv() : pasakums.getAprakstsEn(),
+                pasakums.getBildesUrl()
+            );
+            localizedList.add(localizedPasakums);
+        }
+        return localizedList;
+    }
+
+    @Override
     public void create(Pasakumi pasakums) {
         try {
             pasakumuRepo.save(pasakums);
-            logger.info("Pasākums ar nosaukumu '{}' veiksmīgi izveidots.", pasakums.getNosaukums());
+            logger.info("Pasākums ar nosaukumu '{}' veiksmīgi izveidots.", pasakums.getNosaukumsLv());
         } catch (Exception e) {
             logger.error("Kļūda izveidojot pasākumu: {}", e.getMessage());
             throw new RuntimeException("Notikusi kļūda, mēģinot izveidot pasākumu: " + e.getMessage(), e);
@@ -69,10 +91,12 @@ public class pasakumiServiceImpl implements IPasakumiCRUDService {
 
             pasakumsForUpdate.setSakumaDatums(pasakums.getSakumaDatums());
             pasakumsForUpdate.setBeiguDatums(pasakums.getBeiguDatums());
-            pasakumsForUpdate.setNosaukums(pasakums.getNosaukums());
+            pasakumsForUpdate.setNosaukumsEn(pasakums.getNosaukumsEn());
+            pasakumsForUpdate.setNosaukumsLv(pasakums.getNosaukumsLv());
             pasakumsForUpdate.setLaiks(pasakums.getLaiks());
             pasakumsForUpdate.setVieta(pasakums.getVieta());
-            pasakumsForUpdate.setApraksts(pasakums.getApraksts());
+            pasakumsForUpdate.setAprakstsEn(pasakums.getAprakstsEn());
+            pasakumsForUpdate.setAprakstsLv(pasakums.getAprakstsLv());
             pasakumsForUpdate.setBildesUrl(pasakums.getBildesUrl());
 
             pasakumuRepo.save(pasakumsForUpdate);

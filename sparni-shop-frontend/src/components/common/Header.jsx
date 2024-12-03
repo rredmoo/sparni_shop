@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 function Header() {
   const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState('lv');
-  const [selectedCurrency] = useState('EUR'); // Only EUR will be used
+  const [selectedCurrency] = useState('EUR');
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('preferredLanguage');
@@ -18,7 +18,7 @@ function Header() {
 
     const storedCurrency = localStorage.getItem('preferredCurrency');
     if (storedCurrency) {
-      // We keep the currency as EUR, no need to update state for currency
+      
     }
   }, [i18n]);
 
@@ -45,7 +45,7 @@ function Header() {
           className="search-input"
         />
         <div className="right-side">
-          {/* Language Switcher */}
+        
           <select
             name="language"
             id="language"
@@ -56,12 +56,12 @@ function Header() {
             <option value="en">EN</option>
           </select>
 
-          {/* Currency (EUR only) */}
+         
           <select
             name="currency"
             id="currency"
             value={selectedCurrency}
-            disabled // Disable the currency selection as only EUR is allowed
+            disabled 
           >
             <option value="EUR">EUR</option>
           </select>

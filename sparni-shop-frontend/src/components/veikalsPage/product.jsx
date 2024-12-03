@@ -8,29 +8,6 @@ function Product({ sortOrder, numProducts }) {
   const [error, setError] = useState(null);
   const { t } = useTranslation();
   
-  const [selectedCurrency, setSelectedCurrency] = useState('EUR'); 
-  const exchangeRate = 1.2; 
-
-  
-  useEffect(() => {
-    const storedCurrency = localStorage.getItem('preferredCurrency');
-    if (storedCurrency) {
-      setSelectedCurrency(storedCurrency);
-    }
-
-    
-    const handleCurrencyChange = () => {
-      const updatedCurrency = localStorage.getItem('preferredCurrency');
-      setSelectedCurrency(updatedCurrency); 
-    };
-
-    window.addEventListener('currencyChange', handleCurrencyChange);
-
-    
-    return () => {
-      window.removeEventListener('currencyChange', handleCurrencyChange);
-    };
-  }, []);
 
   
   useEffect(() => {
@@ -62,12 +39,7 @@ function Product({ sortOrder, numProducts }) {
   }, [sortOrder, numProducts, t]);
 
   
-  const convertPrice = (price, currency) => {
-    if (currency === 'USD') {
-      return price * exchangeRate;
-    }
-    return price;
-  };
+
 
   return (
     <>
@@ -86,8 +58,8 @@ function Product({ sortOrder, numProducts }) {
 
                 
                 <p>{t('priceProduct', {
-                  value: convertPrice(prece.cena, selectedCurrency),
-                  currency: selectedCurrency
+                  
+    
                 })}</p>
               </div>
             </div>

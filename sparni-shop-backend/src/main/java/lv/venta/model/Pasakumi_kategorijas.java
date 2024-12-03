@@ -22,27 +22,32 @@ import lombok.ToString;
 @Table(name = "PASAKUMI_KATEGORIJAS_TABLE")
 @Entity
 public class Pasakumi_kategorijas {
-	
 
-	@Id
-	@Column(name = "idpk")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)
-	private int idpk;
-	    
-	@Column(name="NOSAUKUMS")
-	private String nosaukums;
-	    
-	@Column(name="APRAKSTS")
-	private String apraksts;
+    @Id
+    @Column(name = "idpk")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(value = AccessLevel.NONE)
+    private int idpk;
 
-	
-	@OneToMany(mappedBy = "idPasakumiKategorijas")
+    @Column(name = "NOSAUKUMS_LV")
+    private String nosaukumsLv; // Latvian name
+
+    @Column(name = "NOSAUKUMS_EN")
+    private String nosaukumsEn; // English name
+
+    @Column(name = "APRAKSTS_LV")
+    private String aprakstsLv; // Latvian description
+
+    @Column(name = "APRAKSTS_EN")
+    private String aprakstsEn; // English description
+
+    @OneToMany(mappedBy = "idPasakumiKategorijas")
     private List<Pasakumi> pasakumi;
-	
-	public Pasakumi_kategorijas(String nosaukums, String apraksts) {
-	    setNosaukums(nosaukums);
-	    setApraksts(apraksts);
-	}
 
+    public Pasakumi_kategorijas(String nosaukumsLv, String nosaukumsEn, String aprakstsLv, String aprakstsEn) {
+        setNosaukumsLv(nosaukumsLv);
+        setNosaukumsEn(nosaukumsEn);
+        setAprakstsLv(aprakstsLv);
+        setAprakstsEn(aprakstsEn);
+    }
 }

@@ -23,5 +23,8 @@ public interface IPasakumiCRUDService {
 	ArrayList<Pasakumi> retrieveByCategoryId(int categoryId) throws Exception;
 
 	ArrayList<Pasakumi> retrieveByLaiks(LocalDateTime startOfDay, LocalDateTime endOfDay) throws Exception;
+
+	ArrayList<Pasakumi> getLocalizedPasakumi(ArrayList<Pasakumi> pasakumi, String language);
 }
 
+ 

@@ -92,13 +92,13 @@ public class SparniShopApplication {
                                 kontaktiRepo.save(kontakti4);
 
                                 // pasakumu kategorijas
-                                Pasakumi_kategorijas pk1 = new Pasakumi_kategorijas("Nodarbības",
-                                                "Viss par nodarbībām");
+                                Pasakumi_kategorijas pk1 = new Pasakumi_kategorijas("Nodarbības","Classes",
+                                                "Viss par nodarbībām","All about classes");
                                 pasakumiKategorijasRepo.save(pk1);
-                                Pasakumi_kategorijas pk2 = new Pasakumi_kategorijas("Informācija",
-                                                "Informatīvie ieraksti");
+                                Pasakumi_kategorijas pk2 = new Pasakumi_kategorijas("Informācija","Information",
+                                                "Informatīvie ieraksti","Informational purposes");
                                 pasakumiKategorijasRepo.save(pk2);
-                                Pasakumi_kategorijas pk3 = new Pasakumi_kategorijas("Pasākumi", "Par pasākumiem");
+                                Pasakumi_kategorijas pk3 = new Pasakumi_kategorijas("Pasākumi","Events", "Par pasākumiem","About events");
                                 pasakumiKategorijasRepo.save(pk3);
 
                                 // Pasakumi
@@ -106,10 +106,10 @@ public class SparniShopApplication {
                                                 pk1,
                                                 LocalDateTime.of(2024, 6, 30, 18, 0),
                                                 LocalDateTime.of(2024, 6, 30, 20, 0),
-                                                "Summer Concert",
+                                                "Summer Concert","Vasaras Koncerts",
                                                 LocalDateTime.of(2024, 6, 30, 19, 0),
                                                 "Riga Concert Hall",
-                                                "Join us for an evening of music!",
+                                                "Join us for an evening of music!","Pievienojies mums uzmuziku!",
                                                 "https://oak-islandnc.com/wp-content/uploads/2020/06/Oak-Island-Summer-Concerts.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi1);
@@ -117,10 +117,10 @@ public class SparniShopApplication {
                                                 pk1,
                                                 LocalDateTime.of(2024, 7, 15, 19, 30),
                                                 LocalDateTime.of(2024, 7, 15, 22, 0),
-                                                "Summer Jazz Night",
+                                                "Summer Jazz Night","Vasaraks džeza nakts",
                                                 LocalDateTime.of(2024, 7, 15, 20, 0),
                                                 "Riga Jazz Club",
-                                                "Enjoy an evening of smooth jazz melodies!",
+                                                "Enjoy an evening of smooth jazz melodies!","Izbaudi džeza melodijas!",
                                                 "https://media-cdn.tripadvisor.com/media/photo-s/10/21/7c/c3/pashkevich-jazz-club.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi2);
@@ -128,10 +128,10 @@ public class SparniShopApplication {
                                                 pk2,
                                                 LocalDateTime.of(2024, 8, 5, 18, 0),
                                                 LocalDateTime.of(2024, 8, 5, 21, 0),
-                                                "Art Exhibition",
+                                                "Art Exhibition","Mākslas izstāde",
                                                 LocalDateTime.of(2024, 8, 5, 19, 0),
                                                 "Riga Art Gallery",
-                                                "Explore captivating artworks by local artists.,Explore captivating artworks by local artists",
+                                                "Explore captivating artworks by local artists.,Explore captivating artworks by local artists","izbaudi makslu ar maklsiniekiem",
                                                 "https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi3);
@@ -139,10 +139,10 @@ public class SparniShopApplication {
                                                 pk2,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
-                                                "Food Festival",
+                                                "Food Festival","uzēdam festivāls",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Riga Central Park",
-                                                "Savor delicious dishes from around the world!",
+                                                "Savor delicious dishes from around the world!","nac uzēd ar draugiem!",
                                                 "https://us.123rf.com/450wm/ynos999/ynos9991909/ynos999190900126/142675619-city-riga-latvia-republic-riga-central-park-with-tourists-and-flowers-resting-place-18-aug-2019.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi4);
@@ -151,10 +151,10 @@ public class SparniShopApplication {
                                                 pk3,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
-                                                "Zeķu adīšana",
+                                                "Sock making", "Zeķu adīšana",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Majas",
-                                                "Stradajam un adam!Stradajam un adam!",
+                                                "come and work for socks!","Stradajam un adam!Stradajam un adam!",
                                                 "https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi5);
@@ -163,10 +163,10 @@ public class SparniShopApplication {
                                                 pk3,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
-                                                "Maratons",
+                                                "Run bro", "Maratons",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Lemberga hūte",
-                                                "Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!",
+                                                "rush b!","skrienam b",
                                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s"
                                 );
                                 pasakumiRepo.save(pasakumi6);
@@ -175,10 +175,10 @@ public class SparniShopApplication {
                                                 pk1,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
-                                                "Pikniks",
+                                                "Picnic","Pikniks",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
-                                                "Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!",
+                                                "Eat nam nam","ēdam!!!!!!!!!!!",
                                                 "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi7);
@@ -187,10 +187,10 @@ public class SparniShopApplication {
                                                 pk1,
                                                 LocalDateTime.of(2024, 9, 10, 17, 0),
                                                 LocalDateTime.of(2024, 9, 10, 21, 0),
-                                                "Radošās darbnīcas",
+                                                "BadEsArEnglishIdk","Radošās darbnīcas",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
-                                                "Radoši darbi ar zeķēm!Radoši darbi ar zeķēm!",
+                                                "socks as entertainment","Radoši darbi ar zeķēm!Radoši darbi ar zeķēm!",
                                                 "https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi8);

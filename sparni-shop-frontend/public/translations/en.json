@@ -63,6 +63,7 @@
        "contacts" : "Contacts",
 
        "priceProduct": "{{value, currency}}",
+       
        "currency": {
          "EUR": {
            "symbol": "€",
@@ -72,11 +73,19 @@
            "symbol": "$",
            "format": "${{value}}"
          }
-       }
+       },
+       
+       
+        "category": {
+          "all": "All"
+        },
 
+        "datePicker" : "Search by date...",
 
+        "searchBarPasakumi" : "Searc for events..."
 
     
+      
     
   }
   

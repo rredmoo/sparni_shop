@@ -18,6 +18,31 @@ public class PasakumiKategorijasServiceImpl implements IPasakumiKategorijasServi
 
     @Autowired
     private IPasakumiKategorijasRepo kategorijasRepo;
+ 
+    @Override
+public ArrayList<Pasakumi_kategorijas> retrieveLocalizedCategories(String language) {
+    ArrayList<Pasakumi_kategorijas> localizedList = new ArrayList<>();
+    try {
+        ArrayList<Pasakumi_kategorijas> categories = (ArrayList<Pasakumi_kategorijas>) kategorijasRepo.findAll();
+
+        for (Pasakumi_kategorijas category : categories) {
+            // Create a new localized instance of Pasakumi_kategorijas
+            Pasakumi_kategorijas localizedCategory = new Pasakumi_kategorijas(
+                language.equals("lv") ? category.getNosaukumsLv() : category.getNosaukumsEn(),
+                language.equals("lv") ? category.getNosaukumsLv() : category.getNosaukumsEn(),
+                language.equals("lv") ? category.getAprakstsLv() : category.getAprakstsEn(),
+                language.equals("lv") ? category.getAprakstsLv() : category.getAprakstsEn()
+            );
+
+            localizedList.add(localizedCategory);
+        }
+    } catch (Exception e) {
+        logger.error("Error localizing categories: {}", e.getMessage());
+        throw new RuntimeException("Failed to localize categories: " + e.getMessage(), e);
+    }
+
+    return localizedList;
+}
 
     @Override
     public ArrayList<Pasakumi_kategorijas> retrieveAllCategories() {
@@ -34,4 +59,6 @@ public class PasakumiKategorijasServiceImpl implements IPasakumiKategorijasServi
             throw new RuntimeException("Notikusi kļūda, mēģinot iegūt kategorijas: " + e.getMessage(), e);
         }
     }
+
+  
 }

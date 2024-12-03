@@ -118,10 +118,10 @@ public class PasakumuPageController {
     }
 
 	@GetMapping("/search")
-	public ArrayList<Pasakumi> searchEvents(@RequestParam("term") String term) {
+	public ArrayList<Pasakumi> searchEvents(String term) {
     try {
        
-        ArrayList<Pasakumi> events = pasakumiRepo.findByNosaukumsContainingIgnoreCaseOrAprakstsContainingIgnoreCase(term, term);
+        ArrayList<Pasakumi> events = pasakumiRepo.findByNosaukumsLvContainingIgnoreCaseOrNosaukumsEnContainingIgnoreCase(term, term);
 
         
         return new ArrayList<>(events);

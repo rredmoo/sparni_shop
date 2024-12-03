@@ -14,10 +14,10 @@ function PasakumsDetail() {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await API.get(`/pasakumi/all/${idPasakumi}`); // Use the API instance for requests
+        const response = await API.get(`/pasakumi/all/${idPasakumi}`); 
         if (!response.ok) throw new Error('Event not found'); 
 
-        setEvent(response.data); // Use `response.data` for axios response
+        setEvent(response.data);
       } catch (err) {
         setError(err.message); 
       } finally {

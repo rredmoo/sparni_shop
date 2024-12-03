@@ -2,6 +2,7 @@ package lv.venta.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -33,8 +34,11 @@ public class Pasakumi {
     @Column(name = "BEIGU_DATUMS")
     private LocalDateTime beiguDatums;
 
-    @Column(name = "NOSAUKUMS")
-    private String nosaukums;
+    @Column(name = "NOSAUKUMS_EN")
+    private String nosaukumsEn;
+
+    @Column(name = "NOSAUKUMS_LV")
+    private String nosaukumsLv;
 
     @Column(name = "LAIKS")
     private LocalDateTime laiks;
@@ -42,8 +46,11 @@ public class Pasakumi {
     @Column(name = "VIETA")
     private String vieta;
 
-    @Column(name = "APRAKSTS")
-    private String apraksts;
+    @Column(name = "APRAKSTS_EN")
+    private String aprakstsEn;
+
+    @Column(name = "APRAKSTS_LV")
+    private String aprakstsLv;
 
     @Column(name = "BILDES_URL")
     private String bildesUrl;
@@ -51,15 +58,28 @@ public class Pasakumi {
     @OneToMany(mappedBy = "pasakumi")
     private List<MainPage_ParMums> mainPage_ParMums;
 
-    public Pasakumi(Pasakumi_kategorijas kategorija, LocalDateTime sakumaDatums, LocalDateTime beiguDatums, String nosaukums, LocalDateTime laiks,
-                    String vieta, String apraksts, String bildesUrl) {
+    public Pasakumi(Pasakumi_kategorijas kategorija, LocalDateTime sakumaDatums, LocalDateTime beiguDatums, 
+                    String nosaukumsEn, String nosaukumsLv, LocalDateTime laiks, String vieta, 
+                    String aprakstsEn, String aprakstsLv, String bildesUrl) {
         setIdPasakumiKategorijas(kategorija);
         setSakumaDatums(sakumaDatums);
         setBeiguDatums(beiguDatums);
-        setNosaukums(nosaukums);
+        setNosaukumsEn(nosaukumsEn);
+        setNosaukumsLv(nosaukumsLv);
         setLaiks(laiks);
         setVieta(vieta);
-        setApraksts(apraksts);
+        setAprakstsEn(aprakstsEn);
+        setAprakstsLv(aprakstsLv);
         setBildesUrl(bildesUrl);
     }
+
+    
+    public String getLocalizedNosaukums(Locale locale) {
+        return locale.getLanguage().equals("lv") ? nosaukumsLv : nosaukumsEn;
+    }
+
+    public String getLocalizedApraksts(Locale locale) {
+        return locale.getLanguage().equals("lv") ? aprakstsLv : aprakstsEn;
+    }
+     
 }

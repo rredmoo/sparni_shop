@@ -14,7 +14,7 @@ function KontaktiSave() {
     <>
       <Header />
       <h1>{t('contacts')}</h1>
-      <p>Nepiciešams pievienot kontaktus</p>
+      <p>Nepieciešams pievienot kontaktus</p>
       <Footer/>
     </>
   );
