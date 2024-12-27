@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AdminPanel.css';
 import EmailServiceConfig from '../../config/AdminPageConfig';
 import SendBulkEmail from './SendBulkEmail';
+import SendSelectedEmail from './SendSelectedEmail';
 
 const AdminPanel = () => {
     const [epastiNoKlientiem, setEpastiNoKlientiem] = useState([]); //epasti
@@ -64,6 +65,11 @@ const AdminPanel = () => {
         );
         setFilteredEpasti(filtered);
     }, [searchQuery, epastiNoKlientiem]); // Re-run filter on search change
+
+    useEffect(() => {
+
+    }
+);
 
     return (
         <div className="admin-panel">
@@ -129,7 +135,11 @@ const AdminPanel = () => {
                     </table>
                 </section>
                 <br></br>
+                <h1>Bulk Email</h1>
                 <SendBulkEmail />
+
+                <h1>Selected Email</h1>
+                <SendSelectedEmail />
             </main>
         </div>
     );

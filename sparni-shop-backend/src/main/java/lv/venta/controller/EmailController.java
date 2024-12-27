@@ -17,6 +17,7 @@ import lv.venta.service.EmailSendingService;
 import lv.venta.service.IClientsEmailService;
 import lv.venta.service.IEmailFromClientService;
 
+
 @RestController
 @RequestMapping("api/contact")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -162,4 +163,17 @@ public class EmailController {
                     .body("Failed to send emails: " + e.getMessage());
         }
     }
+
+    // Parāda visus reģistrētos klientu epastus
+    @GetMapping("/show-all-client-emails")
+    public ArrayList<ClientsEmail> klientuEpasti() {
+        try {
+            ArrayList<ClientsEmail> allClientEmails = klientuEpastiService.getAllEmails();
+            return allClientEmails;
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
+    
 }

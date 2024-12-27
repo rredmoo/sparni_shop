@@ -29,6 +29,7 @@ public class EmailSendingService {
         mailSender.send(message);
     }
     
+    // Spārni --> all clients
     public void sendEmailToAllClients(String subject, String body) throws Exception {
         ArrayList<ClientsEmail> allEmails = klientuEpastiService.getAllEmails();
         for (ClientsEmail client : allEmails) {
