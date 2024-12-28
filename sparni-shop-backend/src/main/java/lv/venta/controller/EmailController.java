@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import lv.venta.model.AutomaticEmails;
 import lv.venta.model.ClientsEmail;
@@ -16,7 +19,6 @@ import lv.venta.model.Product;
 import lv.venta.service.EmailSendingService;
 import lv.venta.service.IClientsEmailService;
 import lv.venta.service.IEmailFromClientService;
-
 
 @RestController
 @RequestMapping("api/contact")
@@ -152,11 +154,34 @@ public class EmailController {
         }
     }
 
-    // Nosūta epastu visiem klientiem, kuru epasti saglabāti automātisko epastu sūtīšanai
+    // Nosūta epastu visiem klientiem, kuru epasti saglabāti automātisko epastu
+    // sūtīšanai
     @PostMapping("/send-bulk-email")
     public ResponseEntity<String> sendBulkEmail(@RequestBody AutomaticEmails automatiskieEpasti) {
         try {
             emailSenderService.sendEmailToAllClients(automatiskieEpasti.getSubject(), automatiskieEpasti.getBody());
+            return ResponseEntity.ok("Emails sent successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to send emails: " + e.getMessage());
+        }
+    }
+
+    // Nosūta epastu visiem klientiem, kuru epasti saglabāti automātisko epastu
+    // sūtīšanai
+    @PostMapping("/send-selected-email")
+    public ResponseEntity<String> sendSelectedEmail(@RequestBody Map<String, Object> requestData) {
+        try {
+            String subject = (String) requestData.get("subject");
+            String body = (String) requestData.get("body");
+            List<String> selectedEmails = (List<String>) requestData.get("selectedEmails");
+
+            List<ClientsEmail> klientuEpasti = selectedEmails.stream()
+                    .map(email -> new ClientsEmail(email))
+                    .collect(Collectors.toList());
+
+            // Send email
+            emailSenderService.sendEmailToSelectedClients(subject, body, new ArrayList<>(klientuEpasti));
             return ResponseEntity.ok("Emails sent successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -173,7 +198,7 @@ public class EmailController {
         } catch (Exception e) {
             return null;
         }
-        
+
     }
-    
+
 }

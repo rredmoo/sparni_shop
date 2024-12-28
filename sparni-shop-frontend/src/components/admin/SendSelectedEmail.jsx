@@ -1,15 +1,54 @@
 import { useEffect, useState } from "react";
 import EmailConfig from "../../config/EmailConfig";
+import API from "../../Api";
 
 function SendSelectedEmail() {
   const [emails, setEmails] = useState([]);
   const [selectedEmails, setSelectedEmails] = useState([]);
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const emailData = {
+      subject,
+      body,
+      selectedEmails,
+    };
+
+    console.log('Sending email data:', emailData);
+
+
+
+    try {
+      const response = await API.post(
+        "/api/contact/send-selected-email",
+        emailData
+      );
+      if (response.status === 200) {
+        alert("Emails sent successfully");
+        setSubject("");
+        setBody("");
+      }
+    } catch (error) {
+      console.error("Error sending emails", error);
+      alert(
+        "Failed to send emails: " +
+          (error.response?.data?.message || error.message)
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await EmailConfig.getSavedEmails(); 
+        const response = await EmailConfig.getSavedEmails();
         if (Array.isArray(response.data)) {
           setEmails(response.data);
         } else {
@@ -44,8 +83,13 @@ function SendSelectedEmail() {
       <ul>
         {selectedEmails.map((email, index) => (
           <li key={index}>
-            {email} 
-            <button onClick={() => handleRemoveEmail(email)} style={{ marginLeft: '10px' }}>Remove</button>
+            {email}
+            <button
+              onClick={() => handleRemoveEmail(email)}
+              style={{ marginLeft: "10px" }}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>
@@ -56,8 +100,10 @@ function SendSelectedEmail() {
 
   return (
     <div>
-      <select onChange={handleEmailSelection} value="">
-        <option value="" disabled>Select an email</option>
+      <select onChange={handleEmailSelection} value="" disabled={loading}>
+        <option value="" disabled>
+          Select an email
+        </option>
         {emails.length > 0 ? (
           emails.map((email) => (
             <option key={email.ide} value={email.epasts}>
@@ -72,6 +118,27 @@ function SendSelectedEmail() {
       <div>
         <h3>Selected Emails:</h3>
         {renderSelectedEmails()}
+      </div>
+
+      <div className="bulk-email">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            placeholder="Email subject"
+            required
+          />
+          <textarea
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            placeholder="Email body"
+            required
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send Emails"}
+          </button>
+        </form>
       </div>
     </div>
   );

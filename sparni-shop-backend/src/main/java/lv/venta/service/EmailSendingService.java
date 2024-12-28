@@ -36,5 +36,13 @@ public class EmailSendingService {
             sendEmail(client.getEpasts(), subject, body);
         }
     }
+
+    // Spārni --> some clients
+    public void sendEmailToSelectedClients(String subject, String body, ArrayList<ClientsEmail> klientuEpasti){
+        for (ClientsEmail client : klientuEpasti) {
+            System.out.println(client.getEpasts());
+            sendEmail(client.getEpasts(), subject, body);
+        }
+    }
 }
 
