@@ -8,9 +8,8 @@ footer {
 
 footer nav a {
   margin: 0 15px;
-  color: #e5e5e5;
+  color: #8f8f8f;
   text-decoration: none;
-  font-weight: bold;
 }
 
 footer nav a:hover {
@@ -29,22 +28,34 @@ hr {
   list-style: none;
   padding: 0;
   margin: 2rem 0;
+  gap: 2rem;
 }
 
 .icon-list ul li {
-  margin: 0 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .icon-list ul li img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.icon-list ul li:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 2rem;
 }
 
 .footer-links ul {
   list-style: none;
   padding: 0;
-  margin: 2rem 0;
-  text-align: center;
 }
 
 .footer-links ul li {
@@ -52,7 +63,7 @@ hr {
 }
 
 .footer-links ul li a {
-  color: #ffffff;
+  color: #e5e5e5;
   text-decoration: none;
   font-size: 0.9rem;
 }

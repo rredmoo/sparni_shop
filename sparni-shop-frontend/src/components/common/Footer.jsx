@@ -1,13 +1,17 @@
 import "../../static/css/Footer.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import phoneIcon from "../../static/img/icon-phone.png";
+import emailIcon from "../../static/img/icon-email.png";
+import facebookIcon from "../../static/img/icon-facebook.png";
+import addressIcon from "../../static/img/icon-address.png";
 
 function Footer() {
   const { t } = useTranslation();
 
   return (
     <footer>
-      <div className="container">
+      <div className="containericons">
         <nav>
           <Link to="/main">{t("nav.home")}</Link>
           <Link to="/store">{t("nav.store")}</Link>
@@ -17,24 +21,28 @@ function Footer() {
         </nav>
         <hr />
 
-        <div className="icon-list">
+        <div className="footer-links">
           <ul>
-            <li><img src="/path-to-icon1.png" alt="Icon 1" /></li>
-            <li><img src="/path-to-icon2.png" alt="Icon 2" /></li>
-            <li><img src="/path-to-icon3.png" alt="Icon 3" /></li>
-            <li><img src="/path-to-icon4.png" alt="Icon 4" /></li>
-            <li><img src="/path-to-icon5.png" alt="Icon 5" /></li>
+            <li><Link to="/popular">{t("TOP preces")}</Link></li>
+            <li><Link to="/categories">{t("Kategorijas")}</Link></li>
+            <li><Link to="/payment">{t("Maksājumi")}</Link></li>
+            <li><Link to="/returns">{t("Preču atgriešana")}</Link></li>
+          </ul>
+          <ul>
+            <li><Link to="/delivery">{t("Piegāde")}</Link></li>
+            <li><Link to="/about">{t("Par mums")}</Link></li>
+            <li><Link to="/privacy">{t("Privātuma politika")}</Link></li>
+            <li><Link to="/terms">{t("Noteikumi")}</Link></li>
           </ul>
         </div>
 
-        <div className="footer-links">
+        
+        <div className="icon-list">
           <ul>
-            <li><Link to="/popular">{t("footer.popular")}</Link></li>
-            <li><Link to="/categories">{t("footer.categories")}</Link></li>
-            <li><Link to="/payment">{t("footer.payment")}</Link></li>
-            <li><Link to="/returns">{t("footer.returns")}</Link></li>
-            <li><Link to="/delivery">{t("footer.delivery")}</Link></li>
-            <li><Link to="/about">{t("footer.about")}</Link></li>
+            <li><img src={phoneIcon} alt="Phone Icon" /></li>
+            <li><img src={emailIcon} alt="Email Icon" /></li>
+            <li><img src={facebookIcon} alt="Facebook Icon" /></li>
+            <li><img src={addressIcon} alt="Address Icon" /></li>
           </ul>
         </div>
       </div>
