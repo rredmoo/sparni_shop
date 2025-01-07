@@ -88,7 +88,8 @@ public class SparniShopApplication {
                                 Contacts kontakti3 = new Contacts("E-pasts", "ventinpurlad@inbox.lv");
                                 kontaktiRepo.save(kontakti3);
 
-                                Contacts kontakti4 = new Contacts("Adrese", "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
+                                Contacts kontakti4 = new Contacts("Adrese",
+                                                "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
                                 kontaktiRepo.save(kontakti4);
 
                                 // pasakumu kategorijas
@@ -110,8 +111,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 6, 30, 19, 0),
                                                 "Riga Concert Hall",
                                                 "Join us for an evening of music!",
-                                                "https://oak-islandnc.com/wp-content/uploads/2020/06/Oak-Island-Summer-Concerts.jpg"
-                                );
+                                                "https://oak-islandnc.com/wp-content/uploads/2020/06/Oak-Island-Summer-Concerts.jpg");
                                 pasakumiRepo.save(pasakumi1);
                                 Event pasakumi2 = new Event(
                                                 pk1,
@@ -121,8 +121,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 7, 15, 20, 0),
                                                 "Riga Jazz Club",
                                                 "Enjoy an evening of smooth jazz melodies!",
-                                                "https://media-cdn.tripadvisor.com/media/photo-s/10/21/7c/c3/pashkevich-jazz-club.jpg"
-                                );
+                                                "https://media-cdn.tripadvisor.com/media/photo-s/10/21/7c/c3/pashkevich-jazz-club.jpg");
                                 pasakumiRepo.save(pasakumi2);
                                 Event pasakumi3 = new Event(
                                                 pk2,
@@ -132,8 +131,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 8, 5, 19, 0),
                                                 "Riga Art Gallery",
                                                 "Explore captivating artworks by local artists.,Explore captivating artworks by local artists",
-                                                "https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg"
-                                );
+                                                "https://cdn11.bigcommerce.com/s-81oa1bc/images/stencil/1600x700/t/print%20decor%20gallery%2020__22187.original.jpg");
                                 pasakumiRepo.save(pasakumi3);
                                 Event pasakumi4 = new Event(
                                                 pk2,
@@ -143,8 +141,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Riga Central Park",
                                                 "Savor delicious dishes from around the world!",
-                                                "https://us.123rf.com/450wm/ynos999/ynos9991909/ynos999190900126/142675619-city-riga-latvia-republic-riga-central-park-with-tourists-and-flowers-resting-place-18-aug-2019.jpg"
-                                );
+                                                "https://us.123rf.com/450wm/ynos999/ynos9991909/ynos999190900126/142675619-city-riga-latvia-republic-riga-central-park-with-tourists-and-flowers-resting-place-18-aug-2019.jpg");
                                 pasakumiRepo.save(pasakumi4);
 
                                 Event pasakumi5 = new Event(
@@ -155,8 +152,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Majas",
                                                 "Stradajam un adam!Stradajam un adam!",
-                                                "https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg"
-                                );
+                                                "https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg");
                                 pasakumiRepo.save(pasakumi5);
 
                                 Event pasakumi6 = new Event(
@@ -167,8 +163,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Lemberga hūte",
                                                 "Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!",
-                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s"
-                                );
+                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s");
                                 pasakumiRepo.save(pasakumi6);
 
                                 Event pasakumi7 = new Event(
@@ -179,8 +174,7 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
                                                 "Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!",
-                                                "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg"
-                                );
+                                                "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg");
                                 pasakumiRepo.save(pasakumi7);
 
                                 Event pasakumi8 = new Event(
@@ -191,118 +185,106 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
                                                 "Radoši darbi ar zeķēm!Radoši darbi ar zeķēm!",
-                                                "https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg"
-                                );
+                                                "https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg");
                                 pasakumiRepo.save(pasakumi8);
 
                                 Product prece1 = new Product(
                                                 "Pilnīgs Gaļaks Cepure",
-                                                "100% cotton",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 74,
                                                 19.99f,
                                                 null,
                                                 null,
                                                 "https://printtoo.com/cdn/shop/files/pilnigsgalaks-melnaziemascepure.png?v=1705062180&width=640",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece1);
 
                                 Product prece2 = new Product(
                                                 "Darba cimdi ECO",
-                                                "Labi darba cimdi",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 50,
                                                 7.99f,
                                                 null,
                                                 null,
                                                 "https://www.gandrs.lv/content/items/2024-01/cimdi-yaras-warm-gloves-2000x1400.jpg",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece2);
 
                                 Product prece3 = new Product(
                                                 "Ŗudens Šalle",
-                                                "Laba rudens šalle",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 20,
                                                 25.99f,
                                                 null,
                                                 null,
                                                 "https://milbaza.lv/wp-content/uploads/2022/12/eng_pl_Mil-Tec-Shemagh-Scarf-Skull-Coyote-19103_1.jpg",
-                                                null
-                                );
+                                                null);
 
                                 preceRepo.save(prece3);
                                 Product prece4 = new Product(
                                                 "Aproce Latvija",
-                                                "Laba aproce",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 100,
                                                 2.99f,
                                                 null,
                                                 null,
                                                 "https://visivar.lv/cdn/shop/products/EJP_7173._Visi_var_jpg_1024x1024.jpg?v=1635360889",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece4);
 
                                 Product prece5 = new Product(
                                                 "Dzintars S izmērs",
-                                                "Labi saglabājies, apstrādāts dzintars",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 3,
                                                 7.00f,
                                                 null,
                                                 null,
                                                 "https://pic.latvijasradio.lv/public/assets/media/f/9/mlarge_5ca30e1d.jpg",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece5);
 
                                 Product prece6 = new Product(
                                                 "Koka pulkstenis #7",
-                                                "Amatnieku veidots koka pulkstenis",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 1,
                                                 24.99f,
                                                 null,
                                                 null,
                                                 "https://www.parsteigumuagentura.lv/assets/images/Klasisks%20koka%20sienas%20pulkstenis%20ar%20grav%C4%93jumu%20nr.3.png",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece6);
 
                                 Product prece7 = new Product(
                                                 "Adīts spilvens",
-                                                "100% vilnas spilvens",
+                                                "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 20,
                                                 25.99f,
                                                 null,
                                                 null,
                                                 "https://lv2.pigugroup.eu/colours/132/252/69/13225269/spilvenu-spilvendranas-ar-rokam-adita-dizaina-3e906_reference.jpg",
-                                                null
-                                );
+                                                null);
                                 preceRepo.save(prece7);
 
                                 // Veikals kategorijas
                                 StoreCategory kategorijas1 = new StoreCategory(
                                                 "Elektropreces",
-                                                "Visa veida Elektropreces"
-                                );
+                                                "Visa veida Elektropreces");
 
                                 veikalsKategorijasRepo.save(kategorijas1);
 
                                 StoreCategory kategorijas2 = new StoreCategory(
                                                 "Apģērbs",
-                                                "Visa veida apģērbs"
-                                );
+                                                "Visa veida apģērbs");
                                 veikalsKategorijasRepo.save(kategorijas2);
 
                                 StoreCategory kategorijas3 = new StoreCategory(
                                                 "Grāmatas",
-                                                "Visa veida grāmatas"
-                                );
+                                                "Visa veida grāmatas");
                                 veikalsKategorijasRepo.save(kategorijas3);
 
                                 StoreCategory kategorijas4 = new StoreCategory(
                                                 "Mājai",
-                                                "Viss mājai"
-                                );
+                                                "Viss mājai");
                                 veikalsKategorijasRepo.save(kategorijas4);
 
                                 // MainPage_BiedribaDarbojas

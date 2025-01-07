@@ -41,7 +41,7 @@ public class Product {
     @Column(name = "NOSAUKUMS")
     private String nosaukums;
 
-    @Size(min = 3, max = 300)
+    @Size(min = 3, max = 1000)
     // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")  // Nestrādā atstarpe
     @Column(name = "APRAKSTS")
     private String apraksts;

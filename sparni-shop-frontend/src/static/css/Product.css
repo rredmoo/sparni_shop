@@ -48,3 +48,84 @@
     font-weight: bold;
   }
   
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Modal-nav img {
+    width: 150px;
+    height: auto;
+    max-height: 150px;
+    border-radius: 8px; 
+    object-fit: cover; 
+  }
+  
+  .btn-basket{
+    width: 75%;
+    height: 3rem;
+    background-color: rgba(61, 61, 61, 1);
+    color: white;
+    margin-bottom: 10%;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .modal-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .modal-img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .modal-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    width: 50%;
+  }
+  
+  .modal-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgba(61, 61, 61, 1);
+  }
+  
+  .modul-price{
+    font-size: 1.5rem;
+    margin-bottom: 10%;
+  }
+  
