@@ -25,6 +25,7 @@ import lombok.ToString;
 @Entity
 public class DeliveryOptions {
 
+    //TODO Pārveido, lai darbotos ar omniva pakomātiem
     @Id
     @Column(name = "ID_Piegades_Veids")
     @GeneratedValue(strategy = GenerationType.AUTO)

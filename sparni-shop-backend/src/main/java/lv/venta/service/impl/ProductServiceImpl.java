@@ -69,7 +69,6 @@ public class ProductServiceImpl implements IProductCRUDService {
             preceForUpdate.setApraksts(prece.getApraksts());
             preceForUpdate.setDaudzums(prece.getDaudzums());
             preceForUpdate.setCena(prece.getCena());
-            preceForUpdate.setPirkums_Elements(prece.getPirkums_Elements());
             preceForUpdate.setVeikals_kategorijas(prece.getVeikals_kategorijas());
             preceForUpdate.setVeikals_prece_bildes(prece.getVeikals_prece_bildes());
             preceForUpdate.getIdAtlaide();

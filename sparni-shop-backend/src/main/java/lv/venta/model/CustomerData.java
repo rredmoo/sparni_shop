@@ -55,37 +55,6 @@ public class CustomerData {
    // @Pattern(regexp = "^[A-Za-z0-9. _%-]+@[A-Za-z0-9. -]+\\. [A-Za-z]{2,4}$")
     private String epasts;
 
-    // Personas Kods
-
-    @Column(name = "Personas_Kods", unique = true)
-    @NotNull
-  //  @Pattern(regexp = "[0-9]{6}-[0-9]{5}", message = "Wrong input form/example: 190903-21641")
-    private String personas_kods;
-
-    // Bankas Nosaukums
-
-    @Column(name = "Bankas_Nosaukums", unique = true)
-    @NotNull
-    @Size(min = 3, max = 50)
-  //  @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed!")
-    private String bankas_nosaukums;
-
-    // Swift Kods
-
-    @Column(name = "Swift_Kods")
-    @NotNull
-  //  @Pattern(regexp = "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$")
-    private String swift_kods;
-
-    // Bankas Konts
-
-    @Column(name = "Bankas_konts")
-    @NotNull
-    @Size(min = 3, max = 50)
-    private String bankas_konts;
-
-    // Adrese
-
     @Column(name = "Adrese")
     @NotNull
     private String adrese;
@@ -93,14 +62,10 @@ public class CustomerData {
     @OneToOne(mappedBy = "pircejaDati")
     private Pirkums pirkums;
 
-    public CustomerData(String vards, String uzvards, String epasts, String personas_kods, String swift_kods,
-            String bankas_konts, String adrese) {
+    public CustomerData(String vards, String uzvards, String epasts, String adrese) {
         setVards(vards);
         setUzvards(uzvards);
         setEpasts(epasts);
-        setPersonas_kods(personas_kods);
-        setSwift_kods(swift_kods);
-        setBankas_konts(bankas_konts);
         setAdrese(adrese);
 
     }

@@ -56,9 +56,6 @@ public class Product {
     @Column(name = "CENA")
     private float cena;
 
-    @OneToOne(mappedBy = "veikals_prece")
-    private PurchaseElement pirkums_Elements;
-
     @ManyToOne
     @JoinColumn(name = "ID_Veikals_Kategorijas", referencedColumnName = "idvk")
     private StoreCategory veikals_kategorijas;
@@ -69,14 +66,17 @@ public class Product {
     @JoinColumn(name = "ID_ATLAIDE", referencedColumnName = "IDA")
     private Discount idAtlaide;
 
-    public Product(String nosaukums, String apraksts, int daudzums, float cena, 
-                         PurchaseElement pirkums_Elements, StoreCategory veikals_kategorijas,
+    @ManyToOne
+    @JoinColumn(name = "ID_BASKET", referencedColumnName = "ID_BASKET")
+    private Basket basket;
+
+
+    public Product(String nosaukums, String apraksts, int daudzums, float cena, StoreCategory veikals_kategorijas,
                          String veikals_prece_bildes, Discount idAtlaide) {
         setNosaukums(nosaukums);
         setApraksts(apraksts);
         setDaudzums(daudzums);
         setCena(cena);
-        setPirkums_Elements(pirkums_Elements);
         setVeikals_kategorijas(veikals_kategorijas);
         setVeikals_prece_bildes(veikals_prece_bildes);
         setIdAtlaide(idAtlaide);

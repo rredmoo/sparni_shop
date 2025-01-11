@@ -43,12 +43,13 @@ public class Pirkums {
     @Column(name = "Piegades_detalas")
     @NotNull
     @Size(min = 3, max = 200)
-   // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only letters and space are allowed! (First letter must be capital)")
+    // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Only
+    // letters and space are allowed! (First letter must be capital)")
     private String piegadesDetalas;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idsv", referencedColumnName = "idsv")
-    private PaymentOption samaksasVeids;
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "idsv", referencedColumnName = "idsv")
+    // private PaymentOption samaksasVeids;
 
     @Column(name = "Statuss")
     @NotNull
@@ -58,16 +59,17 @@ public class Pirkums {
     @JoinColumn(name = "ID_Pirceja_Dati", referencedColumnName = "ID_Pirceja_Dati")
     private CustomerData pircejaDati;
 
-    @OneToOne(mappedBy = "pirkums")
-    private PurchaseElement pirkumsElements;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_BASKET", referencedColumnName = "ID_BASKET")
+    private Basket basket;
 
-    public Pirkums(DeliveryOptions piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, PaymentOption samaksasVeids, Statuss statuss,
-    CustomerData pirceja_Dati, PurchaseElement pirkums_Elements){
+    public Pirkums(DeliveryOptions piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, Statuss statuss,
+            CustomerData pirceja_Dati, Basket basket) {
         setPiegadesVeids(piegades_Veids);
         setPirkumaDatums(pirkumaDatums);
         setPiegadesDetalas(piegadesDetalas);
-        setSamaksasVeids(samaksasVeids);
+        // setSamaksasVeids(samaksasVeids);
         setPircejaDati(pirceja_Dati);
-        setPirkumsElements(pirkums_Elements);
+        setBasket(basket);
     }
 }

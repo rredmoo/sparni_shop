@@ -23,7 +23,6 @@ import lv.venta.repo.IEventCategoryRepo;
 import lv.venta.repo.IEventRepo;
 import lv.venta.repo.IDeliveryOptionsRepo;
 import lv.venta.repo.IProductRepo;
-import lv.venta.repo.IPaymentOptionRepo;
 import lv.venta.repo.IStoreCategoryRepo;
 import lv.venta.repo.security.IAccessUsersRepo;
 import lv.venta.repo.security.IUserAuthorityRepo;
@@ -47,7 +46,7 @@ public class SparniShopApplication {
                         IStoreCategoryRepo veikalsKategorijasRepo, IContactRepo kontaktiRepo,
                         IIMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
                         IEventCategoryRepo pasakumiKategorijasRepo,
-                        IDeliveryOptionsRepo piegadesVeidiRepo, IPaymentOptionRepo samakasasVeidRepo,
+                        IDeliveryOptionsRepo piegadesVeidiRepo,
                         IInformationRepo infoRepo, IAccessUsersRepo accessUsersRepo,
                         IUserAuthorityRepo userAuthorityRepo) {
                 return new CommandLineRunner() {
@@ -193,8 +192,7 @@ public class SparniShopApplication {
                                                 "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 74,
                                                 19.99f,
-                                                null,
-                                                null,
+                                                null,                                       
                                                 "https://printtoo.com/cdn/shop/files/pilnigsgalaks-melnaziemascepure.png?v=1705062180&width=640",
                                                 null);
                                 preceRepo.save(prece1);
@@ -204,7 +202,6 @@ public class SparniShopApplication {
                                                 "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 50,
                                                 7.99f,
-                                                null,
                                                 null,
                                                 "https://www.gandrs.lv/content/items/2024-01/cimdi-yaras-warm-gloves-2000x1400.jpg",
                                                 null);
@@ -216,7 +213,6 @@ public class SparniShopApplication {
                                                 20,
                                                 25.99f,
                                                 null,
-                                                null,
                                                 "https://milbaza.lv/wp-content/uploads/2022/12/eng_pl_Mil-Tec-Shemagh-Scarf-Skull-Coyote-19103_1.jpg",
                                                 null);
 
@@ -226,7 +222,6 @@ public class SparniShopApplication {
                                                 "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 100,
                                                 2.99f,
-                                                null,
                                                 null,
                                                 "https://visivar.lv/cdn/shop/products/EJP_7173._Visi_var_jpg_1024x1024.jpg?v=1635360889",
                                                 null);
@@ -238,7 +233,6 @@ public class SparniShopApplication {
                                                 3,
                                                 7.00f,
                                                 null,
-                                                null,
                                                 "https://pic.latvijasradio.lv/public/assets/media/f/9/mlarge_5ca30e1d.jpg",
                                                 null);
                                 preceRepo.save(prece5);
@@ -249,7 +243,6 @@ public class SparniShopApplication {
                                                 1,
                                                 24.99f,
                                                 null,
-                                                null,
                                                 "https://www.parsteigumuagentura.lv/assets/images/Klasisks%20koka%20sienas%20pulkstenis%20ar%20grav%C4%93jumu%20nr.3.png",
                                                 null);
                                 preceRepo.save(prece6);
@@ -259,7 +252,6 @@ public class SparniShopApplication {
                                                 "tas ir teksta salikums, kuru izmanto poligrāfijā un maketēšanas darbos. Lorem Ipsum ir kļuvis par vispārpieņemtu teksta aizvietotāju kopš 16. gadsimta sākuma. Tajā laikā kāds nezināms iespiedējs izveidoja teksta fragmentu, lai nodrukātu grāmatu ar burtu paraugiem. Tas ir ne tikai pārdzīvojis piecus gadsimtus, bet bez ievērojamām izmaiņām saglabājies arī mūsdienās, pārejot uz datorizētu teksta apstrādi. Tā popularizēšanai 60-tajos gados kalpoja Letraset burtu paraugu publicēšana ar Lorem Ipsum teksta fragmentiem un, nesenā pagātnē, tādas maketēšanas programmas kā Aldus PageMaker, kuras šablonu paraugos ir izmantots Lorem Ipsum teksts.",
                                                 20,
                                                 25.99f,
-                                                null,
                                                 null,
                                                 "https://lv2.pigugroup.eu/colours/132/252/69/13225269/spilvenu-spilvendranas-ar-rokam-adita-dizaina-3e906_reference.jpg",
                                                 null);
