@@ -20,13 +20,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
+@Table(name = "VEIKALS_PRECE_TABLE")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "VEIKALS_PRECE_TABLE")
-@Entity
 public class Product {
 
     @Id
@@ -37,12 +37,10 @@ public class Product {
 
     @NotNull
     @Size(min = 3, max = 50)
-    // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")  // Nestrādā atstarpe
     @Column(name = "NOSAUKUMS")
     private String nosaukums;
 
     @Size(min = 3, max = 1000)
-    // @Pattern(regexp = "[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+", message = "Tikai burti un atstarpers ir atļautas!")  // Nestrādā atstarpe
     @Column(name = "APRAKSTS")
     private String apraksts;
 
@@ -66,19 +64,14 @@ public class Product {
     @JoinColumn(name = "ID_ATLAIDE", referencedColumnName = "IDA")
     private Discount idAtlaide;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_BASKET", referencedColumnName = "ID_BASKET")
-    private Basket basket;
-
-
     public Product(String nosaukums, String apraksts, int daudzums, float cena, StoreCategory veikals_kategorijas,
                          String veikals_prece_bildes, Discount idAtlaide) {
-        setNosaukums(nosaukums);
-        setApraksts(apraksts);
-        setDaudzums(daudzums);
-        setCena(cena);
-        setVeikals_kategorijas(veikals_kategorijas);
-        setVeikals_prece_bildes(veikals_prece_bildes);
-        setIdAtlaide(idAtlaide);
+        this.nosaukums = nosaukums;
+        this.apraksts = apraksts;
+        this.daudzums = daudzums;
+        this.cena = cena;
+        this.veikals_kategorijas = veikals_kategorijas;
+        this.veikals_prece_bildes = veikals_prece_bildes;
+        this.idAtlaide = idAtlaide;
     }
 }

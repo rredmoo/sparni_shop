@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import lv.venta.model.Discount;
 import lv.venta.model.Information;
+import lv.venta.model.Basket;
+import lv.venta.model.BasketItem;
 import lv.venta.model.Contacts;
 import lv.venta.model.MainPage_BiedribaDarbojas;
 import lv.venta.model.Event;
@@ -17,6 +19,8 @@ import lv.venta.model.StoreCategory;
 import lv.venta.model.Product;
 import lv.venta.repo.IDiscountRepo;
 import lv.venta.repo.IInformationRepo;
+import lv.venta.repo.IBasketItemRepo;
+import lv.venta.repo.IBasketRepo;
 import lv.venta.repo.IContactRepo;
 import lv.venta.repo.IIMainPageBiedribasDarbojasRepo;
 import lv.venta.repo.IEventCategoryRepo;
@@ -48,7 +52,7 @@ public class SparniShopApplication {
                         IEventCategoryRepo pasakumiKategorijasRepo,
                         IDeliveryOptionsRepo piegadesVeidiRepo,
                         IInformationRepo infoRepo, IAccessUsersRepo accessUsersRepo,
-                        IUserAuthorityRepo userAuthorityRepo) {
+                        IUserAuthorityRepo userAuthorityRepo, IBasketRepo basketRepo, IBasketItemRepo basketItemRepo) {
                 return new CommandLineRunner() {
 
                         @Override
@@ -256,6 +260,14 @@ public class SparniShopApplication {
                                                 "https://lv2.pigugroup.eu/colours/132/252/69/13225269/spilvenu-spilvendranas-ar-rokam-adita-dizaina-3e906_reference.jpg",
                                                 null);
                                 preceRepo.save(prece7);
+
+                                Basket basket = new Basket();
+                                basketRepo.save(basket);
+
+                                BasketItem testBaskedItem1 = new BasketItem(basket, prece7, 2);
+                                basketItemRepo.save(testBaskedItem1);
+                                BasketItem testBaskedItem2 = new BasketItem(basket, prece4, 1);
+                                basketItemRepo.save(testBaskedItem2);
 
                                 // Veikals kategorijas
                                 StoreCategory kategorijas1 = new StoreCategory(

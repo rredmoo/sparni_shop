@@ -20,7 +20,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 
 public class BasketItem {
@@ -41,4 +40,10 @@ public class BasketItem {
     @NotNull
     @Column(name = "COUNT")
     private int count;
+
+    public BasketItem(Basket basket, Product product, int count){
+        this.basket = basket;
+        this.product = product;
+        this.count = count;
+    }
 }

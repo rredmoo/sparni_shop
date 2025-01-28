@@ -41,7 +41,7 @@ public class StripeController {
 	
 	}
 	
-	//TODO pabeigt pēc vajadzības
+	//TODO pabeigt
 	@PostMapping("/confirm")
 	public ResponseEntity<?> postConfirm(@RequestBody PaymentStatusDTO paymentStatusDTO){
 		System.out.println(paymentStatusDTO);
