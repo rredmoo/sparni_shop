@@ -6,11 +6,10 @@ import Footer from "./common/Footer";
 import Contact from "./mainPage/Contact";
 import { useTranslation } from 'react-i18next';
 
-
 function KontaktiPage() {
   const [kontaktiList, setKontaktiList] = useState([]);
   const [error, setError] = useState(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     KontaktiPageConfig.getAllKontakti()
@@ -22,7 +21,6 @@ function KontaktiPage() {
         setError(error.message);
       });
   }, []);
-
 
   return (
     <div className="main-page-cover">
@@ -43,17 +41,19 @@ function KontaktiPage() {
             <h1 style={{ margin: "20px 0" }}>{t('contactList')}</h1>
             {kontaktiList.length > 0 ? (
               <ul>
-                {kontaktiList.map(({ idk, nosaukums, informacija }) => (
+                {kontaktiList.map(({ idk, nosaukumsLv, nosaukumsEn, informacija }) => (
                   <li key={idk}>
-                    {nosaukums} <br />
-                    {informacija} <br />
+                    <h3>
+                      {i18n.language === 'lv' ? nosaukumsLv : nosaukumsEn}
+                    </h3>
+                    <p>{informacija}</p>
                   </li>
                 ))}
               </ul>
             ) : (
               <p>{t('noContacts')}</p>
             )}
-            <article style={{ margin: "20px 0" , fontSize: "1.6rem", fontFamily: "Arial, sans-serif", fontWeight: 400 , lineHeight: "1.5" }} className="article-center" >
+            <article style={{ margin: "20px 0", fontSize: "1.6rem", fontFamily: "Arial, sans-serif", fontWeight: 400, lineHeight: "1.5" }} className="article-center">
               <p>{t('businessName')}</p>
               <p>{t('activityField')}</p>
               <p>{t('address')}</p>
@@ -61,7 +61,7 @@ function KontaktiPage() {
               <p>{t('vatNumber')}</p>
               <p>{t('bankCode')}</p>
               <p>{t('iban')}</p>
-               <br />
+              <br />
             </article>
             {error && <p>Error: {error}</p>}
           </div>

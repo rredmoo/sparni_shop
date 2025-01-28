@@ -19,6 +19,7 @@ public class PasakumiKategorijasServiceImpl implements IPasakumiKategorijasServi
     @Autowired
     private IPasakumiKategorijasRepo kategorijasRepo;
  
+    
     @Override
 public ArrayList<Pasakumi_kategorijas> retrieveLocalizedCategories(String language) {
     ArrayList<Pasakumi_kategorijas> localizedList = new ArrayList<>();

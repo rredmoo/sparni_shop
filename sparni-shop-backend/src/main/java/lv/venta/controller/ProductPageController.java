@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lv.venta.model.Veikals_prece;
 import lv.venta.service.IPreceCRUDService;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -32,11 +32,15 @@ public class ProductPageController {
     private IPreceCRUDService preceService;
 
     @GetMapping("/all")
-    public ArrayList<Veikals_prece> getPreceCRUDAll() {
+    public ResponseEntity<ArrayList<Veikals_prece>> getPreceCRUDAll() {
         try {
-            return preceCRUDService.retrieveAll();
+            ArrayList<Veikals_prece> preces = preceCRUDService.retrieveAll();
+            if (preces.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            return ResponseEntity.ok(preces);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
@@ -98,6 +102,7 @@ public class ProductPageController {
         }
     }
 
+    
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleNoSuchElementFoundException(NoSuchElementException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)

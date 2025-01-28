@@ -12,6 +12,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import jakarta.servlet.http.HttpServletResponse;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -22,12 +24,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SecurityConfig {
 
     @Bean
-    public MyUserDetailsManager getDetailsService() {
+    MyUserDetailsManager getDetailsService() {
         return new MyUserDetailsManager();
     }
 
-    @Bean //authentication pārbaude
-    public DaoAuthenticationProvider createProvider() {
+    //authentication pārbaude
+    @Bean
+    DaoAuthenticationProvider createProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         provider.setPasswordEncoder(encoder);
@@ -36,10 +39,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain configurePermissionToEndpoints(HttpSecurity http) throws Exception {
+    SecurityFilterChain configurePermissionToEndpoints(HttpSecurity http) throws Exception {
         http
-                .cors() // Enable CORS
-                .and()
+                .cors(withDefaults())
                 .csrf(csrf -> csrf.disable()) // Disable CSRF
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/contact/**").permitAll()
@@ -62,7 +64,7 @@ public class SecurityConfig {
 
     // CORS Configuration
     @Bean
-    public CorsFilter corsFilter() {
+    CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("http://localhost:3000");
         corsConfiguration.addAllowedMethod("*");

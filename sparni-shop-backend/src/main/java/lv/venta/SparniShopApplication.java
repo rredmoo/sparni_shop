@@ -1,6 +1,7 @@
 package lv.venta;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +25,6 @@ import lv.venta.repo.IPasakumiRepo;
 import lv.venta.repo.IPiegadesVeidiRepo;
 import lv.venta.repo.IPreceRepo;
 import lv.venta.repo.ISamaksasVeidsRepo;
-import lv.venta.repo.IVeikalsKategorijasRepo;
 import lv.venta.repo.security.IAccessUsersRepo;
 import lv.venta.repo.security.IUserAuthorityRepo;
 
@@ -41,15 +41,14 @@ public class SparniShopApplication {
                 SpringApplication.run(SparniShopApplication.class, args);
         }
 
-        @Bean
-        public CommandLineRunner testDatabase(IAtlaideRepo atlaideRepo, IPasakumiRepo pasakumiRepo,
-                        IPreceRepo preceRepo,
-                        IVeikalsKategorijasRepo veikalsKategorijasRepo, IKontaktiRepo kontaktiRepo,
-                        IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
-                        IPasakumiKategorijasRepo pasakumiKategorijasRepo,
-                        IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo,
-                        IInformacijasRepo infoRepo, IAccessUsersRepo accessUsersRepo,
-                        IUserAuthorityRepo userAuthorityRepo) {
+    @Bean
+    CommandLineRunner testDatabase(IAtlaideRepo atlaideRepo, IPasakumiRepo pasakumiRepo,
+                                IPreceRepo preceRepo, IKontaktiRepo kontaktiRepo,
+                                IMainPageBiedribasDarbojasRepo mainPageBiedribaDarbojasRepo,
+                                IPasakumiKategorijasRepo pasakumiKategorijasRepo,
+                                IPiegadesVeidiRepo piegadesVeidiRepo, ISamaksasVeidsRepo samakasasVeidRepo,
+                                IInformacijasRepo infoRepo, IAccessUsersRepo accessUsersRepo,
+                                IUserAuthorityRepo userAuthorityRepo) {
                 return new CommandLineRunner() {
 
                         @Override
@@ -79,16 +78,16 @@ public class SparniShopApplication {
                                                 LocalDateTime.of(2024, 05, 15, 15, 31));
                                 atlaideRepo.save(a4);
 
-                                Kontakti kontakti1 = new Kontakti("Facebook", "https://www.facebook.com/Ventinpurlad/");
+                                Kontakti kontakti1 = new Kontakti("Facebook","Facebook", "https://www.facebook.com/Ventinpurlad/");
                                 kontaktiRepo.save(kontakti1);
 
-                                Kontakti kontakti2 = new Kontakti("tālruņa nr.", "+371 20000001");
+                                Kontakti kontakti2 = new Kontakti("tālruņa nr.","Phone Number", "+371 20000001");
                                 kontaktiRepo.save(kontakti2);
 
-                                Kontakti kontakti3 = new Kontakti("E-pasts", "ventinpurlad@inbox.lv");
+                                Kontakti kontakti3 = new Kontakti("E-pasts","Email", "ventinpurlad@inbox.lv");
                                 kontaktiRepo.save(kontakti3);
 
-                                Kontakti kontakti4 = new Kontakti("Adrese", "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
+                                Kontakti kontakti4 = new Kontakti("Adrese","Address", "Skolas iela - 3, Ventspils, LV-3601, Latvija ");
                                 kontaktiRepo.save(kontakti4);
 
                                 // pasakumu kategorijas
@@ -194,22 +193,25 @@ public class SparniShopApplication {
                                                 "https://altona.riga.lv/wp-content/uploads/2022/10/Meistarklases_2.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi8);
-
+                                
+                                
+                                List<Veikals_kategorijas> kategorijas = List.of(Veikals_kategorijas.Šalles,Veikals_kategorijas.Ziema);
+                                
                                 Veikals_prece prece1 = new Veikals_prece(
-                                                "Pilnīgs Gaļaks Cepure",
-                                                "100% cotton",
+                                                "SHithead hat","Pilnīgs Gaļaks Cepure",
+                                                "100% cotton"," audums palubom",
                                                 74,
                                                 19.99f,
                                                 null,
-                                                null,
+                                                kategorijas,
                                                 "https://printtoo.com/cdn/shop/files/pilnigsgalaks-melnaziemascepure.png?v=1705062180&width=640",
                                                 null
                                 );
                                 preceRepo.save(prece1);
 
                                 Veikals_prece prece2 = new Veikals_prece(
-                                                "Darba cimdi ECO",
-                                                "Labi darba cimdi",
+                                                "Work Gloves Eco","Darba cimdi ECO",
+                                                "Good gloves for work","Labi darba cimdi",
                                                 50,
                                                 7.99f,
                                                 null,
@@ -220,20 +222,20 @@ public class SparniShopApplication {
                                 preceRepo.save(prece2);
 
                                 Veikals_prece prece3 = new Veikals_prece(
-                                                "Ŗudens Šalle",
-                                                "Laba rudens šalle",
+                                                "Autumn scarf","Ŗudens Šalle",
+                                                "Scarf for autumn","Laba rudens šalle",
                                                 20,
                                                 25.99f,
                                                 null,
-                                                null,
+                                                null, 
                                                 "https://milbaza.lv/wp-content/uploads/2022/12/eng_pl_Mil-Tec-Shemagh-Scarf-Skull-Coyote-19103_1.jpg",
                                                 null
                                 );
 
                                 preceRepo.save(prece3);
                                 Veikals_prece prece4 = new Veikals_prece(
-                                                "Aproce Latvija",
-                                                "Laba aproce",
+                                                "Wristband Latvija","Aproce Latvija",
+                                                "Patriotic u know","Laba aproce",
                                                 100,
                                                 2.99f,
                                                 null,
@@ -244,8 +246,8 @@ public class SparniShopApplication {
                                 preceRepo.save(prece4);
 
                                 Veikals_prece prece5 = new Veikals_prece(
-                                                "Dzintars S izmērs",
-                                                "Labi saglabājies, apstrādāts dzintars",
+                                                "Amber S size","Dzintars S izmērs",
+                                               "Old af", "Labi saglabājies, apstrādāts dzintars",
                                                 3,
                                                 7.00f,
                                                 null,
@@ -256,8 +258,8 @@ public class SparniShopApplication {
                                 preceRepo.save(prece5);
 
                                 Veikals_prece prece6 = new Veikals_prece(
-                                                "Koka pulkstenis #7",
-                                                "Amatnieku veidots koka pulkstenis",
+                                                "Wooden clock #7","Koka pulkstenis #7",
+                                               "clock made by ma sistas", "Amatnieku veidots koka pulkstenis",
                                                 1,
                                                 24.99f,
                                                 null,
@@ -268,8 +270,8 @@ public class SparniShopApplication {
                                 preceRepo.save(prece6);
 
                                 Veikals_prece prece7 = new Veikals_prece(
-                                                "Adīts spilvens",
-                                                "100% vilnas spilvens",
+                                                "Handmade pillow","Adīts spilvens",
+                                                "100% not made by hand","100% vilnas spilvens",
                                                 20,
                                                 25.99f,
                                                 null,
@@ -279,31 +281,7 @@ public class SparniShopApplication {
                                 );
                                 preceRepo.save(prece7);
 
-                                // Veikals kategorijas
-                                Veikals_kategorijas kategorijas1 = new Veikals_kategorijas(
-                                                "Elektropreces",
-                                                "Visa veida Elektropreces"
-                                );
-
-                                veikalsKategorijasRepo.save(kategorijas1);
-
-                                Veikals_kategorijas kategorijas2 = new Veikals_kategorijas(
-                                                "Apģērbs",
-                                                "Visa veida apģērbs"
-                                );
-                                veikalsKategorijasRepo.save(kategorijas2);
-
-                                Veikals_kategorijas kategorijas3 = new Veikals_kategorijas(
-                                                "Grāmatas",
-                                                "Visa veida grāmatas"
-                                );
-                                veikalsKategorijasRepo.save(kategorijas3);
-
-                                Veikals_kategorijas kategorijas4 = new Veikals_kategorijas(
-                                                "Mājai",
-                                                "Viss mājai"
-                                );
-                                veikalsKategorijasRepo.save(kategorijas4);
+                                
 
                                 // MainPage_BiedribaDarbojas
                                 MainPage_BiedribaDarbojas biedribadarbojas1 = new MainPage_BiedribaDarbojas(null, null,
@@ -322,21 +300,21 @@ public class SparniShopApplication {
                                                 0);
                                 mainPageBiedribaDarbojasRepo.save(biedribadarbojas4);
 
-                                Informacija info1 = new Informacija("Apmaksas veidi",
-                                                "Iespejams norekinaties ar Swedbank, citadele, u.c.",
+                                Informacija info1 = new Informacija("Pay Us","Apmaksas veidi",
+                                                "bitcoin only","Iespejams norekinaties ar Swedbank, citadele, u.c.",
                                                 "https://www.hobbyset.lv/images/pages/01ea917331c5fe0bcca60bb1f1f5ab4f.jpg");
                                 infoRepo.save(info1);
-                                Informacija info2 = new Informacija("Naudas un preces atgriešana",
-                                                "Varet nest atpakal uz veikalu!",
+                                Informacija info2 = new Informacija("Cash and product return","Naudas un preces atgriešana",
+                                                "We dont take our shit back","Varet nest atpakal uz veikalu!",
                                                 "https://static.vecteezy.com/system/resources/previews/008/013/016/original/payment-by-cash-for-express-delivery-flat-illustration-how-people-deliver-package-and-pay-for-the-delivery-by-cash-human-hand-holds-money-and-pay-for-the-package-courier-get-payment-for-it-vector.jpg");
                                 infoRepo.save(info2);
-                                Informacija info3 = new Informacija("Piegādes veidi", "Pakomāts, uz vietas, kurjers!",
+                                Informacija info3 = new Informacija("Shipping Options","Piegādes veidi","By lands, by plane, by sea" ,"Pakomāts, uz vietas, kurjers!",
                                                 "https://st3.depositphotos.com/3332767/33164/i/450/depositphotos_331649150-stock-photo-delivery-guy-holding-a-box.jpg");
                                 infoRepo.save(info3);
-                                Informacija info4 = new Informacija("Mērķis", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                                Informacija info4 = new Informacija("Goal","Mērķis","We want to be the biggest gang of latvian ladies", "Mes busim lielakais omkenu gangs latvija",
                                                 "https://lpr.gov.lv/wp-content/uploads/2021/biedriba-ceribu-sparni-pieredzes-apmaina-dienas-aprupes-centra-preilos-015-1024x683-1.jpg");
                                 infoRepo.save(info4);
-                                Informacija info5 = new Informacija("Biedrības Struktūra",
+                                Informacija info5 = new Informacija("Group Structure","Biedrības Struktūra","Big mama",
                                                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                                                 "https://muzejs.ventspils.lv/wp-content/uploads/pagast.jpg");
                                 infoRepo.save(info5);

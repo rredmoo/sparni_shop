@@ -6,9 +6,7 @@ import { useTranslation } from 'react-i18next';
 function Product({ sortOrder, numProducts }) {
   const [preces, setPreces] = useState([]);
   const [error, setError] = useState(null);
-  const { t } = useTranslation();
-  
-
+  const { t, i18n } = useTranslation();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +36,6 @@ function Product({ sortOrder, numProducts }) {
     fetchData();
   }, [sortOrder, numProducts, t]);
 
-  
-
-
   return (
     <>
       <div className="product-list">
@@ -53,14 +48,12 @@ function Product({ sortOrder, numProducts }) {
                 alt={prece.nosaukums}
               />
               <div className="product-card-details">
-                <h3>{prece.nosaukums}</h3>
-                <p>{prece.apraksts}</p>
-
                 
-                <p>{t('priceProduct', {
-                  
-    
-                })}</p>
+                <h3>{prece[`nosaukums${i18n.language === 'lv' ? 'Lv' : 'En'}`]}</h3>
+                <p>{prece[`apraksts${i18n.language === 'lv' ? 'Lv' : 'En'}`]}</p>
+
+              
+                <p>{prece.cena ? `${prece.cena} €` : t('priceUnavailable')}</p>
               </div>
             </div>
           ))

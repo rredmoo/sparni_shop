@@ -3,6 +3,8 @@ package lv.venta.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,11 +27,15 @@ public class InfoPageController {
     private IInformacijaService crudService;
 
 	@GetMapping("/all")
-    public ArrayList<Informacija> getInfoAll() {
+    public ResponseEntity<ArrayList<Informacija>> getInfoAll() {
         try {
-            return crudService.retrieveAll();
+            ArrayList<Informacija> info = crudService.retrieveAll();
+            if (info.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            return ResponseEntity.ok(info);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 

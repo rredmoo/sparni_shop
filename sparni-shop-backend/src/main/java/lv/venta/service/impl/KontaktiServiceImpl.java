@@ -1,7 +1,6 @@
 package lv.venta.service.impl;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,83 +13,96 @@ import lv.venta.service.IKontaktiCRUDService;
 
 @Service
 public class KontaktiServiceImpl implements IKontaktiCRUDService {
-    
-    private static final Logger logger = LoggerFactory.getLogger(KontaktiServiceImpl.class);
-    
+
+    private static final Logger logger = LoggerFactory.getLogger(InformacijasServiceImpl.class);
+
     @Autowired
     private IKontaktiRepo kontaktiRepo;
 
-    public KontaktiServiceImpl(IKontaktiRepo kontaktiRepo) {
-        this.kontaktiRepo = kontaktiRepo;
+
+    @Override
+    public ArrayList<Kontakti> getLocalizedContacts(ArrayList<Kontakti> kontakti, String language) {
+        ArrayList<Kontakti> localizedList = new ArrayList<>();
+        for (Kontakti kontakts : kontakti) {
+           
+            Kontakti localizedContact = new Kontakti(
+                language.equals("lv") ? kontakts.getNosaukumsLv() : kontakts.getNosaukumsEn(),
+                language.equals("lv") ? kontakts.getNosaukumsLv() : kontakts.getNosaukumsEn(),
+                kontakts.getInformacija()
+
+
+            );
+            localizedList.add(localizedContact);
+        }
+        return localizedList;
     }
 
     @Override
-    public void create(Kontakti kontakti) {
+    public void create(Kontakti kontakts) {
         try {
-            kontaktiRepo.save(kontakti);
-            logger.info("Kontakti ar ID {} tika veiksmīgi izveidoti.", kontakti.getIdk());
+            kontaktiRepo.save(kontakts);
+            logger.info("Kontaktsar nosaukumu '{}' veiksmīgi izveidots.", kontakts.getNosaukumsLv());
         } catch (Exception e) {
-            logger.error("Kļūda veicot kontakti izveidi: {}", e.getMessage());
-            throw new UnsupportedOperationException("Notikusi kļūda, mēģinot izveidot kontaktu: " + e.getMessage(), e);
+            logger.error("Kļūda izveidojot kontaktu: {}", e.getMessage());
+            throw new RuntimeException("Notikusi kļūda, mēģinot izveidot kontaktu: " + e.getMessage(), e);
         }
     }
 
     @Override
     public Kontakti retrieveById(int id) throws Exception {
         try {
-            Optional<Kontakti> optionalKontakti = kontaktiRepo.findById(id);
-            if (optionalKontakti.isPresent()) {
-                return optionalKontakti.get();
-            } else {
-                throw new Exception("Kontakti ar ID " + id + " netika atrasti.");
+            if (id < 0) {
+                throw new Exception("ID jābūt pozitīvam!");
             }
-        } catch (Exception e) {
-            logger.error("Kļūda iegūstot kontaktus ar ID {}: {}", id, e.getMessage());
-            throw new Exception("Notikusi kļūda, mēģinot iegūt kontaktus ar ID " + id + ": " + e.getMessage());
-        }
-    }
 
-    @Override
-    public ArrayList<Kontakti> retrieveAll() {
-        try {
-            ArrayList<Kontakti> allKontakti = (ArrayList<Kontakti>) kontaktiRepo.findAll();
-            if (allKontakti.isEmpty()) {
-                throw new Exception("Nav nevienu kontaktu.");
-            }
-            return new ArrayList<>(allKontakti);
-        } catch (Exception e) {
-            logger.error("Kļūda iegūstot visus kontaktus: {}", e.getMessage());
-            throw new RuntimeException("Notikusi kļūda, mēģinot iegūt visus kontaktus: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public void updateById(int id, Kontakti kontakti) throws Exception {
-        try {
             if (kontaktiRepo.existsById(id)) {
-                kontaktiRepo.save(kontakti);
-                logger.info("Kontakti ar ID {} tika veiksmīgi atjaunināti.", id);
+                return kontaktiRepo.findById(id);
             } else {
-                throw new Exception("Kontakti ar ID " + id + " netika atrasti.");
+                throw new Exception("Informācija ar šo id (" + id + ") neeksistē!");
             }
         } catch (Exception e) {
-            logger.error("Kļūda atjauninot kontaktus ar ID {}: {}", id, e.getMessage());
-            throw new Exception("Notikusi kļūda, mēģinot atjaunināt kontaktus ar ID " + id + ": " + e.getMessage());
+            logger.error("Kļūda iegūstot kontaktu ar id {}: {}", id, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt kontaktu ar ID " + id + ": " + e.getMessage());
+        }
+    }
+
+    @Override
+    public ArrayList<Kontakti> retrieveAll() throws Exception {
+        try {
+            if (kontaktiRepo.count() == 0) {
+                throw new Exception("Nav neviena kontakta!");
+            }
+            return (ArrayList<Kontakti>) kontaktiRepo.findAll();
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot visus kontakus: {}", e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt visus kontaktus: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateById(int id, Kontakti kontakts) throws Exception {
+        try {
+           Kontakti kontaktsForUpdate = retrieveById(id);
+
+           kontaktsForUpdate.setNosaukumsEn(kontakts.getNosaukumsEn());
+           kontaktsForUpdate.setNosaukumsLv(kontakts.getNosaukumsLv());
+           kontaktsForUpdate.setInformacija(kontakts.getInformacija());
+
+            kontaktiRepo.save(kontaktsForUpdate);
+        } catch (Exception e) {
+            logger.error("Kļūda atjauninot kontaktu ar id {}: {}", id, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot atjaunināt kontaktu ar ID " + id + ": " + e.getMessage());
         }
     }
 
     @Override
     public void deleteById(int id) throws Exception {
         try {
-            if (kontaktiRepo.existsById(id)) {
-                kontaktiRepo.deleteById(id);
-                logger.info("Kontakti ar ID {} tika veiksmīgi dzēsti.", id);
-            } else {
-                throw new Exception("Kontakti ar ID " + id + " netika atrasti.");
-            }
+            Kontakti kontaktsForDeletion = retrieveById(id);
+            kontaktiRepo.delete(kontaktsForDeletion);
         } catch (Exception e) {
-            logger.error("Kļūda dzēšot kontaktus ar ID {}: {}", id, e.getMessage());
-            throw new Exception("Notikusi kļūda, mēģinot dzēst kontaktus ar ID " + id + ": " + e.getMessage());
+            logger.error("Kļūda dzēšot kontaktu ar id {}: {}", id, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot dzēst kontaktu ar ID " + id + ": " + e.getMessage());
         }
     }
 }

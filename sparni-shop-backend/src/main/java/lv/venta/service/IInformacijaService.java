@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import lv.venta.model.Informacija;
 
 
+
 public interface IInformacijaService {
 
 	
@@ -17,4 +18,6 @@ public interface IInformacijaService {
 	public abstract void updateById(int id, Informacija informacija) throws Exception;
 	
 	public abstract void deleteById(int id) throws Exception;
+
+	public abstract ArrayList<Informacija> getLocalizedInfo(ArrayList<Informacija> information, String language);
 }

@@ -5,7 +5,7 @@ import "../../static/css/Contact.css";
 import { useTranslation } from 'react-i18next';
 
 function Contact() {
-  const { t } = useTranslation();
+  const { t ,i18n} = useTranslation();
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [topic, setTopic] = useState('');

@@ -2,7 +2,6 @@ package lv.venta.service;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ public class EmailSendingService {
     private final JavaMailSender mailSender;
     private final IKlientuEpastiService klientuEpastiService; 
 
-    @Autowired //konstruktors, lai definētu final
+    //konstruktors, lai definētu final
     public EmailSendingService(JavaMailSender mailSender, IKlientuEpastiService klientuEpastiService) {
         this.mailSender = mailSender;
         this.klientuEpastiService = klientuEpastiService;

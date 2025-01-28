@@ -2,6 +2,7 @@
 package lv.venta.model;
 
 import java.util.List;
+import java.util.Locale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,8 +31,11 @@ public class Kontakti {
     @Setter(value = AccessLevel.NONE)
     private int idk;
 
-    @Column(name = "Nosaukums")
-    private String nosaukums;
+    @Column(name = "Nosaukums_EN")
+    private String nosaukumsEn;
+
+    @Column(name = "Nosaukums_LV")
+    private String nosaukumsLv;
 
     @Column(name = "Informacija")
     private String informacija;
@@ -40,8 +44,17 @@ public class Kontakti {
     @OneToMany(mappedBy = "kontakti")
     private List<MainPage_ParMums> mainPage_ParMums;
     
-    public Kontakti(String nosaukums, String informacija) {
-        this.nosaukums = nosaukums;
-        this.informacija = informacija;
+    public Kontakti(String nosaukumsEn,String nosaukumsLv,String informacija) {
+        setNosaukumsEn(nosaukumsEn);
+        setNosaukumsLv(nosaukumsLv);
+        setInformacija(informacija);
+      
     }
+
+    
+    public String getLocalizedNosaukums(Locale locale) {
+        return locale.getLanguage().equals("lv") ? nosaukumsLv : nosaukumsEn;
+    }
+
+
 }

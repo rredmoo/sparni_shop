@@ -1,5 +1,7 @@
 package lv.venta.model;
 
+import java.util.Locale;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,23 +32,44 @@ public class Informacija {
 
     @NotNull
     @Size(min = 3, max = 50)
-    @Column(name = "NOSAUKUMS")
-    private String nosaukums;
+    @Column(name = "NOSAUKUMS_EN")
+    private String nosaukumsEn;
+
+    @NotNull
+    @Size(min = 3, max = 50)
+    @Column(name = "NOSAUKUMS_LV")
+    private String nosaukumsLv;
 
     @Size(min = 3, max = 300)
-    @Column(name = "APRAKSTS")
-    private String apraksts;
+    @Column(name = "APRAKSTS_EN")
+    private String aprakstsEn;
+
+    @Size(min = 3, max = 300)
+    @Column(name = "APRAKSTS_LV")
+    private String aprakstsLv;
     
     @Size(min = 3, max = 300)
     @Column(name = "BILDES_URL")
     private String bildesUrl;
 
  
-    public Informacija(String nosaukums, String apraksts, String bildesUrl) {
-        this.nosaukums = nosaukums;
-        this.apraksts = apraksts;
-        this.bildesUrl = bildesUrl;
-
+    public Informacija(String nosaukumsEn,String nosaukumsLv, String aprakstsEn,String aprakstsLv, String bildesUrl) {
+        setNosaukumsEn(nosaukumsEn);
+        setNosaukumsLv(nosaukumsLv);
+        setAprakstsEn(aprakstsEn);
+        setAprakstsLv(aprakstsLv);
+        setBildesUrl(bildesUrl);
+      
     }
+
+
+    public String getLocalizedNosaukums(Locale locale) {
+        return locale.getLanguage().equals("lv") ? nosaukumsLv : nosaukumsEn;
+    }
+
+    public String getLocalizedApraksts(Locale locale) {
+        return locale.getLanguage().equals("lv") ? aprakstsLv : aprakstsEn;
+    }
+    
 }
 	

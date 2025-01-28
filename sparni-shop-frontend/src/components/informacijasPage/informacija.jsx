@@ -3,10 +3,10 @@ import InformacijasServiceConfig from '../../config/InformacijasPageConfig';
 import "../../static/css/Informacija.css";
 import { useTranslation } from 'react-i18next';
 
-function Informacija ({numInfos}){
+function Informacija({ numInfos }) {
   const [infos, setInfos] = useState([]);
   const [error, setError] = useState(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     InformacijasServiceConfig.getAllInformacija()
@@ -23,7 +23,7 @@ function Informacija ({numInfos}){
         console.error(t("errorProducts"), error);
         setError(error.message);
       });
-  }, [numInfos]); 
+  }, [numInfos, t]);
 
   return (
     <>
@@ -37,9 +37,8 @@ function Informacija ({numInfos}){
                 alt={info.nosaukums}
               />
               <div className="informacijas-card-details">
-                <h3>{info.nosaukums}</h3>
-                <p>{info.apraksts}</p>
-                
+                <h3>{info[`nosaukums${i18n.language === 'lv' ? 'Lv' : 'En'}`]}</h3>
+                <p>{info[`apraksts${i18n.language === 'lv' ? 'Lv' : 'En'}`]}</p>
               </div>
             </div>
           ))
@@ -47,7 +46,7 @@ function Informacija ({numInfos}){
           <div>{t('noInformationAvailable')}</div>
         )}
       </div>
-      {error && <div>Error: {error}</div>}
+      {error && <div>{t('error')}: {error}</div>}
     </>
   );
 }

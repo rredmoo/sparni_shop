@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.model.Informacija;
+
 import lv.venta.repo.IInformacijasRepo;
 import lv.venta.service.IInformacijaService;
 
@@ -19,13 +20,37 @@ public class InformacijasServiceImpl implements IInformacijaService {
     @Autowired
     private IInformacijasRepo infoRepo;
 
+
     @Override
-    public void create(Informacija informacija) {
+    public ArrayList<Informacija> getLocalizedInfo(ArrayList<Informacija> information, String language) {
+        ArrayList<Informacija> localizedList = new ArrayList<>();
+        for (Informacija info : information) {
+           
+            Informacija localizedInfo = new Informacija(
+                language.equals("lv") ? info.getNosaukumsLv() : info.getNosaukumsEn(),
+                language.equals("lv") ? info.getNosaukumsLv() : info.getNosaukumsEn(),
+                
+                language.equals("lv") ? info.getAprakstsLv() : info.getAprakstsEn(),
+                language.equals("lv") ? info.getAprakstsLv() : info.getAprakstsEn(),
+                
+                info.getBildesUrl()
+
+
+            );
+            localizedList.add(localizedInfo);
+        }
+        return localizedList;
+    }
+
+
+    @Override
+    public void create(Informacija info) {
         try {
-            infoRepo.save(informacija);
+            infoRepo.save(info);
+            logger.info("Informācija ar nosaukumu '{}' veiksmīgi izveidota.", info.getNosaukumsLv());
         } catch (Exception e) {
-            logger.error("Kļūda izveidojot informāciju: {}", e.getMessage());
-            throw new UnsupportedOperationException("Notikusi kļūda, mēģinot izveidot informāciju: " + e.getMessage(), e);
+            logger.error("Kļūda izveidojot Informāciju: {}", e.getMessage());
+            throw new RuntimeException("Notikusi kļūda, mēģinot izveidot Informāciju: " + e.getMessage(), e);
         }
     }
 
@@ -65,8 +90,10 @@ public class InformacijasServiceImpl implements IInformacijaService {
         try {
             Informacija infoForUpdate = retrieveById(id);
 
-            infoForUpdate.setNosaukums(informacija.getNosaukums());
-            infoForUpdate.setApraksts(informacija.getApraksts());
+            infoForUpdate.setNosaukumsEn(informacija.getNosaukumsEn());
+            infoForUpdate.setNosaukumsLv(informacija.getNosaukumsLv());
+            infoForUpdate.setAprakstsEn(informacija.getAprakstsEn());
+            infoForUpdate.setAprakstsLv(informacija.getAprakstsLv());
             infoForUpdate.setBildesUrl(informacija.getBildesUrl());
 
             infoRepo.save(infoForUpdate);

@@ -28,7 +28,6 @@ public class EmailController {
     @Autowired
     private IKlientuEpastiService klientuEpastiService;
 
-    @Autowired
     public EmailController(EmailSendingService emailSenderService, IEpastiNoKlientaService messageService) {
         this.emailSenderService = emailSenderService;
         this.epastiNoKlientaService = messageService;

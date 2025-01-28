@@ -61,6 +61,8 @@ public class Pirkums {
     @OneToOne(mappedBy = "pirkums")
     private Pirkums_Elements pirkumsElements;
 
+    
+
     public Pirkums(Piegades_Veids piegades_Veids, LocalDateTime pirkumaDatums, String piegadesDetalas, Samaksas_veids samaksasVeids, Statuss statuss,
     Pirceja_Dati pirceja_Dati, Pirkums_Elements pirkums_Elements){
         setPiegadesVeids(piegades_Veids);

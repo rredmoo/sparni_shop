@@ -13,23 +13,48 @@ import lv.venta.service.IPreceCRUDService;
 
 @Service
 public class preceServiceImpl implements IPreceCRUDService {
-
+    
+   
     private static final Logger logger = LoggerFactory.getLogger(preceServiceImpl.class);
 
     @Autowired
     private IPreceRepo preceRepo;
+   
+
+
+    
+    @Override
+public ArrayList<Veikals_prece> getLocalizedPreces(ArrayList<Veikals_prece> preces, String language) {
+    ArrayList<Veikals_prece> localizedList = new ArrayList<>();
+    for (Veikals_prece prece : preces) {
+        Veikals_prece localizedPrece = new Veikals_prece(
+            language.equals("lv") ? prece.getNosaukumsLv() : prece.getNosaukumsEn(),
+            language.equals("lv") ? prece.getNosaukumsLv() : prece.getNosaukumsEn(),
+            language.equals("lv") ? prece.getAprakstsLv() : prece.getAprakstsEn(),
+            language.equals("lv") ? prece.getAprakstsLv() : prece.getAprakstsEn(),
+            prece.getDaudzums(),
+            prece.getCena(),
+            prece.getPirkums_Elements(),
+            prece.getVeikals_kategorija(),
+            prece.getVeikals_prece_bildes(),
+            prece.getIdAtlaide()
+        );
+        localizedList.add(localizedPrece);
+    }
+    return localizedList;
+}
+
 
     @Override
     public void create(Veikals_prece prece) {
         try {
             preceRepo.save(prece);
-            logger.info("Prece '{}' veiksmīgi izveidota.", prece.getNosaukums());
+            logger.info("Prece ar nosaukumu '{}' veiksmīgi izveidots.", prece.getNosaukumsLv());
         } catch (Exception e) {
-            logger.error("Kļūda izveidojot preci: {}", e.getMessage());
-            throw new RuntimeException("Notikusi kļūda, mēģinot izveidot preci: " + e.getMessage(), e);
+            logger.error("Kļūda izveidojot pasākumu: {}", e.getMessage());
+            throw new RuntimeException("Notikusi kļūda, mēģinot izveidot Preci: " + e.getMessage(), e);
         }
     }
-
     @Override
     public Veikals_prece retrieveById(int id) throws Exception {
         try {
@@ -65,12 +90,14 @@ public class preceServiceImpl implements IPreceCRUDService {
     public void updateById(int id, Veikals_prece prece) throws Exception {
         try {
             Veikals_prece preceForUpdate = retrieveById(id);
-            preceForUpdate.setNosaukums(prece.getNosaukums());
-            preceForUpdate.setApraksts(prece.getApraksts());
+            preceForUpdate.setNosaukumsEn(prece.getNosaukumsEn());
+            preceForUpdate.setNosaukumsLv(prece.getNosaukumsLv());
+            preceForUpdate.setAprakstsEn(prece.getAprakstsEn());
+            preceForUpdate.setAprakstsLv(prece.getAprakstsLv());
             preceForUpdate.setDaudzums(prece.getDaudzums());
             preceForUpdate.setCena(prece.getCena());
             preceForUpdate.setPirkums_Elements(prece.getPirkums_Elements());
-            preceForUpdate.setVeikals_kategorijas(prece.getVeikals_kategorijas());
+            preceForUpdate.setVeikals_kategorija(prece.getVeikals_kategorija());
             preceForUpdate.setVeikals_prece_bildes(prece.getVeikals_prece_bildes());
             preceForUpdate.getIdAtlaide();
 
@@ -117,4 +144,20 @@ public class preceServiceImpl implements IPreceCRUDService {
             throw new Exception("Notikusi kļūda, mēģinot iegūt preces dilstošā secībā pēc cenas: " + e.getMessage());
         }
     }
+
+
+    @Override
+    public ArrayList<Veikals_prece> retrieveByCategoryId(int categoryId) throws Exception {
+        try {
+            ArrayList<Veikals_prece> events = preceRepo.findByIdvp(categoryId);
+            if (events.isEmpty()) {
+                throw new Exception("Nav nevienas preces šajā kategorijā!");
+            }
+            return events;
+        } catch (Exception e) {
+            logger.error("Kļūda iegūstot preces pēc kategorijas ID {}: {}", categoryId, e.getMessage());
+            throw new Exception("Notikusi kļūda, mēģinot iegūt preces pēc kategorijas ID: " + categoryId, e);
+        }
+    }
+
 }

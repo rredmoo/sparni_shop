@@ -2,7 +2,9 @@ package lv.venta.service;
 
 import java.util.ArrayList;
 
+
 import lv.venta.model.Veikals_prece;
+
 
 
 public interface IPreceCRUDService {
@@ -20,4 +22,9 @@ public interface IPreceCRUDService {
 	public abstract ArrayList<Veikals_prece> retrieveAllAsc() throws Exception;
 
 	public abstract ArrayList<Veikals_prece> retrieveAllDsc() throws Exception;
+
+	public abstract ArrayList<Veikals_prece> getLocalizedPreces(ArrayList<Veikals_prece> preces, String language);
+
+	public abstract ArrayList<Veikals_prece> retrieveByCategoryId(int categoryId) throws Exception;
+	
 }
