@@ -9,5 +9,8 @@ import lombok.ToString;
 public class PaymentStatusDTO {
 	private String paymentIntentId;
 	private String paymentStatus;
+	private String name;
+    private String email;
+	private double price;
 	
 }

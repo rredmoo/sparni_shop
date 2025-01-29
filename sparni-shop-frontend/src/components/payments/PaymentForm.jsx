@@ -44,6 +44,7 @@ const PaymentForm = ({ clientSecret }) => {
       await sendPaymentDataToBackend(paymentIntent.id, paymentIntent.status);
 
       if (paymentIntent.status === "succeeded") {
+        await sendPaymentDataToBackend(paymentIntent.id, paymentIntent.status, name, email);
         // Display success notification
         if (Notification.permission === "granted") {
           new Notification("Order Completed", {
@@ -63,7 +64,7 @@ const PaymentForm = ({ clientSecret }) => {
     }
   };
 
-  const sendPaymentDataToBackend = async (paymentIntentId, paymentStatus) => {
+  const sendPaymentDataToBackend = async (paymentIntentId, paymentStatus, name, email) => {
     const response = await fetch("http://localhost:8080/payment/confirm", {
       method: "POST",
       headers: {
@@ -72,6 +73,8 @@ const PaymentForm = ({ clientSecret }) => {
       body: JSON.stringify({
         paymentIntentId: paymentIntentId,
         paymentStatus: paymentStatus,
+        name: name,
+        email: email,
       }),
     });
     if (response.ok) {
@@ -80,6 +83,7 @@ const PaymentForm = ({ clientSecret }) => {
       console.error("Failed to send data to the backend");
     }
   };
+  
 
   return (
     <div>
