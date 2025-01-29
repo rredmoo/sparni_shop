@@ -153,7 +153,7 @@ public class SparniShopApplication {
                                                 "Sock making", "Zeķu adīšana",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Majas",
-                                                "come and work for socks!","Stradajam un adam!Stradajam un adam!",
+                                                "come and join in event of sock making!","Stradajam un adam!Stradajam un adam!",
                                                 "https://gitaozola.wordpress.com/wp-content/uploads/2014/11/wpid-dsc_01172.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi5);
@@ -165,7 +165,7 @@ public class SparniShopApplication {
                                                 "Run bro", "Maratons",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Lemberga hūte",
-                                                "rush b!","skrienam b",
+                                                "Event in local town!","ciema pasakums",
                                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s"
                                 );
                                 pasakumiRepo.save(pasakumi6);
@@ -177,7 +177,7 @@ public class SparniShopApplication {
                                                 "Picnic","Pikniks",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
-                                                "Eat nam nam","ēdam!!!!!!!!!!!",
+                                                "Picnic","Pikniks",
                                                 "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg"
                                 );
                                 pasakumiRepo.save(pasakumi7);
@@ -198,7 +198,7 @@ public class SparniShopApplication {
                                 List<Veikals_kategorijas> kategorijas = List.of(Veikals_kategorijas.Šalles,Veikals_kategorijas.Ziema);
                                 
                                 Veikals_prece prece1 = new Veikals_prece(
-                                                "SHithead hat","Pilnīgs Gaļaks Cepure",
+                                                "Blach Ht","Melna Cepure",
                                                 "100% cotton"," audums palubom",
                                                 74,
                                                 19.99f,
@@ -259,7 +259,7 @@ public class SparniShopApplication {
 
                                 Veikals_prece prece6 = new Veikals_prece(
                                                 "Wooden clock #7","Koka pulkstenis #7",
-                                               "clock made by ma sistas", "Amatnieku veidots koka pulkstenis",
+                                               "clock made by hand", "Amatnieku veidots koka pulkstenis",
                                                 1,
                                                 24.99f,
                                                 null,
