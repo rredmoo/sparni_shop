@@ -20,9 +20,7 @@ function SendSelectedEmail() {
       selectedEmails,
     };
 
-    console.log('Sending email data:', emailData);
-
-
+    console.log("Sending email data:", emailData);
 
     try {
       const response = await API.post(
@@ -62,7 +60,7 @@ function SendSelectedEmail() {
     };
 
     fetchData();
-  }, []); // Dependency array - runs only once
+  }, []); 
 
   // selection of emails
   const handleEmailSelection = (event) => {
@@ -123,6 +121,7 @@ function SendSelectedEmail() {
       <div className="bulk-email">
         <form onSubmit={handleSubmit}>
           <input
+            className="searchCheck"
             type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
@@ -130,6 +129,7 @@ function SendSelectedEmail() {
             required
           />
           <textarea
+            className="searchTextArea"
             value={body}
             onChange={(e) => setBody(e.target.value)}
             placeholder="Email body"

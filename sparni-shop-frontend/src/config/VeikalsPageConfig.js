@@ -12,6 +12,10 @@ class UserService {
     getPrecesOrderedByDesc() {
         return API.get('/veikals/price/desc');
     }
+
+    updateProduct(id, product) {
+        return API.put(`/veikals/prece/${id}`, product);
+      }
 }
 
 export default new UserService();

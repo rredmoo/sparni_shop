@@ -74,4 +74,5 @@ public class Product {
         this.veikals_prece_bildes = veikals_prece_bildes;
         this.idAtlaide = idAtlaide;
     }
+    
 }

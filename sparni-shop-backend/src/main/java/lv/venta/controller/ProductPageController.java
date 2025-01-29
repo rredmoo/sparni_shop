@@ -6,19 +6,10 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lv.venta.model.Product;
 import lv.venta.service.IProductCRUDService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -26,82 +17,74 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductPageController {
 
     @Autowired
-    private IProductCRUDService preceCRUDService;
-
-    @Autowired
-    private IProductCRUDService preceService;
+    private IProductCRUDService productService;
 
     @GetMapping("/all")
-    public ArrayList<Product> getPreceCRUDAll() {
+    public ResponseEntity<ArrayList<Product>> getAllProducts() {
         try {
-            return preceCRUDService.retrieveAll();
+            ArrayList<Product> products = productService.retrieveAll();
+            return ResponseEntity.ok(products);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
     @GetMapping("/prece/{id}")
-    public void updatePrece(@PathVariable int id, @RequestBody Product prece) {
+    public ResponseEntity<Product> getProductById(@PathVariable int id) throws Exception {
         try {
-            preceService.updateById(id, prece);
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    @GetMapping("/prece/all")
-    public ArrayList<Product> getAllPrece() {
-        try {
-            return preceService.retrieveAll();
-        } catch (Exception e) {
-
-            return null;
+            Product product = productService.retrieveById(id);
+            return ResponseEntity.ok(product);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
-    @PostMapping("/prece/create")
-    public void createPrece(@RequestBody Product prece) {
+    @PutMapping("/prece/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestBody Product product) {
         try {
-            preceService.create(prece);
-
+            productService.updateById(id, product);
+            return ResponseEntity.ok("Product updated successfully.");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
         } catch (Exception e) {
-
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to update product.");
         }
     }
 
     @DeleteMapping("/prece/{id}")
-    public void deletePreceById(@PathVariable int id) {
+    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
         try {
-            preceService.deleteById(id);
-
+            productService.deleteById(id);
+            return ResponseEntity.ok("Product deleted successfully.");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
         } catch (Exception e) {
-
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product.");
         }
     }
 
     @GetMapping("/price/asc")
-    public ArrayList<Product> getProductsAsc() {
+    public ResponseEntity<ArrayList<Product>> getProductsAsc() {
         try {
-            return preceService.retrieveAllAsc();
+            ArrayList<Product> products = productService.retrieveAllAsc();
+            return ResponseEntity.ok(products);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
     @GetMapping("/price/desc")
-    public ArrayList<Product> getProductsDsc() {
+    public ResponseEntity<ArrayList<Product>> getProductsDesc() {
         try {
-            return preceService.retrieveAllDsc();
+            ArrayList<Product> products = productService.retrieveAllDsc();
+            return ResponseEntity.ok(products);
         } catch (Exception e) {
-            return null;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleNoSuchElementFoundException(NoSuchElementException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("Item not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found");
     }
-
 }

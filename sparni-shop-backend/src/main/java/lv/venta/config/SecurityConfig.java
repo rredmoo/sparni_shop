@@ -53,6 +53,8 @@ public class SecurityConfig {
                         .requestMatchers("/payment/**").permitAll()
                         .requestMatchers("/basket/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN"))
+                        
+                        
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")
                         .successHandler(successHandler())
