@@ -36,7 +36,7 @@ function ShoppingCart() {
       (total, item) => total + item.product.cena * item.count,
       0
     );
-    setAmount(totalAmount * 100);
+    setAmount(totalAmount * 100); // Convert to cents for Stripe
   };
 
   const updateItemCount = async (id, newCount) => {
@@ -69,27 +69,24 @@ function ShoppingCart() {
     }
   };
 
-  const handleBuyClick = async () => {
-    console.log("Pirkt button clicked with amount:", amount);
+  const createPaymentIntent = async (amount) => {
+    const response = await fetch("http://localhost:8080/payment/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: amount,
+        currency: "eur",
+      }),
+    });
+    const data = await response.json();
+    setClientSecret(data.clientSecret);
+    setShowPayment(true);
+  };
 
-    if (amount <= 0) {
-      console.error("Invalid amount:", amount);
-      return;
-    }
-
-    try {
-      const response = await axios.post("http://localhost:8080/payment/create", { amount });
-      console.log("Payment intent response:", response.data);
-
-      if (response.data.clientSecret) {
-        setClientSecret(response.data.clientSecret);
-        setShowPayment(true);
-      } else {
-        console.error("No clientSecret received from backend.");
-      }
-    } catch (error) {
-      console.error("Error creating payment intent:", error);
-    }
+  const handleBuyClick = () => {
+    createPaymentIntent(amount);
   };
 
   return (
@@ -111,7 +108,8 @@ function ShoppingCart() {
                       alt={item.product.nosaukums}
                     />
                     <span>
-                      {item.product.nosaukums} - {item.count} x {item.product.cena}€
+                      {item.product.nosaukums} - {item.count} x{" "}
+                      {item.product.cena}€
                     </span>
 
                     <div className="quantity-controls">
@@ -130,7 +128,10 @@ function ShoppingCart() {
                       </button>
                     </div>
 
-                    <button className="remove-button" onClick={() => removeItem(item.id)}>
+                    <button
+                      className="remove-button"
+                      onClick={() => removeItem(item.id)}
+                    >
                       ❌
                     </button>
                   </li>
@@ -149,25 +150,11 @@ function ShoppingCart() {
               Pirkt
             </button>
 
-            {showPayment && (
+            {showPayment && clientSecret && (
               <div className="payment-form">
-                <h2>Maksājumu sistēma</h2>
-                <label htmlFor="amount">Ievadiet summu (centos): </label>
-                <input
-                  type="number"
-                  id="amount"
-                  value={amount}
-                  onChange={(e) => setAmount(Number(e.target.value))}
-                  min="1"
-                  step="1"
-                />
-                <br />
-
-                {clientSecret && (
-                  <Elements stripe={stripePromise}>
-                    <PaymentForm clientSecret={clientSecret} />
-                  </Elements>
-                )}
+                <Elements stripe={stripePromise}>
+                  <PaymentForm clientSecret={clientSecret} />
+                </Elements>
               </div>
             )}
           </div>

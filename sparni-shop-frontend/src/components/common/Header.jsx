@@ -38,7 +38,10 @@ function Header() {
       </div>
 
       <div className="header-top">
-        <img src={SparniLogo} alt="logo" className="sparni-logo" />
+        {/* Link added here to navigate to the main page */}
+        <Link to="/main">
+          <img src={SparniLogo} alt="logo" className="sparni-logo" />
+        </Link>
         <input
           type="text"
           placeholder={t('searchBar')}

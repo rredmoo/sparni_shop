@@ -3,98 +3,87 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  margin: 0 10rem 0;
+  margin: 0 10rem;
 }
 
-/* augšējo bilžu container */
+/* Top section (first large event and small events) */
 .pasakumi-top {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-/* mazās bildes */
-.latest-small-pasakums .pasakums-card-img {
-  height: 125px;
-  object-fit: cover;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-/* Kreisās puses lielais pasākums */
+/* Left section - Large event */
 .pasakumi-left {
   flex: 2;
   margin-right: 16px;
 }
-/* Lielais pasākums */
-.latest-pasakums {
-  height: 600px;
-}
 
-/* Labās puses mazies stacked pasākumi */
+/* Right section - Small events stacked */
 .pasakumi-right {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
-/* Mazie pasākumi */
+
+/* Large event card */
+.latest-pasakums {
+  height: 600px;
+}
+
+/* Small event card */
 .latest-small-pasakums {
   height: 290px;
 }
 
-/* pārējie pasākumi apakšā */
-.pasakumi-under {
-  display: flex;
-}
-
-/* Individual event card */
-.pasakums-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  width: 100%;
-  margin: 10px;
-}
-
-/* pasākuma Image */
+/* Event image */
 .pasakums-card-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
+
 .pasakums-card-img-large {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
 }
 
-/* Apraksts */
+/* Event card styles */
+.pasakums-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
 .pasakums-card-details {
-  padding: 20px;
-}
-.pasakums-card-details p {
-  color: #000000;
-  font-size: 1rem;
-  line-height: 1.5;
+  padding: 10px;
 }
 
-/* Nosaukums */
-.pasakums-card-details h3 {
-  margin-top: 0;
-  font-size: 1.5rem;
-  color: #333333;
+.pasakums-card h3 {
+  margin: 0;
 }
 
+.pasakums-card p {
+  margin-top: 8px;
+}
+
+/* Hover effect for event cards */
 .pasakums-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Bottom section for the rest of the events */
+.pasakumi-under {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-/*filtriem*/
-
-
+/* Filter bar styles */
 .filter-bar {
   display: flex;
   justify-content: space-between;
@@ -102,27 +91,18 @@
   padding: 10px;
   background-color: #f8f9fa;
   border-radius: 10px;
-  gap: 20px; 
+  gap: 20px;
 }
 
-
-.category-filter select {
+.category-filter select,
+.date-picker input,
+.search-bar input {
   width: 180px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-
-.date-picker input {
-  width: 180px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
 
 .search-bar {
   flex-grow: 1;
@@ -131,8 +111,17 @@
 
 .search-bar input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Event card details text styles */
+.pasakums-card-details p {
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pasakums-card-details h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
 }
