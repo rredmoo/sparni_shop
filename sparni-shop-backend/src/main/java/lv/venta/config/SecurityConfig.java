@@ -51,6 +51,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/kontakti/all").permitAll()
                         .requestMatchers("/payment/**").permitAll()
+                        .requestMatchers("/basket/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN"))
                 .formLogin(form -> form
                         .loginProcessingUrl("/login")

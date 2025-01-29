@@ -136,7 +136,7 @@ function Product({ sortOrder, numProducts }) {
                   })}
                 </p>
                 <button className="btn-basket" onClick={addToBasket}>
-                  {t("addToBasket")}
+                  {t("Uz Grozu")}
                 </button>
                 <p>{selectedProduct.apraksts}</p>
               </div>

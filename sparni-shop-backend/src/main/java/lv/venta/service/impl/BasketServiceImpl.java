@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
 import lv.venta.model.Basket;
 import lv.venta.repo.IBasketRepo;
 import lv.venta.service.IBasketService;
 
+@Service
 public class BasketServiceImpl implements IBasketService{
 
     @Autowired

@@ -1,5 +1,7 @@
 package lv.venta.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class BasketItem {
     @Column(name = "ID_BASKET_ITEM")
     private int id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ID_BASKET", nullable = false)
     private Basket basket;    
