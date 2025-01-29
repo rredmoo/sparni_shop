@@ -4,7 +4,7 @@ import "../../static/css/Product.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SparniLogo from "../../static/img/sparni-logo.png";
-
+import axios from "axios"; // Ensure axios is imported
 
 function Product({ sortOrder, numProducts }) {
   const [preces, setPreces] = useState([]);
@@ -13,10 +13,8 @@ function Product({ sortOrder, numProducts }) {
   const [selectedCurrency, setSelectedCurrency] = useState("EUR");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [basketId] = useState(1); // Assuming you have a way to retrieve the basket ID
 
-  /*
-    Function used for sorting productions via categorys
-  */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,28 +43,35 @@ function Product({ sortOrder, numProducts }) {
     fetchData();
   }, [sortOrder, numProducts, t]);
 
-  /*
-    Sets the clicked product and activates the Modal (popup)
-  */
   const handleProductClick = (prece) => {
     setSelectedProduct(prece);
     setShowModal(true);
   };
 
-  /*
-    Sets active product as null and deactivates the Modal (popup)
-  */
   const closeModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
   };
 
-  /*
-    Returns a list of product cards that contain: img, title, description and the price. 
-    Each card has a on click handler that activates handleProductClick();
-    If clicked, returns a list of cards and a Modal Above them containing the clicked product card
+  const addToBasket = async () => {
+    try {
+      const response = await axios.post("/basket/item/add", null, {
+        params: {
+          basketId,
+          productId: selectedProduct.idvp, // assuming `idvp` is the product ID
+          count: 1, // defaulting to 1 item for now
+        },
+      });
 
-  */
+      console.log(response.data);
+      alert(t("productAddedToBasket"));
+      closeModal();
+    } catch (error) {
+      console.error("Error adding product to basket:", error);
+      alert(t("errorAddingProductToBasket"));
+    }
+  };
+
   return (
     <>
       <div className="product-list">
@@ -98,7 +103,6 @@ function Product({ sortOrder, numProducts }) {
         )}
       </div>
 
-      {/* If a product card is clicked, this Modal card appears */}
       {showModal && selectedProduct && (
         <div className="modal">
           <div className="modal-content">
@@ -131,7 +135,9 @@ function Product({ sortOrder, numProducts }) {
                     currency: selectedCurrency,
                   })}
                 </p>
-                <button className="btn-basket">Uz grozu</button>
+                <button className="btn-basket" onClick={addToBasket}>
+                  {t("addToBasket")}
+                </button>
                 <p>{selectedProduct.apraksts}</p>
               </div>
             </div>
