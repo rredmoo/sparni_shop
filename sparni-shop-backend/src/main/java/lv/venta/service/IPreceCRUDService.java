@@ -26,5 +26,6 @@ public interface IPreceCRUDService {
 	public abstract ArrayList<Veikals_prece> getLocalizedPreces(ArrayList<Veikals_prece> preces, String language);
 
 	public abstract ArrayList<Veikals_prece> retrieveByCategoryId(int categoryId) throws Exception;
+
 	
 }

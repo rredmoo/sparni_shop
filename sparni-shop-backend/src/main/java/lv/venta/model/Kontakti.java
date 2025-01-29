@@ -11,6 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,12 +34,23 @@ public class Kontakti {
     @Setter(value = AccessLevel.NONE)
     private int idk;
 
+    @Size(max = 50, message = "Max allow symbols is 50!")
+    //@Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
+    @NotNull
     @Column(name = "Nosaukums_EN")
     private String nosaukumsEn;
 
+
+    @Size(max = 50, message = "Max allow symbols is 50!")
+    //@Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
+    @NotNull
     @Column(name = "Nosaukums_LV")
     private String nosaukumsLv;
 
+
+    @Size(max = 50, message = "Max allow symbols is 50!")
+    //@Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
+    @NotNull
     @Column(name = "Informacija")
     private String informacija;
 

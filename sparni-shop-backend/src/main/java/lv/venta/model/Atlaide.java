@@ -36,7 +36,7 @@ public class Atlaide {
     private LocalDateTime beiguDatums;
 
     @OneToMany(mappedBy = "idAtlaide")
-    private List<Veikals_prece> veikals_prece;  // Changed to List
+    private List<Veikals_prece> veikals_prece;
 
     public Atlaide(int atlaidesApmers, LocalDateTime sakumaDatums, LocalDateTime beiguDatums) {
         this.atlaidesApmers = atlaidesApmers;

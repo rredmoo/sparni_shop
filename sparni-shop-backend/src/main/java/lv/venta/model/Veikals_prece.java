@@ -5,6 +5,8 @@ import java.util.Locale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,30 +41,30 @@ public class Veikals_prece {
     @Setter(value = AccessLevel.NONE)
     private int idvp;
 
+    @Size(max = 55, message = "Max allow symbols is 55!")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti vai simboli")
     @NotNull
-    @Size(min = 3, max = 50)
-   // @Pattern(regexp = "[A-Za-z\\s.,!?-]+", message = "Only English letters allowed!")
     @Column(name = "NOSAUKUMS_EN")
     private String nosaukumsEn;
 
 
+    @Size(max = 55, message = "Max allow symbols is 55!")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti vai simboli")
     @NotNull
-    @Size(min = 3, max = 50)
-   // @Pattern(regexp = "[A-Za-zĀĒŪĪĻĶĢŠĀŽČŅ\\s.,!?-]+", message = "Tikai Latviešu burti ir atlauti!")
     @Column(name = "NOSAUKUMS_LV")
     private String nosaukumsLv;
 
 
+    @Size(max = 255, message = "Max allow symbols is 255!")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti vai simboli")
     @NotNull
-    @Size(min = 3, max = 300)
-  //  @Pattern(regexp = "[A-Za-z\\s.,!?-]+", message = "Only English letters allowed!")
     @Column(name = "APRAKSTS_EN")
     private String aprakstsEn;
 
 
+    @Size(max = 255, message = "Max allow symbols is 255!")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti vai simboli")
     @NotNull
-    @Size(min = 3, max = 50)
-   // @Pattern(regexp = "[A-Za-zĀĒŪĪĻĶĢŠĀŽČŅ\\s.,!?-]+", message = "Tikai Latviešu burti ir atlauti!")
     @Column(name = "APRAKSTS_LV")
     private String aprakstsLv;
 
@@ -71,6 +73,7 @@ public class Veikals_prece {
     @Column(name = "DAUDZUMS")
     private int daudzums;
 
+    @NotNull
     @Max(1000)
     @Min(0)
     @Column(name = "CENA")
@@ -81,6 +84,7 @@ public class Veikals_prece {
     private Pirkums_Elements pirkums_Elements;
 
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "Kategorija")
     private List<Veikals_kategorijas> veikals_kategorija;
     
@@ -119,4 +123,3 @@ public class Veikals_prece {
 
 
 }
-

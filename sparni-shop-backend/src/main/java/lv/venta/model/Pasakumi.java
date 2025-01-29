@@ -7,7 +7,12 @@ import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+
+
 
 @Getter
 @Setter
@@ -34,21 +39,37 @@ public class Pasakumi {
     @Column(name = "BEIGU_DATUMS")
     private LocalDateTime beiguDatums;
 
+
+    @Size(max = 55, message = "Max allow symbols is 55!")
+    @NotNull
     @Column(name = "NOSAUKUMS_EN")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
     private String nosaukumsEn;
 
+
+    @Size(max = 55, message = "Maksimums atļauto simbolu is 55!")
+    @NotNull
     @Column(name = "NOSAUKUMS_LV")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
     private String nosaukumsLv;
 
     @Column(name = "LAIKS")
     private LocalDateTime laiks;
 
     @Column(name = "VIETA")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
     private String vieta;
 
+
+    @Size(max = 250, message = "Max allow symbols is 250!")
+    @NotNull
     @Column(name = "APRAKSTS_EN")
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
     private String aprakstsEn;
 
+    @Size(max = 250, message = "Maksimums atļauto simbolu is 250!")
+    @NotNull
+    @Pattern(regexp = "^[a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž0-9.,?!'\"\\-\\s@#$%&*()+:;_]*$", message = "Nederīgi burti")
     @Column(name = "APRAKSTS_LV")
     private String aprakstsLv;
 
@@ -73,7 +94,6 @@ public class Pasakumi {
         setBildesUrl(bildesUrl);
     }
 
-    
     public String getLocalizedNosaukums(Locale locale) {
         return locale.getLanguage().equals("lv") ? nosaukumsLv : nosaukumsEn;
     }
