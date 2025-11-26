@@ -23,8 +23,8 @@ import lv.venta.service.IStripePaymentService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class StripeController {
 
-	@Autowired
-	private EmailSendingService emailSendingService;
+	// @Autowired
+	// private EmailSendingService emailSendingService;
 
 	@Autowired
 	private IStripePaymentService stripeService;
@@ -56,7 +56,7 @@ public class StripeController {
 			String paymentStatus = paymentStatusDTO.getPaymentStatus();
 			double price = paymentStatusDTO.getPrice();
 
-			emailSendingService.sendPaymentConfirmationEmail(email, name, paymentIntentId, paymentStatus, price);
+			// emailSendingService.sendPaymentConfirmationEmail(email, name, paymentIntentId, paymentStatus, price);
 
 			return new ResponseEntity<>("Payment info saved and email sent", HttpStatus.OK);
 		} catch (Exception e) {

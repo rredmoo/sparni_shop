@@ -17,7 +17,7 @@ import lv.venta.service.IStripePaymentService;
 
 @Service
 public class StripePaymentServiceImpl implements IStripePaymentService {
-	@Value("${stripe.public.key}")
+	@Value("${stripe.secret.key}")
 	private String stripePublicKey;
 
 	public StripePaymentServiceImpl() {
@@ -26,8 +26,14 @@ public class StripePaymentServiceImpl implements IStripePaymentService {
 
 	@PostConstruct
 	public void init() {
-		Stripe.apiKey = stripePublicKey;
+	    if (stripePublicKey == null || stripePublicKey.isBlank()) {
+	        System.out.println("Stripe key missing – skipping init");
+	        return;
+	    }
+	    Stripe.apiKey = stripePublicKey;
 	}
+
+
 
 	@Override
 	public PaymentIntent createPayment(PaymentInitDTO paymentInitDTO) throws StripeException {

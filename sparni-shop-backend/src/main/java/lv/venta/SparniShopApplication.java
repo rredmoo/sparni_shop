@@ -165,7 +165,7 @@ public class SparniShopApplication {
                                                 "Maratons",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Lemberga hūte",
-                                                "Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!Skrienam daudz!",
+                                                "Skrienam daudz!",
                                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmPVsGwzGHhaZcq6c4xvoV8AzdoNa4G0bG5w&s");
                                 pasakumiRepo.save(pasakumi6);
 
@@ -176,8 +176,8 @@ public class SparniShopApplication {
                                                 "Pikniks",
                                                 LocalDateTime.of(2024, 9, 10, 18, 0),
                                                 "Plava",
-                                                "Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!Ēdam!",
-                                                "https://www.greatbritishfoodawards.com/assets/images/main/picnic_photo.jpg");
+                                                "Ēdam!",
+                                                "https://www.ocventspils.lv/uploads/complexes/19/resized-pp-blaze-petersone-639.jpg");
                                 pasakumiRepo.save(pasakumi7);
 
                                 Event pasakumi8 = new Event(
@@ -197,7 +197,7 @@ public class SparniShopApplication {
                                                 74,
                                                 19.99f,
                                                 null,                                       
-                                                "https://printtoo.com/cdn/shop/files/pilnigsgalaks-melnaziemascepure.png?v=1705062180&width=640",
+                                                "https://printtoo.com/cdn/shop/files/PilnigsGalaks-smilsbaltaizsutacepure.png?v=1738222810&width=640",
                                                 null);
                                 preceRepo.save(prece1);
 

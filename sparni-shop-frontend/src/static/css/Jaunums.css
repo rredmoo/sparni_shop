@@ -73,14 +73,20 @@
 }
 
 .filter-bar {
+  width: 800px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #f8f9fa;
   border-radius: 10px;
   gap: 20px;
 }
+
+.h3-adminpanel{
+  margin-top: 1rem;
+}
+
 
 .category-filter select,
 .date-picker input,

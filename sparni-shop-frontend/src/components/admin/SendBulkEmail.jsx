@@ -33,6 +33,7 @@ const SendBulkEmail = () => {
 
     return (
         <div className="bulk-email">
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

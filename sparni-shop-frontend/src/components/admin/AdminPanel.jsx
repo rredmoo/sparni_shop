@@ -151,7 +151,8 @@ const AdminPanel = () => {
 
         {/* Search Section */}
         <section>
-          <h3>Search Emails</h3>
+          <h3 className="h3-adminpanel">Search Emails</h3>
+          <br/>
           <input
             className="searchInput"
             type="text"
@@ -163,7 +164,7 @@ const AdminPanel = () => {
 
         {/* Emails Section */}
         <section>
-          <h3>Epasti no klientiem</h3>
+          <h3 className="h3-adminpanel">Epasti no klientiem</h3>
           {error && <p>Error: {error}</p>}
           <table className="email-table">
             <thead>
@@ -224,7 +225,7 @@ const AdminPanel = () => {
 
         {/* Products Section */}
         <section>
-          <h3>Products</h3>
+          <h3 className="h3-adminpanel">Products</h3>
           <div className="admin-product-list">
             {paginateProducts(products).map((product) => (
               <div key={product.productId} className="admin-product-card">

@@ -98,6 +98,8 @@ function SendSelectedEmail() {
 
   return (
     <div>
+
+      <div className="bulk-email">
       <select onChange={handleEmailSelection} value="" disabled={loading}>
         <option value="" disabled>
           Select an email
@@ -116,9 +118,8 @@ function SendSelectedEmail() {
       <div>
         <h3>Selected Emails:</h3>
         {renderSelectedEmails()}
+        <br/>
       </div>
-
-      <div className="bulk-email">
         <form onSubmit={handleSubmit}>
           <input
             className="searchCheck"

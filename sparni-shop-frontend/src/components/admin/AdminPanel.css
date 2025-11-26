@@ -246,6 +246,7 @@
 }
 
 .admin-product-pagination {
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 10px;
